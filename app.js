@@ -16,12 +16,18 @@ const WEEKDAY_THEMES = {
 /* ---------- 상태 ---------- */
 const KEY = "growth180_v2";
 let S = loadState();
-let DATA = { english:[], hanja:[], trivia:[], messages:[] };
+let DATA = { english:[], hanja:[], trivia:[], messages:[], solarTerms:[] };
 let charts = {};
 let currentEvent = "pushups";
 
 function loadState(){
-  try{ return JSON.parse(localStorage.getItem(KEY)) || defaultState(); }
+  try{
+    const s = JSON.parse(localStorage.getItem(KEY)) || defaultState();
+    // 하위 호환: 이전 버전 데이터에 books가 없으면 추가
+    if(!s.books) s.books = [];
+    if(s.currentBookId === undefined) s.currentBookId = null;
+    return s;
+  }
   catch(e){ return defaultState(); }
 }
 function defaultState(){
@@ -32,14 +38,32 @@ function defaultState(){
     engIdx: 0, triIdx: 0, hanIdx: 0,
     engLearned: {},     // { wordId: reviewCount }
     hanLearned: {},     // { hanjaId: true }
+    books: [],          // [{id,title,author,pages,genre,why,startDate,endDate,currentPage,finished,notes:[{date,page,text}]}]
+    currentBookId: null,
   };
 }
 function save(){ localStorage.setItem(KEY, JSON.stringify(S)); }
 
-/* ---------- 날짜 유틸 ---------- */
-function todayStr(){ return new Date().toISOString().split("T")[0]; }
-function addDays(dstr, n){ const d=new Date(dstr); d.setDate(d.getDate()+n); return d.toISOString().split("T")[0]; }
-function diffDays(a, b){ return Math.round((new Date(b)-new Date(a))/(1000*60*60*24)); }
+/* ---------- 날짜 유틸 (서울 KST 기준) ---------- */
+// 사용자 기기가 어느 시간대에 있든 항상 서울 기준으로 날짜를 계산한다.
+function seoulNow(){
+  // en-CA 로케일은 YYYY-MM-DD 형식을 보장
+  return new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Seoul" }));
+}
+function todayStr(){
+  const p = new Intl.DateTimeFormat("en-CA", {
+    timeZone:"Asia/Seoul", year:"numeric", month:"2-digit", day:"2-digit"
+  }).format(new Date());
+  return p; // "2026-08-17"
+}
+function addDays(dstr, n){
+  const d=new Date(dstr+"T00:00:00"); d.setDate(d.getDate()+n);
+  const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,"0"), day=String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
+function diffDays(a, b){
+  return Math.round((new Date(b+"T00:00:00")-new Date(a+"T00:00:00"))/(1000*60*60*24));
+}
 function ensureDay(dstr){
   if(!S.daily[dstr]) S.daily[dstr] = { fitness:{}, english:{learned:0}, trivia:{att:0,cor:0}, hanja:{learned:0}, goals:{} };
   return S.daily[dstr];
@@ -62,9 +86,11 @@ async function init(){
   bindEnglish();
   bindTrivia();
   bindHanja();
+  bindReading();
   bindCoaching();
   bindSettings();
   renderAll();
+  startClock();
 }
 
 async function loadData(){
@@ -73,6 +99,7 @@ async function loadData(){
     ["data_hanja.json","hanja","hanja"],
     ["data_trivia.json","trivia","trivia"],
     ["data_messages.json","messages","dailyMessages"],
+    ["data_solarterms.json","solarTerms","solarTerms"],
   ];
   for(const [file,key,prop] of files){
     try{
@@ -89,8 +116,13 @@ async function loadData(){
 /* =========================================================
    요일별 테마 적용
    ========================================================= */
+function seoulDow(){
+  // 서울 기준 요일 (0=일 ~ 6=토)
+  const wd = new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Seoul",weekday:"short"}).format(new Date());
+  return {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[wd];
+}
 function applyWeekdayTheme(){
-  const dow = new Date().getDay();
+  const dow = seoulDow();
   const t = WEEKDAY_THEMES[dow];
   const r = document.documentElement.style;
   r.setProperty("--bg", t.bg);
@@ -115,6 +147,112 @@ function applyWeekdayTheme(){
 }
 
 /* =========================================================
+   서울 날짜 배너 + 실시간 시계
+   ========================================================= */
+let clockTimer = null;
+let lastRenderedDate = null;
+
+// 현재 날짜에 해당하는 절기 정보 반환 (현재 절기 + 다음 절기까지 D-day)
+function getSolarTerm(y, m, d){
+  if(!DATA.solarTerms || !DATA.solarTerms.length) return null;
+  // 올해 기준으로 모든 절기를 날짜값(월*100+일)으로 정렬
+  const cur = m*100 + d;
+  // 절기를 연중 순서대로 정렬 (소한1/6 ~ 대한1/20 이 연초, 동지12/22가 연말)
+  const sorted = DATA.solarTerms
+    .map(t=>({...t, val:t.month*100+t.day}))
+    .sort((a,b)=>a.val-b.val);
+  // 현재 날짜 이하의 가장 최근 절기 찾기
+  let current = sorted[sorted.length-1]; // 기본값: 작년 마지막 절기(동지)
+  for(const t of sorted){
+    if(t.val <= cur) current = t;
+    else break;
+  }
+  // 다음 절기 찾기
+  let next = sorted.find(t=>t.val > cur) || sorted[0];
+  // 다음 절기까지 남은 일수 계산
+  let nextDate = new Date(`${y}-${String(next.month).padStart(2,"0")}-${String(next.day).padStart(2,"0")}T00:00:00`);
+  const today = new Date(`${y}-${String(m).padStart(2,"0")}-${String(d).padStart(2,"0")}T00:00:00`);
+  if(nextDate < today) nextDate.setFullYear(y+1); // 연말→연초 넘어감
+  const daysToNext = Math.round((nextDate - today)/(1000*60*60*24));
+  return { current, next, daysToNext };
+}
+
+function renderDateBanner(){
+  const now = new Date();
+  const dowNames = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+
+  // 서울 기준 연·월·일
+  const parts = new Intl.DateTimeFormat("en-CA",{
+    timeZone:"Asia/Seoul", year:"numeric", month:"2-digit", day:"2-digit"
+  }).formatToParts(now).reduce((o,p)=>(o[p.type]=p.value,o),{});
+  const y=+parts.year, m=+parts.month, d=+parts.day;
+
+  // 서울 기준 시:분
+  const hm = new Intl.DateTimeFormat("en-GB",{
+    timeZone:"Asia/Seoul", hour:"2-digit", minute:"2-digit", hour12:false
+  }).format(now);
+
+  const dow = seoulDow();
+
+  const mainEl = document.getElementById("dateMain");
+  const subEl = document.getElementById("dateSub");
+  const clockEl = document.getElementById("dateClock");
+  const dcountEl = document.getElementById("dateDcount");
+  if(!mainEl) return;
+
+  mainEl.textContent = `${y}년 ${m}월 ${d}일`;
+
+  // 절기 정보
+  const st = getSolarTerm(y, m, d);
+  let stText = "";
+  if(st){
+    if(st.daysToNext === 0){
+      stText = ` · 오늘은 ${st.next.name}(${st.next.hanja})`;
+    } else {
+      stText = ` · ${st.current.name}(${st.current.hanja}) · ${st.next.name}까지 D-${st.daysToNext}`;
+    }
+  }
+  subEl.textContent = `${dowNames[dow]} · 서울(KST)${stText}`;
+  clockEl.textContent = hm;
+
+  const pd = projectDay();
+  const dleft = Math.max(0, diffDays(todayStr(), S.ddayDate));
+  dcountEl.textContent = `프로젝트 DAY ${pd} · D-${dleft}`;
+
+  // 절기 상세 카드 갱신
+  renderSolarTermCard(st);
+
+  // 날짜가 바뀌면(자정 넘김) 앱 전체를 하루치 갱신
+  const curDate = todayStr();
+  if(lastRenderedDate && lastRenderedDate !== curDate){
+    applyWeekdayTheme();  // 요일 테마도 새로 적용
+    renderAll();          // 메시지·목표·그래프 새 날짜 반영
+  }
+  lastRenderedDate = curDate;
+}
+
+function renderSolarTermCard(st){
+  const el = document.getElementById("solarTermInfo");
+  if(!el || !st) return;
+  const c = st.current;
+  el.innerHTML = `
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="font-size:2rem;font-family:'Gowun Batang',serif;font-weight:700;color:var(--accent-2)">${c.hanja}</div>
+      <div style="flex:1;min-width:180px">
+        <div style="font-weight:700;font-size:1.05rem">${c.name} <span class="muted" style="font-weight:400">· ${c.meaning}</span></div>
+        <div class="muted" style="font-size:.88rem;margin-top:2px">${c.desc}</div>
+        <div class="muted" style="font-size:.82rem;margin-top:6px">다음 절기 <b style="color:var(--accent)">${st.next.name}</b>까지 D-${st.daysToNext}</div>
+      </div>
+    </div>`;
+}
+
+function startClock(){
+  renderDateBanner();
+  if(clockTimer) clearInterval(clockTimer);
+  clockTimer = setInterval(renderDateBanner, 1000 * 30); // 30초마다 갱신
+}
+
+/* =========================================================
    네비게이션
    ========================================================= */
 function bindNav(){
@@ -133,6 +271,7 @@ function switchView(name){
   if(name==="english") renderEnglish();
   if(name==="trivia") renderTrivia();
   if(name==="hanja") renderHanja();
+  if(name==="reading") renderReading();
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
@@ -169,9 +308,30 @@ function fitnessScore(f){
 function renderDashboard(){
   renderHeader();
   renderDailyMessage();
+  renderDashReading();
   renderGoals();
   renderGrowthChart();
   renderDashStats();
+}
+
+function renderDashReading(){
+  const el = document.getElementById("dashReading");
+  if(!el) return;
+  const book = currentBook();
+  const finishedCount = S.books.filter(b=>b.finished).length;
+  if(!book){
+    el.innerHTML = `<p class="muted">지금 읽는 책이 없습니다. <b>독서 탭</b>에서 새 책을 등록해보세요.</p>
+      <div style="margin-top:8px" class="muted">지금까지 완독: <b style="color:var(--accent-2)">${finishedCount}권</b></div>`;
+    return;
+  }
+  const pct = Math.min(100, Math.round((book.currentPage/book.pages)*100));
+  el.innerHTML = `
+    <div style="font-weight:700;font-size:1.05rem">${book.title}</div>
+    <div class="muted" style="font-size:.85rem">${book.author||""}</div>
+    <div class="muted" style="display:flex;justify-content:space-between;margin-top:10px">
+      <span>${book.currentPage} / ${book.pages}쪽</span><b>${pct}%</b></div>
+    <div class="bar"><span style="width:${pct}%"></span></div>
+    <div class="muted" style="font-size:.82rem;margin-top:8px">지금까지 완독 <b style="color:var(--accent-2)">${finishedCount}권</b></div>`;
 }
 
 function renderDailyMessage(){
@@ -189,6 +349,7 @@ const GOALS = [
   {id:"english", t:"영어", d:"오늘의 단어 학습 + 복습"},
   {id:"trivia",  t:"상식", d:"오늘의 상식 도전"},
   {id:"hanja",   t:"한자", d:"오늘의 한자 학습"},
+  {id:"reading", t:"독서", d:"오늘의 독서 진도 + 노트"},
   {id:"life",    t:"생활습관", d:"정시 기상·7~8시간 수면·정시 취침"},
 ];
 function renderGoals(){
@@ -240,7 +401,7 @@ function renderGrowthChart(){
       triCum += (rec.trivia?.cor||0);
     }
     const fit = rec ? fitnessScore(rec.fitness) : 0;
-    const life = rec ? (Object.values(rec.goals||{}).filter(Boolean).length/5*100) : 0;
+    const life = rec ? (Object.values(rec.goals||{}).filter(Boolean).length/GOALS.length*100) : 0;
     allLabels.push(ds.slice(5));
     seriesFit.push(Math.round(fit));
     seriesEng.push(engCum);
@@ -641,12 +802,18 @@ function analyzeRecords(){
   Object.values(S.daily).forEach(d=>{
     if(d.goals){ goalSum += Object.values(d.goals).filter(Boolean).length; goalDays++; }
   });
+  // 독서 통계
+  const booksFinished = S.books.filter(b=>b.finished).length;
+  const cur = currentBook();
+  const monthsElapsed = Math.max(1, Math.ceil((diffDays(S.startDate, todayStr())+1)/30));
   return {
     projectDay:projectDay(), recordDays:recDays.length, recentActive,
     words, hanja, triCor, triAtt, triAcc: triAtt?Math.round(triCor/triAtt*100):0,
     pushG:growth("pushups"), pullG:growth("pullups"), squatG:growth("squats"),
     runG:growth("running"), plankG:growth("plank"),
-    goalAvg: goalDays?(goalSum/goalDays).toFixed(1):0
+    goalAvg: goalDays?(goalSum/goalDays).toFixed(1):0,
+    booksFinished, monthsElapsed,
+    curBook: cur ? {title:cur.title, pct:Math.round(cur.currentPage/cur.pages*100)} : null
   };
 }
 
@@ -677,7 +844,9 @@ function diagnose(){
     else advice.push(`최근 7일 중 <b>${a.recentActive}일</b> 운동했습니다. 훌륭한 꾸준함입니다!`);
     if(a.words<10) advice.push("영어 단어를 <b>하루 3개</b>씩만 꾸준히 외워도 한 달이면 90개입니다.");
     if(a.triAtt>0 && a.triAcc<60) advice.push("상식 정답률을 높이려면 <b>해설을 소리 내어</b> 읽어보세요.");
-    if(+a.goalAvg < 3) advice.push("하루 5개 목표 중 평균 " + a.goalAvg + "개를 달성 중입니다. <b>2개 이상</b>부터 시작해도 충분합니다.");
+    if(a.booksFinished < a.monthsElapsed) advice.push("독서가 목표(월 1권)보다 조금 뒤처져 있습니다. <b>하루 10쪽</b>이면 한 달에 한 권은 충분합니다.");
+    else if(a.booksFinished>0) advice.push(`벌써 <b>${a.booksFinished}권</b>을 완독했습니다. 훌륭한 독서 습관입니다!`);
+    if(+a.goalAvg < 3) advice.push("하루 6개 목표 중 평균 " + a.goalAvg + "개를 달성 중입니다. <b>2~3개</b>부터 시작해도 충분합니다.");
     advice.push("작은 일에 충실한 사람이 큰 것도 맡습니다. <b>오늘 하루</b>에 집중하세요. (눅 16:10)");
 
     box.innerHTML = `
@@ -689,7 +858,8 @@ function diagnose(){
         <div class="metric"><span>영어 누적</span><b>${a.words}개</b></div>
         <div class="metric"><span>한자 누적</span><b>${a.hanja}개</b></div>
         <div class="metric"><span>상식 정답률</span><b>${a.triAcc}% (${a.triCor}/${a.triAtt})</b></div>
-        <div class="metric"><span>일일 목표 평균</span><b>${a.goalAvg}/5</b></div>
+        <div class="metric"><span>완독</span><b>${a.booksFinished}권 (목표 ${a.monthsElapsed}권)</b></div>
+        <div class="metric"><span>일일 목표 평균</span><b>${a.goalAvg}/6</b></div>
         <h4 style="margin-top:16px">💡 종목별 성장</h4>
         ${growthLines}
         <h4 style="margin-top:16px">🎯 맞춤 조언</h4>
@@ -731,12 +901,21 @@ function coachAdvice(topic, q, a){
         <li><b>문장 구성 해설</b>을 꼭 읽으면 문법 감각이 함께 자랍니다.</li>
       </ul>
       <p style="margin-top:10px">하루 3개면 6개월에 500개 이상입니다. 꾸준함이 답입니다.</p>`,
+    reading: `<h4>📖 독서 코칭</h4>${qLine}
+      <p>${a.curBook ? `지금 '<b>${a.curBook.title}</b>'을(를) ${a.curBook.pct}%까지 읽고 있습니다.` : "현재 읽고 있는 책이 없습니다. 오늘 한 권을 시작해보세요."} 지금까지 <b>${a.booksFinished}권</b> 완독했습니다.</p>
+      <ul style="padding-left:18px;line-height:1.9">
+        <li><b>하루 10~15쪽:</b> 부담 없는 분량이 완독의 비결입니다. 300쪽 책도 한 달이면 충분합니다.</li>
+        <li><b>독서 노트:</b> 한 챕터마다 한 문장이라도 느낀 점을 남기면 기억에 훨씬 오래 남습니다.</li>
+        <li><b>고정 시간:</b> 취침 전 15분처럼 정해진 시간에 읽으면 습관이 됩니다.</li>
+        <li><b>책 고르기:</b> 신앙·자기계발·역사·전기를 번갈아 읽으면 균형 잡힌 사고가 자랍니다.</li>
+      </ul>
+      <p style="margin-top:10px">"독서는 마음의 양식입니다." 몸을 훈련하듯 생각도 매일 훈련해봅시다.</p>`,
     motivation: `<h4>🔥 동기부여</h4>${qLine}
       <p>DAY ${a.projectDay}까지 온 것 자체가 증거입니다. 시작한 사람이 앞으로 갑니다.</p>
       <p style="margin-top:10px">"네가 무엇을 하든지 마음을 다하여 주께 하듯 하고 사람에게 하듯 하지 말라." (골 3:23)</p>
       <p style="margin-top:8px">오늘의 작은 훈련이 내일의 강한 나를 만듭니다. 결과보다 <b>오늘의 출석</b>에 집중하세요.</p>`,
     discipline: `<h4>⚡ 자기관리 코칭</h4>${qLine}
-      <p>일일 목표 평균 ${a.goalAvg}/5를 달성 중입니다.</p>
+      <p>일일 목표 평균 ${a.goalAvg}/6를 달성 중입니다.</p>
       <ul style="padding-left:18px;line-height:1.9">
         <li><b>계획→기록→검토→조정</b>의 사이클을 매주 돌리세요.</li>
         <li>완벽한 하루보다 <b>다시 시작한 하루</b>가 더 귀합니다.</li>
@@ -750,7 +929,7 @@ function coachAdvice(topic, q, a){
       </ul>
       <p style="margin-top:10px">"오늘의 가장 중요한 운동은 어쩌면 제시간에 잠드는 것"일 수 있습니다.</p>`,
     special: `<h4>🎯 특별 조언 · 현재 상황 종합</h4>${qLine}
-      <p>DAY ${a.projectDay} 시점, 운동 ${a.recordDays}일 · 영어 ${a.words}개 · 한자 ${a.hanja}개 · 상식 정답률 ${a.triAcc}%.</p>
+      <p>DAY ${a.projectDay} 시점, 운동 ${a.recordDays}일 · 영어 ${a.words}개 · 한자 ${a.hanja}개 · 상식 정답률 ${a.triAcc}% · 완독 ${a.booksFinished}권.</p>
       <p style="margin-top:10px">${
         a.projectDay<30? "지금은 <b>습관의 뿌리</b>를 내리는 시기입니다. 양보다 매일 하는 것에 집중하세요." :
         a.projectDay<90? "이제 <b>꾸준함이 무기</b>가 되는 구간입니다. 어제의 나를 이기면 충분합니다." :
@@ -760,6 +939,192 @@ function coachAdvice(topic, q, a){
       <p style="margin-top:10px">"내가 여기 있나이다. 나를 보내소서." (사 6:8)</p>`
   };
   return R[topic] || R.motivation;
+}
+
+/* =========================================================
+   독서
+   ========================================================= */
+function currentBook(){
+  if(!S.currentBookId) return null;
+  return S.books.find(b=>b.id===S.currentBookId && !b.finished) || null;
+}
+
+function bindReading(){
+  document.getElementById("bk_add").addEventListener("click", addBook);
+}
+
+function renderReading(){
+  const book = currentBook();
+  const curCard = document.getElementById("currentBookCard");
+  const newCard = document.getElementById("newBookCard");
+  const box = document.getElementById("currentBook");
+
+  if(book){
+    // 읽는 중인 책 표시
+    curCard.style.display = "block";
+    newCard.style.display = "none";
+    const pct = Math.min(100, Math.round((book.currentPage/book.pages)*100));
+    const notesHtml = (book.notes||[]).slice().reverse().map(n=>`
+      <div class="note-entry">
+        <div class="note-date">${n.date} · ${n.page}쪽까지</div>
+        <div>${n.text ? n.text : '<span class="muted">기록 없음</span>'}</div>
+      </div>`).join("");
+    box.innerHTML = `
+      <div class="book-current">
+        <div class="book-title">${book.title}</div>
+        <div class="book-author">${book.author||"저자 미상"}</div>
+        <div class="book-meta">
+          ${book.genre?`<span>📚 ${book.genre}</span>`:""}
+          <span>📅 시작 <b>${book.startDate}</b></span>
+          <span>📄 총 <b>${book.pages}쪽</b></span>
+        </div>
+        ${book.why?`<div class="muted" style="margin-top:10px;font-size:.85rem">💭 ${book.why}</div>`:""}
+        <div class="book-progress-num">
+          <div><span class="big">${book.currentPage}</span> <span class="muted">/ ${book.pages}쪽</span></div>
+          <div class="big" style="color:var(--accent-2)">${pct}%</div>
+        </div>
+        <div class="bar"><span style="width:${pct}%"></span></div>
+
+        <div class="page-input-row">
+          <input type="number" id="rd_page" min="0" max="${book.pages}" placeholder="지금 몇 쪽까지 읽었나요?" value="${book.currentPage||""}">
+          <button class="btn btn-primary" onclick="updatePage()">📖 진도 저장</button>
+        </div>
+
+        <div class="book-note-area">
+          <div class="field" style="margin-bottom:8px"><label>📝 오늘의 독서 노트 (느낀 점)</label>
+            <textarea id="rd_note" placeholder="이 부분에서 무엇을 느꼈나요? 기억하고 싶은 문장이 있나요?"></textarea></div>
+          <button class="btn btn-accent" onclick="saveReadingNote()">💾 노트 저장</button>
+          <button class="btn btn-good" onclick="finishBook()" style="margin-left:6px">✅ 완독 처리</button>
+        </div>
+
+        ${notesHtml ? `<div style="margin-top:16px"><h3>🗒️ 독서 노트 기록</h3>${notesHtml}</div>` : ""}
+      </div>`;
+  } else {
+    // 읽는 책 없음 → 새 책 등록 화면
+    curCard.style.display = "block";
+    box.innerHTML = `<p class="muted">현재 읽고 있는 책이 없습니다. 아래에서 새 책을 등록해 시작해보세요.</p>`;
+    newCard.style.display = "block";
+    if(!document.getElementById("bk_start").value){
+      document.getElementById("bk_start").value = todayStr();
+    }
+  }
+  renderReadingStats();
+  renderFinishedBooks();
+}
+
+function addBook(){
+  const title = document.getElementById("bk_title").value.trim();
+  const pages = +document.getElementById("bk_pages").value;
+  if(!title){ toast("책 제목을 입력하세요"); return; }
+  if(!pages || pages<1){ toast("총 페이지를 입력하세요"); return; }
+  const book = {
+    id: "bk_" + Date.now(),
+    title,
+    author: document.getElementById("bk_author").value.trim(),
+    pages,
+    genre: document.getElementById("bk_genre").value.trim(),
+    why: document.getElementById("bk_why").value.trim(),
+    startDate: document.getElementById("bk_start").value || todayStr(),
+    endDate: null,
+    currentPage: 0,
+    finished: false,
+    notes: []
+  };
+  S.books.push(book);
+  S.currentBookId = book.id;
+  save();
+  // 입력 초기화
+  ["bk_title","bk_author","bk_pages","bk_genre","bk_why"].forEach(id=>document.getElementById(id).value="");
+  toast("새 책을 시작합니다!");
+  renderReading();
+}
+
+function updatePage(){
+  const book = currentBook();
+  if(!book) return;
+  const p = +document.getElementById("rd_page").value;
+  if(p<0 || p>book.pages){ toast(`0~${book.pages} 사이로 입력하세요`); return; }
+  book.currentPage = p;
+  // 독서를 오늘 목표에 반영
+  const d = ensureDay(todayStr());
+  d.goals.reading = true;
+  save();
+  toast(`${p}쪽까지 저장!`);
+  if(p >= book.pages){
+    if(confirm("마지막 페이지까지 읽으셨네요! 완독으로 처리할까요?")){ finishBook(); return; }
+  }
+  renderReading();
+  renderDashReading();
+}
+
+function saveReadingNote(){
+  const book = currentBook();
+  if(!book) return;
+  const text = document.getElementById("rd_note").value.trim();
+  const page = +document.getElementById("rd_page").value || book.currentPage;
+  if(!text){ toast("느낀 점을 입력하세요"); return; }
+  book.notes.push({ date: todayStr(), page, text });
+  const d = ensureDay(todayStr());
+  d.goals.reading = true;
+  save();
+  document.getElementById("rd_note").value = "";
+  toast("독서 노트 저장 완료!");
+  renderReading();
+}
+
+function finishBook(){
+  const book = currentBook();
+  if(!book) return;
+  book.finished = true;
+  book.endDate = todayStr();
+  book.currentPage = book.pages;
+  S.currentBookId = null;
+  save();
+  toast("완독을 축하합니다! 🎉");
+  renderReading();
+  renderDashReading();
+  renderHeader();
+}
+
+function renderReadingStats(){
+  const finished = S.books.filter(b=>b.finished);
+  const totalPages = finished.reduce((s,b)=>s+b.pages,0)
+    + S.books.filter(b=>!b.finished).reduce((s,b)=>s+(b.currentPage||0),0);
+  const totalNotes = S.books.reduce((s,b)=>s+(b.notes?b.notes.length:0),0);
+  // 프로젝트 시작 후 경과 개월 대비 목표(월1권)
+  const monthsElapsed = Math.max(1, Math.ceil((diffDays(S.startDate, todayStr())+1)/30));
+  const stats = [
+    ["완독", finished.length+"권"],
+    ["읽은 페이지", totalPages.toLocaleString()+"쪽"],
+    ["독서 노트", totalNotes+"개"],
+    ["목표 대비", finished.length+"/"+monthsElapsed+"권"],
+  ];
+  document.getElementById("readingStats").innerHTML =
+    stats.map(([l,v])=>`<div class="stat"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+}
+
+function renderFinishedBooks(){
+  const finished = S.books.filter(b=>b.finished).slice().reverse();
+  const el = document.getElementById("finishedBooks");
+  if(!finished.length){ el.innerHTML = `<p class="muted">아직 완독한 책이 없습니다. 첫 책을 완독해보세요!</p>`; return; }
+  el.innerHTML = finished.map((b,i)=>{
+    const num = finished.length - i;
+    const notesHtml = (b.notes||[]).map(n=>`<div style="margin-top:6px">· <b>${n.page}쪽</b> (${n.date}): ${n.text}</div>`).join("");
+    const days = b.endDate && b.startDate ? diffDays(b.startDate,b.endDate)+1 : null;
+    return `
+      <div class="finished-book">
+        <div class="fb-head">
+          <div>
+            <div class="fb-title">${num}. ${b.title}</div>
+            <div class="muted" style="font-size:.85rem">${b.author||"저자 미상"}${b.genre?" · "+b.genre:""}</div>
+            <div class="fb-period">📅 ${b.startDate} ~ ${b.endDate}${days?` (${days}일간)`:""} · ${b.pages}쪽</div>
+          </div>
+          <div class="fb-badge">완독 ✓</div>
+        </div>
+        ${b.why?`<div class="muted" style="font-size:.83rem;margin-top:8px">💭 ${b.why}</div>`:""}
+        ${notesHtml?`<div class="fb-notes"><b>📝 독서 노트</b>${notesHtml}</div>`:""}
+      </div>`;
+  }).join("");
 }
 
 /* =========================================================
@@ -808,6 +1173,9 @@ function toast(msg){
 
 /* ---------- 전역 노출 (인라인 onclick 대응) ---------- */
 window.nextTrivia = nextTrivia;
+window.updatePage = updatePage;
+window.saveReadingNote = saveReadingNote;
+window.finishBook = finishBook;
 
 /* ---------- 시작 ---------- */
 init();
