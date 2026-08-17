@@ -1,150 +1,2095 @@
 {
   "english": [
     {
-      "id": 1,
       "word": "ability",
+      "pron": "/əˈbɪləti/",
+      "pos": "명사",
       "meaning": "능력, 재능",
-      "example": "He has the ability to lead.",
-      "partOfSpeech": "noun"
+      "example": "He has the ability to solve problems.",
+      "exMeaning": "그는 문제를 해결하는 능력이 있다.",
+      "grammar": "'ability to + 동사원형'은 '~할 능력'을 나타내는 표현입니다. to부정사가 ability를 꾸며줍니다.",
+      "id": 1
     },
     {
-      "id": 2,
-      "word": "about",
-      "meaning": "~에 관하여, 약",
-      "example": "Tell me about yourself.",
-      "partOfSpeech": "preposition"
-    },
-    {
-      "id": 3,
-      "word": "above",
-      "meaning": "~위에, 초과하여",
-      "example": "The sky is above us.",
-      "partOfSpeech": "preposition"
-    },
-    {
-      "id": 4,
-      "word": "abroad",
-      "meaning": "해외에, 국외로",
-      "example": "She travels abroad often.",
-      "partOfSpeech": "adverb"
-    },
-    {
-      "id": 5,
-      "word": "absolute",
-      "meaning": "절대적인, 확실한",
-      "example": "That's an absolute truth.",
-      "partOfSpeech": "adjective"
-    },
-    {
-      "id": 6,
       "word": "accept",
+      "pron": "/əkˈsept/",
+      "pos": "동사",
       "meaning": "받아들이다, 수락하다",
-      "example": "I accept your offer.",
-      "partOfSpeech": "verb"
+      "example": "I accept your invitation.",
+      "exMeaning": "나는 너의 초대를 받아들인다.",
+      "grammar": "accept는 타동사로 바로 목적어(your invitation)를 취합니다. 전치사가 필요 없습니다.",
+      "id": 2
     },
     {
-      "id": 7,
-      "word": "access",
-      "meaning": "접근, 진입",
-      "example": "You have access to the library.",
-      "partOfSpeech": "noun"
-    },
-    {
-      "id": 8,
-      "word": "accident",
-      "meaning": "사고, 우연",
-      "example": "There was a car accident.",
-      "partOfSpeech": "noun"
-    },
-    {
-      "id": 9,
-      "word": "according",
-      "meaning": "~에 따르면",
-      "example": "According to the news...",
-      "partOfSpeech": "preposition"
-    },
-    {
-      "id": 10,
       "word": "achieve",
-      "meaning": "달성하다, 성취하다",
+      "pron": "/əˈtʃiːv/",
+      "pos": "동사",
+      "meaning": "달성하다, 이루다",
       "example": "She achieved her goal.",
-      "partOfSpeech": "verb"
+      "exMeaning": "그녀는 자신의 목표를 달성했다.",
+      "grammar": "achieve + 목적어(goal) 구조입니다. 노력을 통해 무언가를 이루는 것을 의미합니다.",
+      "id": 3
     },
     {
-      "id": 11,
-      "word": "acid",
-      "meaning": "산(化學)",
-      "example": "Lemon juice contains acid.",
-      "partOfSpeech": "noun"
-    },
-    {
-      "id": 12,
-      "word": "acquire",
-      "meaning": "얻다, 습득하다",
-      "example": "He acquired new skills.",
-      "partOfSpeech": "verb"
-    },
-    {
-      "id": 13,
       "word": "across",
-      "meaning": "~건너편에, 가로질러",
-      "example": "Walk across the street.",
-      "partOfSpeech": "preposition"
+      "pron": "/əˈkrɔːs/",
+      "pos": "전치사",
+      "meaning": "~을 가로질러, 건너편에",
+      "example": "We walked across the bridge.",
+      "exMeaning": "우리는 다리를 건너 걸어갔다.",
+      "grammar": "across는 '한쪽에서 다른 쪽으로'의 이동을 나타냅니다. walk across = 가로질러 걷다.",
+      "id": 4
     },
     {
-      "id": 14,
-      "word": "act",
-      "meaning": "행동하다, 역할을 하다",
-      "example": "He acts in movies.",
-      "partOfSpeech": "verb"
-    },
-    {
-      "id": 15,
       "word": "action",
+      "pron": "/ˈækʃn/",
+      "pos": "명사",
       "meaning": "행동, 조치",
-      "example": "Action is needed now.",
-      "partOfSpeech": "noun"
+      "example": "Actions speak louder than words.",
+      "exMeaning": "행동이 말보다 더 큰 소리를 낸다(백 마디 말보다 실천).",
+      "grammar": "주어(Actions) + 동사(speak) + 비교급(louder than). 속담 표현입니다.",
+      "id": 5
     },
     {
-      "id": 16,
       "word": "active",
-      "meaning": "활발한, 적극적인",
-      "example": "He is an active person.",
-      "partOfSpeech": "adjective"
+      "pron": "/ˈæktɪv/",
+      "pos": "형용사",
+      "meaning": "활동적인, 적극적인",
+      "example": "He is an active student.",
+      "exMeaning": "그는 활동적인 학생이다.",
+      "grammar": "be동사(is) + 관사(an) + 형용사(active) + 명사(student). 형용사가 명사를 꾸며줍니다.",
+      "id": 6
     },
     {
-      "id": 17,
-      "word": "activity",
-      "meaning": "활동, 활동성",
-      "example": "Exercise is a healthy activity.",
-      "partOfSpeech": "noun"
+      "word": "add",
+      "pron": "/æd/",
+      "pos": "동사",
+      "meaning": "더하다, 추가하다",
+      "example": "Add some sugar to the coffee.",
+      "exMeaning": "커피에 설탕을 조금 넣어라.",
+      "grammar": "add A to B = B에 A를 더하다. 명령문으로 동사원형(Add)으로 시작합니다.",
+      "id": 7
     },
     {
-      "id": 18,
-      "word": "actor",
-      "meaning": "배우",
-      "example": "He is a famous actor.",
-      "partOfSpeech": "noun"
+      "word": "afraid",
+      "pron": "/əˈfreɪd/",
+      "pos": "형용사",
+      "meaning": "두려워하는, 무서운",
+      "example": "I am afraid of dogs.",
+      "exMeaning": "나는 개를 무서워한다.",
+      "grammar": "be afraid of + 명사 = ~을 무서워하다. of 뒤에는 명사나 동명사가 옵니다.",
+      "id": 8
     },
     {
-      "id": 19,
-      "word": "actual",
-      "meaning": "실제의, 현실의",
-      "example": "What is the actual price?",
-      "partOfSpeech": "adjective"
+      "word": "agree",
+      "pron": "/əˈɡriː/",
+      "pos": "동사",
+      "meaning": "동의하다",
+      "example": "I agree with you.",
+      "exMeaning": "나는 너에게 동의한다.",
+      "grammar": "agree with + 사람 = ~에게 동의하다. 사람과 동의할 때는 with를 씁니다.",
+      "id": 9
     },
     {
-      "id": 20,
-      "word": "actually",
-      "meaning": "실제로, 사실상",
-      "example": "Actually, I don't know.",
-      "partOfSpeech": "adverb"
+      "word": "allow",
+      "pron": "/əˈlaʊ/",
+      "pos": "동사",
+      "meaning": "허락하다, 허용하다",
+      "example": "My parents allow me to play games.",
+      "exMeaning": "부모님은 내가 게임하는 것을 허락하신다.",
+      "grammar": "allow + 목적어 + to부정사 = ~가 …하도록 허락하다. 5형식 구조입니다.",
+      "id": 10
+    },
+    {
+      "word": "among",
+      "pron": "/əˈmʌŋ/",
+      "pos": "전치사",
+      "meaning": "~사이에, ~중에",
+      "example": "She is popular among students.",
+      "exMeaning": "그녀는 학생들 사이에서 인기가 있다.",
+      "grammar": "among은 셋 이상의 대상 사이를 나타냅니다. (둘 사이는 between)",
+      "id": 11
+    },
+    {
+      "word": "amount",
+      "pron": "/əˈmaʊnt/",
+      "pos": "명사",
+      "meaning": "양, 총액",
+      "example": "A large amount of water is needed.",
+      "exMeaning": "많은 양의 물이 필요하다.",
+      "grammar": "amount of + 셀 수 없는 명사 = ~의 양. water는 셀 수 없는 명사입니다.",
+      "id": 12
+    },
+    {
+      "word": "ancient",
+      "pron": "/ˈeɪnʃənt/",
+      "pos": "형용사",
+      "meaning": "고대의, 오래된",
+      "example": "We studied ancient history.",
+      "exMeaning": "우리는 고대 역사를 공부했다.",
+      "grammar": "ancient(형용사) + history(명사). 형용사가 명사 앞에서 꾸며줍니다.",
+      "id": 13
+    },
+    {
+      "word": "angry",
+      "pron": "/ˈæŋɡri/",
+      "pos": "형용사",
+      "meaning": "화난, 성난",
+      "example": "He was angry at me.",
+      "exMeaning": "그는 나에게 화가 났다.",
+      "grammar": "be angry at/with + 사람 = ~에게 화나다. 감정 형용사입니다.",
+      "id": 14
+    },
+    {
+      "word": "announce",
+      "pron": "/əˈnaʊns/",
+      "pos": "동사",
+      "meaning": "발표하다, 알리다",
+      "example": "They announced the winner.",
+      "exMeaning": "그들은 우승자를 발표했다.",
+      "grammar": "announce + 목적어 구조입니다. 공식적으로 알릴 때 사용합니다.",
+      "id": 15
+    },
+    {
+      "word": "answer",
+      "pron": "/ˈænsər/",
+      "pos": "동사/명사",
+      "meaning": "대답하다; 대답",
+      "example": "Please answer my question.",
+      "exMeaning": "제 질문에 대답해 주세요.",
+      "grammar": "answer는 타동사로 목적어(question)를 바로 취합니다. answer to가 아닙니다.",
+      "id": 16
+    },
+    {
+      "word": "appear",
+      "pron": "/əˈpɪr/",
+      "pos": "동사",
+      "meaning": "나타나다, ~처럼 보이다",
+      "example": "A rainbow appeared in the sky.",
+      "exMeaning": "무지개가 하늘에 나타났다.",
+      "grammar": "appear는 자동사로 목적어가 필요 없습니다. '나타나다'의 의미입니다.",
+      "id": 17
+    },
+    {
+      "word": "area",
+      "pron": "/ˈeriə/",
+      "pos": "명사",
+      "meaning": "지역, 면적",
+      "example": "This area is very quiet.",
+      "exMeaning": "이 지역은 매우 조용하다.",
+      "grammar": "주어(This area) + be동사(is) + 부사(very) + 형용사(quiet) 구조입니다.",
+      "id": 18
+    },
+    {
+      "word": "arrive",
+      "pron": "/əˈraɪv/",
+      "pos": "동사",
+      "meaning": "도착하다",
+      "example": "We arrived at the station.",
+      "exMeaning": "우리는 역에 도착했다.",
+      "grammar": "arrive at + 좁은 장소 / arrive in + 넓은 장소(도시, 나라).",
+      "id": 19
+    },
+    {
+      "word": "attack",
+      "pron": "/əˈtæk/",
+      "pos": "동사/명사",
+      "meaning": "공격하다; 공격",
+      "example": "The lion attacked the deer.",
+      "exMeaning": "사자가 사슴을 공격했다.",
+      "grammar": "attack + 목적어. 타동사로 직접 목적어를 취합니다.",
+      "id": 20
+    },
+    {
+      "word": "attend",
+      "pron": "/əˈtend/",
+      "pos": "동사",
+      "meaning": "참석하다, 다니다",
+      "example": "I attend a middle school.",
+      "exMeaning": "나는 중학교에 다닌다.",
+      "grammar": "attend는 타동사로 목적어를 바로 취합니다. attend to는 '주의를 기울이다'입니다.",
+      "id": 21
+    },
+    {
+      "word": "average",
+      "pron": "/ˈævərɪdʒ/",
+      "pos": "명사/형용사",
+      "meaning": "평균; 평균의",
+      "example": "The average score was 80.",
+      "exMeaning": "평균 점수는 80점이었다.",
+      "grammar": "average(형용사) + score(명사). 평균값을 나타낼 때 사용합니다.",
+      "id": 22
+    },
+    {
+      "word": "avoid",
+      "pron": "/əˈvɔɪd/",
+      "pos": "동사",
+      "meaning": "피하다",
+      "example": "You should avoid junk food.",
+      "exMeaning": "너는 정크푸드를 피해야 한다.",
+      "grammar": "avoid + 명사/동명사(-ing). avoid 뒤에는 to부정사가 아닌 동명사가 옵니다.",
+      "id": 23
+    },
+    {
+      "word": "believe",
+      "pron": "/bɪˈliːv/",
+      "pos": "동사",
+      "meaning": "믿다",
+      "example": "I believe in you.",
+      "exMeaning": "나는 너를 믿는다.",
+      "grammar": "believe in + 사람 = ~의 능력을 믿다. believe + that절 = ~라고 믿다.",
+      "id": 24
+    },
+    {
+      "word": "benefit",
+      "pron": "/ˈbenɪfɪt/",
+      "pos": "명사/동사",
+      "meaning": "이익, 혜택",
+      "example": "Exercise has many benefits.",
+      "exMeaning": "운동은 많은 이점이 있다.",
+      "grammar": "has(동사) + many(형용사) + benefits(복수명사). 셀 수 있는 명사입니다.",
+      "id": 25
+    },
+    {
+      "word": "borrow",
+      "pron": "/ˈbɑːroʊ/",
+      "pos": "동사",
+      "meaning": "빌리다",
+      "example": "Can I borrow your pen?",
+      "exMeaning": "네 펜을 빌려도 될까?",
+      "grammar": "borrow = 빌려오다(내가 가져옴). lend = 빌려주다. 방향이 반대입니다.",
+      "id": 26
+    },
+    {
+      "word": "brave",
+      "pron": "/breɪv/",
+      "pos": "형용사",
+      "meaning": "용감한",
+      "example": "The brave soldier saved them.",
+      "exMeaning": "그 용감한 군인이 그들을 구했다.",
+      "grammar": "brave(형용사) + soldier(명사). 형용사가 명사를 앞에서 수식합니다.",
+      "id": 27
+    },
+    {
+      "word": "break",
+      "pron": "/breɪk/",
+      "pos": "동사",
+      "meaning": "부수다, 깨다",
+      "example": "He broke the window.",
+      "exMeaning": "그는 창문을 깼다.",
+      "grammar": "break-broke-broken 불규칙 동사입니다. 과거형은 broke입니다.",
+      "id": 28
+    },
+    {
+      "word": "build",
+      "pron": "/bɪld/",
+      "pos": "동사",
+      "meaning": "짓다, 건설하다",
+      "example": "They will build a house.",
+      "exMeaning": "그들은 집을 지을 것이다.",
+      "grammar": "build-built-built 불규칙 동사. will + 동사원형 = 미래시제입니다.",
+      "id": 29
+    },
+    {
+      "word": "careful",
+      "pron": "/ˈkerfl/",
+      "pos": "형용사",
+      "meaning": "조심스러운, 주의 깊은",
+      "example": "Be careful on the road.",
+      "exMeaning": "길에서 조심해라.",
+      "grammar": "Be + 형용사(careful)로 시작하는 명령문입니다. '~해라'의 의미입니다.",
+      "id": 30
+    },
+    {
+      "word": "cause",
+      "pron": "/kɔːz/",
+      "pos": "명사/동사",
+      "meaning": "원인; 야기하다",
+      "example": "Smoking causes cancer.",
+      "exMeaning": "흡연은 암을 유발한다.",
+      "grammar": "cause + 목적어 = ~을 야기하다. 원인과 결과를 연결합니다.",
+      "id": 31
+    },
+    {
+      "word": "celebrate",
+      "pron": "/ˈselɪbreɪt/",
+      "pos": "동사",
+      "meaning": "축하하다, 기념하다",
+      "example": "We celebrated her birthday.",
+      "exMeaning": "우리는 그녀의 생일을 축하했다.",
+      "grammar": "celebrate + 목적어(birthday). 특별한 날을 기념할 때 씁니다.",
+      "id": 32
+    },
+    {
+      "word": "challenge",
+      "pron": "/ˈtʃælɪndʒ/",
+      "pos": "명사/동사",
+      "meaning": "도전; 도전하다",
+      "example": "Life is full of challenges.",
+      "exMeaning": "인생은 도전으로 가득하다.",
+      "grammar": "be full of + 명사 = ~로 가득하다. challenges는 복수형입니다.",
+      "id": 33
+    },
+    {
+      "word": "choose",
+      "pron": "/tʃuːz/",
+      "pos": "동사",
+      "meaning": "선택하다, 고르다",
+      "example": "Choose the right answer.",
+      "exMeaning": "올바른 답을 선택해라.",
+      "grammar": "choose-chose-chosen 불규칙 동사입니다. 명령문으로 쓰였습니다.",
+      "id": 34
+    },
+    {
+      "word": "clear",
+      "pron": "/klɪr/",
+      "pos": "형용사",
+      "meaning": "분명한, 맑은",
+      "example": "The sky is clear today.",
+      "exMeaning": "오늘 하늘이 맑다.",
+      "grammar": "be동사(is) + 형용사(clear). 날씨나 상태를 나타냅니다.",
+      "id": 35
+    },
+    {
+      "word": "collect",
+      "pron": "/kəˈlekt/",
+      "pos": "동사",
+      "meaning": "모으다, 수집하다",
+      "example": "I collect stamps.",
+      "exMeaning": "나는 우표를 수집한다.",
+      "grammar": "collect + 목적어(stamps). 취미로 무언가를 모을 때 씁니다.",
+      "id": 36
+    },
+    {
+      "word": "comfortable",
+      "pron": "/ˈkʌmftəbl/",
+      "pos": "형용사",
+      "meaning": "편안한",
+      "example": "This chair is comfortable.",
+      "exMeaning": "이 의자는 편안하다.",
+      "grammar": "be동사(is) + 형용사(comfortable). 신체적/정신적 편안함을 나타냅니다.",
+      "id": 37
+    },
+    {
+      "word": "communicate",
+      "pron": "/kəˈmjuːnɪkeɪt/",
+      "pos": "동사",
+      "meaning": "의사소통하다",
+      "example": "We communicate by phone.",
+      "exMeaning": "우리는 전화로 소통한다.",
+      "grammar": "communicate with + 사람 = ~와 소통하다. by + 수단 = ~로.",
+      "id": 38
+    },
+    {
+      "word": "compare",
+      "pron": "/kəmˈper/",
+      "pos": "동사",
+      "meaning": "비교하다",
+      "example": "Compare these two pictures.",
+      "exMeaning": "이 두 그림을 비교해라.",
+      "grammar": "compare A with/to B = A와 B를 비교하다. 명령문 구조입니다.",
+      "id": 39
+    },
+    {
+      "word": "complete",
+      "pron": "/kəmˈpliːt/",
+      "pos": "동사/형용사",
+      "meaning": "완성하다; 완전한",
+      "example": "I completed the project.",
+      "exMeaning": "나는 그 프로젝트를 완성했다.",
+      "grammar": "complete + 목적어(project). 무언가를 끝마칠 때 사용합니다.",
+      "id": 40
+    },
+    {
+      "word": "condition",
+      "pron": "/kənˈdɪʃn/",
+      "pos": "명사",
+      "meaning": "상태, 조건",
+      "example": "The car is in good condition.",
+      "exMeaning": "그 차는 상태가 좋다.",
+      "grammar": "in + 형용사 + condition = ~한 상태에. 전치사 in을 사용합니다.",
+      "id": 41
+    },
+    {
+      "word": "connect",
+      "pron": "/kəˈnekt/",
+      "pos": "동사",
+      "meaning": "연결하다",
+      "example": "Connect the printer to the computer.",
+      "exMeaning": "프린터를 컴퓨터에 연결해라.",
+      "grammar": "connect A to B = A를 B에 연결하다. 명령문입니다.",
+      "id": 42
+    },
+    {
+      "word": "consider",
+      "pron": "/kənˈsɪdər/",
+      "pos": "동사",
+      "meaning": "고려하다, 숙고하다",
+      "example": "Consider all the options.",
+      "exMeaning": "모든 선택지를 고려해라.",
+      "grammar": "consider + 목적어. 신중하게 생각할 때 사용하는 동사입니다.",
+      "id": 43
+    },
+    {
+      "word": "continue",
+      "pron": "/kənˈtɪnjuː/",
+      "pos": "동사",
+      "meaning": "계속하다",
+      "example": "Continue your good work.",
+      "exMeaning": "좋은 일을 계속해라.",
+      "grammar": "continue + 목적어/동명사/to부정사. 하던 일을 이어갈 때 씁니다.",
+      "id": 44
+    },
+    {
+      "word": "control",
+      "pron": "/kənˈtroʊl/",
+      "pos": "동사/명사",
+      "meaning": "통제하다; 통제",
+      "example": "You must control your temper.",
+      "exMeaning": "너는 화를 다스려야 한다.",
+      "grammar": "control + 목적어(temper). must + 동사원형 = ~해야 한다.",
+      "id": 45
+    },
+    {
+      "word": "correct",
+      "pron": "/kəˈrekt/",
+      "pos": "형용사/동사",
+      "meaning": "올바른; 고치다",
+      "example": "That is the correct answer.",
+      "exMeaning": "그것이 정답이다.",
+      "grammar": "correct(형용사) + answer(명사). '올바른'의 의미입니다.",
+      "id": 46
+    },
+    {
+      "word": "courage",
+      "pron": "/ˈkɜːrɪdʒ/",
+      "pos": "명사",
+      "meaning": "용기",
+      "example": "She showed great courage.",
+      "exMeaning": "그녀는 대단한 용기를 보여주었다.",
+      "grammar": "courage는 셀 수 없는 명사입니다. great(형용사)이 꾸며줍니다.",
+      "id": 47
+    },
+    {
+      "word": "create",
+      "pron": "/kriˈeɪt/",
+      "pos": "동사",
+      "meaning": "창조하다, 만들다",
+      "example": "Artists create beautiful things.",
+      "exMeaning": "예술가들은 아름다운 것을 창조한다.",
+      "grammar": "create + 목적어. 새로운 것을 만들어낼 때 사용합니다.",
+      "id": 48
+    },
+    {
+      "word": "culture",
+      "pron": "/ˈkʌltʃər/",
+      "pos": "명사",
+      "meaning": "문화",
+      "example": "Korea has a rich culture.",
+      "exMeaning": "한국은 풍부한 문화를 가지고 있다.",
+      "grammar": "has(동사) + rich(형용사) + culture(명사) 구조입니다.",
+      "id": 49
+    },
+    {
+      "word": "curious",
+      "pron": "/ˈkjʊriəs/",
+      "pos": "형용사",
+      "meaning": "호기심 많은",
+      "example": "Children are curious about everything.",
+      "exMeaning": "아이들은 모든 것에 호기심이 많다.",
+      "grammar": "be curious about + 명사 = ~에 호기심이 있다.",
+      "id": 50
+    },
+    {
+      "word": "danger",
+      "pron": "/ˈdeɪndʒər/",
+      "pos": "명사",
+      "meaning": "위험",
+      "example": "The bridge is in danger of collapse.",
+      "exMeaning": "그 다리는 붕괴 위험에 처해 있다.",
+      "grammar": "in danger of + 명사/동명사 = ~의 위험에 처한.",
+      "id": 51
+    },
+    {
+      "word": "decide",
+      "pron": "/dɪˈsaɪd/",
+      "pos": "동사",
+      "meaning": "결정하다",
+      "example": "I decided to study abroad.",
+      "exMeaning": "나는 유학하기로 결정했다.",
+      "grammar": "decide + to부정사 = ~하기로 결정하다. to study가 목적어입니다.",
+      "id": 52
+    },
+    {
+      "word": "decrease",
+      "pron": "/dɪˈkriːs/",
+      "pos": "동사",
+      "meaning": "감소하다, 줄다",
+      "example": "Prices decreased last month.",
+      "exMeaning": "지난달에 물가가 하락했다.",
+      "grammar": "decrease는 자동사로 '스스로 줄다'의 의미입니다. (반대: increase)",
+      "id": 53
+    },
+    {
+      "word": "deep",
+      "pron": "/diːp/",
+      "pos": "형용사",
+      "meaning": "깊은",
+      "example": "The lake is very deep.",
+      "exMeaning": "그 호수는 매우 깊다.",
+      "grammar": "be동사(is) + 부사(very) + 형용사(deep) 구조입니다.",
+      "id": 54
+    },
+    {
+      "word": "depend",
+      "pron": "/dɪˈpend/",
+      "pos": "동사",
+      "meaning": "의존하다, ~에 달려 있다",
+      "example": "It depends on the weather.",
+      "exMeaning": "그것은 날씨에 달려 있다.",
+      "grammar": "depend on + 명사 = ~에 의존하다/달려 있다. 전치사 on이 필수입니다.",
+      "id": 55
+    },
+    {
+      "word": "describe",
+      "pron": "/dɪˈskraɪb/",
+      "pos": "동사",
+      "meaning": "묘사하다, 설명하다",
+      "example": "Describe your hometown.",
+      "exMeaning": "너의 고향을 묘사해라.",
+      "grammar": "describe + 목적어. 특징을 자세히 설명할 때 사용합니다.",
+      "id": 56
+    },
+    {
+      "word": "develop",
+      "pron": "/dɪˈveləp/",
+      "pos": "동사",
+      "meaning": "발전시키다, 개발하다",
+      "example": "We should develop new skills.",
+      "exMeaning": "우리는 새로운 기술을 개발해야 한다.",
+      "grammar": "develop + 목적어. 점진적으로 성장/발전시킬 때 씁니다.",
+      "id": 57
+    },
+    {
+      "word": "difference",
+      "pron": "/ˈdɪfrəns/",
+      "pos": "명사",
+      "meaning": "차이",
+      "example": "What is the difference between them?",
+      "exMeaning": "그들 사이의 차이는 무엇인가?",
+      "grammar": "difference between A and B = A와 B의 차이.",
+      "id": 58
+    },
+    {
+      "word": "difficult",
+      "pron": "/ˈdɪfɪkəlt/",
+      "pos": "형용사",
+      "meaning": "어려운",
+      "example": "This problem is difficult.",
+      "exMeaning": "이 문제는 어렵다.",
+      "grammar": "be동사(is) + 형용사(difficult) 구조입니다. (반대: easy)",
+      "id": 59
+    },
+    {
+      "word": "discover",
+      "pron": "/dɪˈskʌvər/",
+      "pos": "동사",
+      "meaning": "발견하다",
+      "example": "Columbus discovered America.",
+      "exMeaning": "콜럼버스는 아메리카를 발견했다.",
+      "grammar": "discover + 목적어. 이미 존재하던 것을 처음 찾아낼 때 씁니다.",
+      "id": 60
+    },
+    {
+      "word": "disease",
+      "pron": "/dɪˈziːz/",
+      "pos": "명사",
+      "meaning": "질병",
+      "example": "Exercise prevents disease.",
+      "exMeaning": "운동은 질병을 예방한다.",
+      "grammar": "disease는 특정 질병을 나타내는 명사입니다. prevent + 목적어 구조.",
+      "id": 61
+    },
+    {
+      "word": "distance",
+      "pron": "/ˈdɪstəns/",
+      "pos": "명사",
+      "meaning": "거리",
+      "example": "The distance is 10 kilometers.",
+      "exMeaning": "그 거리는 10킬로미터이다.",
+      "grammar": "주어(distance) + be동사(is) + 보어(10 kilometers) 구조입니다.",
+      "id": 62
+    },
+    {
+      "word": "divide",
+      "pron": "/dɪˈvaɪd/",
+      "pos": "동사",
+      "meaning": "나누다",
+      "example": "Divide the cake into six pieces.",
+      "exMeaning": "케이크를 여섯 조각으로 나눠라.",
+      "grammar": "divide A into B = A를 B로 나누다. 명령문 구조입니다.",
+      "id": 63
+    },
+    {
+      "word": "effort",
+      "pron": "/ˈefərt/",
+      "pos": "명사",
+      "meaning": "노력",
+      "example": "Make an effort to succeed.",
+      "exMeaning": "성공하기 위해 노력해라.",
+      "grammar": "make an effort = 노력하다. effort는 노력을 의미하는 명사입니다.",
+      "id": 64
+    },
+    {
+      "word": "elect",
+      "pron": "/ɪˈlekt/",
+      "pos": "동사",
+      "meaning": "선출하다",
+      "example": "We elected a new leader.",
+      "exMeaning": "우리는 새 지도자를 선출했다.",
+      "grammar": "elect + 목적어. 투표로 뽑을 때 사용하는 동사입니다.",
+      "id": 65
+    },
+    {
+      "word": "empty",
+      "pron": "/ˈempti/",
+      "pos": "형용사",
+      "meaning": "비어 있는",
+      "example": "The box is empty.",
+      "exMeaning": "그 상자는 비어 있다.",
+      "grammar": "be동사(is) + 형용사(empty). (반대: full)",
+      "id": 66
+    },
+    {
+      "word": "encourage",
+      "pron": "/ɪnˈkɜːrɪdʒ/",
+      "pos": "동사",
+      "meaning": "격려하다, 용기를 주다",
+      "example": "Teachers encourage students.",
+      "exMeaning": "선생님들은 학생들을 격려한다.",
+      "grammar": "encourage + 목적어 + to부정사 형태도 자주 씁니다.",
+      "id": 67
+    },
+    {
+      "word": "enemy",
+      "pron": "/ˈenəmi/",
+      "pos": "명사",
+      "meaning": "적",
+      "example": "Love your enemies.",
+      "exMeaning": "너의 적을 사랑하라.",
+      "grammar": "enemies는 enemy의 복수형입니다. y를 ies로 바꿉니다.",
+      "id": 68
+    },
+    {
+      "word": "energy",
+      "pron": "/ˈenərdʒi/",
+      "pos": "명사",
+      "meaning": "에너지, 활력",
+      "example": "I have no energy today.",
+      "exMeaning": "나는 오늘 기운이 없다.",
+      "grammar": "energy는 셀 수 없는 명사입니다. have no + 명사 = ~이 없다.",
+      "id": 69
+    },
+    {
+      "word": "enough",
+      "pron": "/ɪˈnʌf/",
+      "pos": "형용사/부사",
+      "meaning": "충분한, 충분히",
+      "example": "I have enough money.",
+      "exMeaning": "나는 충분한 돈이 있다.",
+      "grammar": "enough + 명사(money). 형용사로 쓰이면 명사 앞에 옵니다.",
+      "id": 70
+    },
+    {
+      "word": "environment",
+      "pron": "/ɪnˈvaɪrənmənt/",
+      "pos": "명사",
+      "meaning": "환경",
+      "example": "We must protect the environment.",
+      "exMeaning": "우리는 환경을 보호해야 한다.",
+      "grammar": "the environment = 자연환경. 정관사 the와 함께 씁니다.",
+      "id": 71
+    },
+    {
+      "word": "escape",
+      "pron": "/ɪˈskeɪp/",
+      "pos": "동사",
+      "meaning": "탈출하다, 도망치다",
+      "example": "The prisoner escaped from jail.",
+      "exMeaning": "그 죄수는 감옥에서 탈출했다.",
+      "grammar": "escape from + 장소 = ~에서 탈출하다.",
+      "id": 72
+    },
+    {
+      "word": "especially",
+      "pron": "/ɪˈspeʃəli/",
+      "pos": "부사",
+      "meaning": "특히, 특별히",
+      "example": "I like fruits, especially apples.",
+      "exMeaning": "나는 과일, 특히 사과를 좋아한다.",
+      "grammar": "especially는 부사로 특정한 것을 강조할 때 씁니다.",
+      "id": 73
+    },
+    {
+      "word": "example",
+      "pron": "/ɪɡˈzæmpl/",
+      "pos": "명사",
+      "meaning": "예, 본보기",
+      "example": "Give me an example.",
+      "exMeaning": "예를 하나 들어줘.",
+      "grammar": "for example = 예를 들어. an example = 하나의 예.",
+      "id": 74
+    },
+    {
+      "word": "excellent",
+      "pron": "/ˈeksələnt/",
+      "pos": "형용사",
+      "meaning": "훌륭한, 우수한",
+      "example": "Your work is excellent.",
+      "exMeaning": "너의 작품은 훌륭하다.",
+      "grammar": "be동사(is) + 형용사(excellent). very good보다 강한 칭찬입니다.",
+      "id": 75
+    },
+    {
+      "word": "exercise",
+      "pron": "/ˈeksərsaɪz/",
+      "pos": "명사/동사",
+      "meaning": "운동; 운동하다",
+      "example": "I exercise every morning.",
+      "exMeaning": "나는 매일 아침 운동한다.",
+      "grammar": "exercise는 동사로 '운동하다', 명사로 '운동'입니다.",
+      "id": 76
+    },
+    {
+      "word": "expect",
+      "pron": "/ɪkˈspekt/",
+      "pos": "동사",
+      "meaning": "기대하다, 예상하다",
+      "example": "I expect good results.",
+      "exMeaning": "나는 좋은 결과를 기대한다.",
+      "grammar": "expect + 목적어/to부정사. 미래에 일어날 일을 예상할 때 씁니다.",
+      "id": 77
+    },
+    {
+      "word": "experience",
+      "pron": "/ɪkˈspɪriəns/",
+      "pos": "명사/동사",
+      "meaning": "경험; 경험하다",
+      "example": "Travel gives us experience.",
+      "exMeaning": "여행은 우리에게 경험을 준다.",
+      "grammar": "give + 간접목적어(us) + 직접목적어(experience). 4형식 구조입니다.",
+      "id": 78
+    },
+    {
+      "word": "explain",
+      "pron": "/ɪkˈspleɪn/",
+      "pos": "동사",
+      "meaning": "설명하다",
+      "example": "Please explain the rules.",
+      "exMeaning": "규칙을 설명해 주세요.",
+      "grammar": "explain + 목적어. explain to + 사람으로 대상을 표시합니다.",
+      "id": 79
+    },
+    {
+      "word": "express",
+      "pron": "/ɪkˈspres/",
+      "pos": "동사",
+      "meaning": "표현하다",
+      "example": "Express your feelings.",
+      "exMeaning": "너의 감정을 표현해라.",
+      "grammar": "express + 목적어(feelings). 생각이나 감정을 나타낼 때 씁니다.",
+      "id": 80
+    },
+    {
+      "word": "famous",
+      "pron": "/ˈfeɪməs/",
+      "pos": "형용사",
+      "meaning": "유명한",
+      "example": "He is a famous singer.",
+      "exMeaning": "그는 유명한 가수이다.",
+      "grammar": "be famous for + 명사 = ~로 유명하다.",
+      "id": 81
+    },
+    {
+      "word": "favorite",
+      "pron": "/ˈfeɪvərɪt/",
+      "pos": "형용사",
+      "meaning": "가장 좋아하는",
+      "example": "Blue is my favorite color.",
+      "exMeaning": "파란색은 내가 가장 좋아하는 색이다.",
+      "grammar": "favorite(형용사) + color(명사). 최상급 의미를 포함합니다.",
+      "id": 82
+    },
+    {
+      "word": "fear",
+      "pron": "/fɪr/",
+      "pos": "명사/동사",
+      "meaning": "두려움; 두려워하다",
+      "example": "He has no fear.",
+      "exMeaning": "그는 두려움이 없다.",
+      "grammar": "fear는 명사로 '두려움', 동사로 '두려워하다'입니다.",
+      "id": 83
+    },
+    {
+      "word": "final",
+      "pron": "/ˈfaɪnl/",
+      "pos": "형용사",
+      "meaning": "마지막의, 최종의",
+      "example": "This is my final decision.",
+      "exMeaning": "이것이 나의 최종 결정이다.",
+      "grammar": "final(형용사) + decision(명사). '마지막'을 강조합니다.",
+      "id": 84
+    },
+    {
+      "word": "follow",
+      "pron": "/ˈfɑːloʊ/",
+      "pos": "동사",
+      "meaning": "따르다, 따라가다",
+      "example": "Follow the rules.",
+      "exMeaning": "규칙을 따라라.",
+      "grammar": "follow + 목적어(rules). 규칙이나 사람을 따를 때 씁니다.",
+      "id": 85
+    },
+    {
+      "word": "foreign",
+      "pron": "/ˈfɔːrən/",
+      "pos": "형용사",
+      "meaning": "외국의",
+      "example": "I want to learn a foreign language.",
+      "exMeaning": "나는 외국어를 배우고 싶다.",
+      "grammar": "foreign(형용사) + language(명사). 발음에 주의: g는 묵음입니다.",
+      "id": 86
+    },
+    {
+      "word": "forget",
+      "pron": "/fərˈɡet/",
+      "pos": "동사",
+      "meaning": "잊다",
+      "example": "Don't forget your promise.",
+      "exMeaning": "너의 약속을 잊지 마라.",
+      "grammar": "forget-forgot-forgotten 불규칙 동사. Don't + 동사원형 = 부정 명령문.",
+      "id": 87
+    },
+    {
+      "word": "forgive",
+      "pron": "/fərˈɡɪv/",
+      "pos": "동사",
+      "meaning": "용서하다",
+      "example": "Please forgive me.",
+      "exMeaning": "저를 용서해 주세요.",
+      "grammar": "forgive-forgave-forgiven 불규칙 동사입니다.",
+      "id": 88
+    },
+    {
+      "word": "freedom",
+      "pron": "/ˈfriːdəm/",
+      "pos": "명사",
+      "meaning": "자유",
+      "example": "We fought for freedom.",
+      "exMeaning": "우리는 자유를 위해 싸웠다.",
+      "grammar": "freedom은 셀 수 없는 명사입니다. fight for = ~를 위해 싸우다.",
+      "id": 89
+    },
+    {
+      "word": "gather",
+      "pron": "/ˈɡæðər/",
+      "pos": "동사",
+      "meaning": "모으다, 모이다",
+      "example": "People gathered in the square.",
+      "exMeaning": "사람들이 광장에 모였다.",
+      "grammar": "gather는 자동사(모이다)와 타동사(모으다) 둘 다 됩니다.",
+      "id": 90
+    },
+    {
+      "word": "gentle",
+      "pron": "/ˈdʒentl/",
+      "pos": "형용사",
+      "meaning": "부드러운, 온화한",
+      "example": "She has a gentle voice.",
+      "exMeaning": "그녀는 부드러운 목소리를 가지고 있다.",
+      "grammar": "gentle(형용사) + voice(명사). 성격이나 태도를 묘사합니다.",
+      "id": 91
+    },
+    {
+      "word": "goal",
+      "pron": "/ɡoʊl/",
+      "pos": "명사",
+      "meaning": "목표, 골",
+      "example": "My goal is to become a pilot.",
+      "exMeaning": "내 목표는 조종사가 되는 것이다.",
+      "grammar": "goal + be동사 + to부정사 = 목표는 ~하는 것이다.",
+      "id": 92
+    },
+    {
+      "word": "grow",
+      "pron": "/ɡroʊ/",
+      "pos": "동사",
+      "meaning": "자라다, 성장하다",
+      "example": "Plants grow in spring.",
+      "exMeaning": "식물은 봄에 자란다.",
+      "grammar": "grow-grew-grown 불규칙 동사입니다. 자동사로 쓰입니다.",
+      "id": 93
+    },
+    {
+      "word": "habit",
+      "pron": "/ˈhæbɪt/",
+      "pos": "명사",
+      "meaning": "습관",
+      "example": "Reading is a good habit.",
+      "exMeaning": "독서는 좋은 습관이다.",
+      "grammar": "주어(Reading) + be동사(is) + 보어(a good habit) 구조입니다.",
+      "id": 94
+    },
+    {
+      "word": "harvest",
+      "pron": "/ˈhɑːrvɪst/",
+      "pos": "명사/동사",
+      "meaning": "수확; 수확하다",
+      "example": "Farmers harvest rice in fall.",
+      "exMeaning": "농부들은 가을에 쌀을 수확한다.",
+      "grammar": "harvest + 목적어(rice). 곡식을 거둘 때 사용합니다.",
+      "id": 95
+    },
+    {
+      "word": "health",
+      "pron": "/helθ/",
+      "pos": "명사",
+      "meaning": "건강",
+      "example": "Health is more important than money.",
+      "exMeaning": "건강은 돈보다 더 중요하다.",
+      "grammar": "비교급 more important than = ~보다 더 중요한.",
+      "id": 96
+    },
+    {
+      "word": "heavy",
+      "pron": "/ˈhevi/",
+      "pos": "형용사",
+      "meaning": "무거운",
+      "example": "This bag is too heavy.",
+      "exMeaning": "이 가방은 너무 무겁다.",
+      "grammar": "too + 형용사(heavy) = 너무 ~한. (반대: light)",
+      "id": 97
+    },
+    {
+      "word": "honest",
+      "pron": "/ˈɑːnɪst/",
+      "pos": "형용사",
+      "meaning": "정직한",
+      "example": "She is an honest person.",
+      "exMeaning": "그녀는 정직한 사람이다.",
+      "grammar": "honest는 h가 묵음이라 an을 씁니다. (an honest)",
+      "id": 98
+    },
+    {
+      "word": "however",
+      "pron": "/haʊˈevər/",
+      "pos": "부사",
+      "meaning": "그러나, 하지만",
+      "example": "It was hard. However, I did it.",
+      "exMeaning": "힘들었다. 그러나 나는 해냈다.",
+      "grammar": "however는 접속부사로 문장을 연결합니다. 앞뒤에 콤마를 씁니다.",
+      "id": 99
+    },
+    {
+      "word": "imagine",
+      "pron": "/ɪˈmædʒɪn/",
+      "pos": "동사",
+      "meaning": "상상하다",
+      "example": "Imagine a world without war.",
+      "exMeaning": "전쟁 없는 세상을 상상해 봐라.",
+      "grammar": "imagine + 목적어/동명사. 머릿속으로 그려볼 때 씁니다.",
+      "id": 100
+    },
+    {
+      "word": "important",
+      "pron": "/ɪmˈpɔːrtnt/",
+      "pos": "형용사",
+      "meaning": "중요한",
+      "example": "Family is important to me.",
+      "exMeaning": "가족은 나에게 중요하다.",
+      "grammar": "be important to + 사람 = ~에게 중요하다.",
+      "id": 101
+    },
+    {
+      "word": "improve",
+      "pron": "/ɪmˈpruːv/",
+      "pos": "동사",
+      "meaning": "향상시키다, 개선하다",
+      "example": "I want to improve my English.",
+      "exMeaning": "나는 내 영어를 향상시키고 싶다.",
+      "grammar": "improve + 목적어. 실력이나 상태를 더 좋게 만들 때 씁니다.",
+      "id": 102
+    },
+    {
+      "word": "increase",
+      "pron": "/ɪnˈkriːs/",
+      "pos": "동사",
+      "meaning": "증가하다, 늘리다",
+      "example": "The population is increasing.",
+      "exMeaning": "인구가 증가하고 있다.",
+      "grammar": "increase는 자/타동사 모두 가능합니다. (반대: decrease)",
+      "id": 103
+    },
+    {
+      "word": "introduce",
+      "pron": "/ˌɪntrəˈduːs/",
+      "pos": "동사",
+      "meaning": "소개하다",
+      "example": "Let me introduce myself.",
+      "exMeaning": "제 소개를 하겠습니다.",
+      "grammar": "introduce A to B = A를 B에게 소개하다.",
+      "id": 104
+    },
+    {
+      "word": "invent",
+      "pron": "/ɪnˈvent/",
+      "pos": "동사",
+      "meaning": "발명하다",
+      "example": "Edison invented the light bulb.",
+      "exMeaning": "에디슨은 전구를 발명했다.",
+      "grammar": "invent + 목적어. 없던 것을 새로 만들 때 씁니다. (discover와 구별)",
+      "id": 105
+    },
+    {
+      "word": "invite",
+      "pron": "/ɪnˈvaɪt/",
+      "pos": "동사",
+      "meaning": "초대하다",
+      "example": "I invited friends to my party.",
+      "exMeaning": "나는 친구들을 파티에 초대했다.",
+      "grammar": "invite + 목적어 + to + 장소/행사 구조입니다.",
+      "id": 106
+    },
+    {
+      "word": "journey",
+      "pron": "/ˈdʒɜːrni/",
+      "pos": "명사",
+      "meaning": "여행, 여정",
+      "example": "Life is a long journey.",
+      "exMeaning": "인생은 긴 여정이다.",
+      "grammar": "journey는 긴 여행을 뜻합니다. trip은 짧은 여행입니다.",
+      "id": 107
+    },
+    {
+      "word": "knowledge",
+      "pron": "/ˈnɑːlɪdʒ/",
+      "pos": "명사",
+      "meaning": "지식",
+      "example": "Knowledge is power.",
+      "exMeaning": "아는 것이 힘이다.",
+      "grammar": "knowledge는 셀 수 없는 명사입니다. k는 묵음입니다.",
+      "id": 108
+    },
+    {
+      "word": "language",
+      "pron": "/ˈlæŋɡwɪdʒ/",
+      "pos": "명사",
+      "meaning": "언어",
+      "example": "English is a global language.",
+      "exMeaning": "영어는 세계적인 언어이다.",
+      "grammar": "a language = 하나의 언어. 셀 수 있는 명사입니다.",
+      "id": 109
+    },
+    {
+      "word": "laugh",
+      "pron": "/læf/",
+      "pos": "동사",
+      "meaning": "웃다",
+      "example": "We laughed at the joke.",
+      "exMeaning": "우리는 그 농담에 웃었다.",
+      "grammar": "laugh at + 대상 = ~을 보고 웃다. gh는 f 발음입니다.",
+      "id": 110
+    },
+    {
+      "word": "lead",
+      "pron": "/liːd/",
+      "pos": "동사",
+      "meaning": "이끌다, 인도하다",
+      "example": "A good captain leads the team.",
+      "exMeaning": "좋은 주장은 팀을 이끈다.",
+      "grammar": "lead-led-led 불규칙 동사입니다. lead to = ~로 이어지다.",
+      "id": 111
+    },
+    {
+      "word": "level",
+      "pron": "/ˈlevl/",
+      "pos": "명사",
+      "meaning": "수준, 단계",
+      "example": "He reached a high level.",
+      "exMeaning": "그는 높은 수준에 도달했다.",
+      "grammar": "level(명사)을 high(형용사)가 꾸며줍니다.",
+      "id": 112
+    },
+    {
+      "word": "machine",
+      "pron": "/məˈʃiːn/",
+      "pos": "명사",
+      "meaning": "기계",
+      "example": "This machine makes bread.",
+      "exMeaning": "이 기계는 빵을 만든다.",
+      "grammar": "ch가 sh 발음입니다. machine = 머신이 아니라 머쉰.",
+      "id": 113
+    },
+    {
+      "word": "manage",
+      "pron": "/ˈmænɪdʒ/",
+      "pos": "동사",
+      "meaning": "관리하다, 간신히 해내다",
+      "example": "She manages a big company.",
+      "exMeaning": "그녀는 큰 회사를 관리한다.",
+      "grammar": "manage + 목적어. 조직이나 일을 운영/관리할 때 씁니다.",
+      "id": 114
+    },
+    {
+      "word": "material",
+      "pron": "/məˈtɪriəl/",
+      "pos": "명사",
+      "meaning": "재료, 물질",
+      "example": "Wood is a natural material.",
+      "exMeaning": "나무는 천연 재료이다.",
+      "grammar": "material(명사)을 natural(형용사)이 수식합니다.",
+      "id": 115
+    },
+    {
+      "word": "measure",
+      "pron": "/ˈmeʒər/",
+      "pos": "동사",
+      "meaning": "측정하다",
+      "example": "Measure the length of the desk.",
+      "exMeaning": "책상의 길이를 측정해라.",
+      "grammar": "measure + 목적어. s가 ʒ(즈) 발음입니다.",
+      "id": 116
+    },
+    {
+      "word": "medicine",
+      "pron": "/ˈmedɪsn/",
+      "pos": "명사",
+      "meaning": "약, 의학",
+      "example": "Take this medicine twice a day.",
+      "exMeaning": "이 약을 하루에 두 번 먹어라.",
+      "grammar": "take medicine = 약을 먹다. twice a day = 하루에 두 번.",
+      "id": 117
+    },
+    {
+      "word": "mention",
+      "pron": "/ˈmenʃn/",
+      "pos": "동사",
+      "meaning": "언급하다",
+      "example": "He mentioned your name.",
+      "exMeaning": "그는 너의 이름을 언급했다.",
+      "grammar": "mention + 목적어. 말 중에 짧게 언급할 때 씁니다.",
+      "id": 118
+    },
+    {
+      "word": "method",
+      "pron": "/ˈmeθəd/",
+      "pos": "명사",
+      "meaning": "방법",
+      "example": "This is an easy method.",
+      "exMeaning": "이것은 쉬운 방법이다.",
+      "grammar": "method(명사)를 easy(형용사)가 수식합니다.",
+      "id": 119
+    },
+    {
+      "word": "mistake",
+      "pron": "/mɪˈsteɪk/",
+      "pos": "명사",
+      "meaning": "실수",
+      "example": "Everyone makes mistakes.",
+      "exMeaning": "누구나 실수를 한다.",
+      "grammar": "make a mistake = 실수하다. mistakes는 복수형입니다.",
+      "id": 120
+    },
+    {
+      "word": "moment",
+      "pron": "/ˈmoʊmənt/",
+      "pos": "명사",
+      "meaning": "순간, 잠깐",
+      "example": "Wait a moment, please.",
+      "exMeaning": "잠깐만 기다려 주세요.",
+      "grammar": "a moment = 잠시. for a moment = 잠깐 동안.",
+      "id": 121
+    },
+    {
+      "word": "nature",
+      "pron": "/ˈneɪtʃər/",
+      "pos": "명사",
+      "meaning": "자연, 본성",
+      "example": "I love nature.",
+      "exMeaning": "나는 자연을 사랑한다.",
+      "grammar": "nature는 셀 수 없는 명사입니다. 관사 없이 씁니다.",
+      "id": 122
+    },
+    {
+      "word": "necessary",
+      "pron": "/ˈnesəseri/",
+      "pos": "형용사",
+      "meaning": "필요한",
+      "example": "Water is necessary for life.",
+      "exMeaning": "물은 생명에 필요하다.",
+      "grammar": "be necessary for + 명사 = ~에 필요하다.",
+      "id": 123
+    },
+    {
+      "word": "nervous",
+      "pron": "/ˈnɜːrvəs/",
+      "pos": "형용사",
+      "meaning": "긴장한, 불안한",
+      "example": "I am nervous about the test.",
+      "exMeaning": "나는 시험에 대해 긴장된다.",
+      "grammar": "be nervous about + 명사 = ~에 대해 긴장하다.",
+      "id": 124
+    },
+    {
+      "word": "notice",
+      "pron": "/ˈnoʊtɪs/",
+      "pos": "동사/명사",
+      "meaning": "알아차리다; 공지",
+      "example": "I noticed a change.",
+      "exMeaning": "나는 변화를 알아차렸다.",
+      "grammar": "notice + 목적어. 무언가를 눈치채거나 인지할 때 씁니다.",
+      "id": 125
+    },
+    {
+      "word": "offer",
+      "pron": "/ˈɔːfər/",
+      "pos": "동사/명사",
+      "meaning": "제공하다, 제안하다",
+      "example": "They offered me a job.",
+      "exMeaning": "그들은 나에게 일자리를 제안했다.",
+      "grammar": "offer + 간접목적어(me) + 직접목적어(a job). 4형식 구조입니다.",
+      "id": 126
+    },
+    {
+      "word": "opinion",
+      "pron": "/əˈpɪnjən/",
+      "pos": "명사",
+      "meaning": "의견",
+      "example": "In my opinion, he is right.",
+      "exMeaning": "내 생각에는 그가 옳다.",
+      "grammar": "in my opinion = 내 의견으로는. 의견을 말할 때 씁니다.",
+      "id": 127
+    },
+    {
+      "word": "opportunity",
+      "pron": "/ˌɑːpərˈtuːnəti/",
+      "pos": "명사",
+      "meaning": "기회",
+      "example": "This is a great opportunity.",
+      "exMeaning": "이것은 좋은 기회이다.",
+      "grammar": "opportunity to + 동사 = ~할 기회. chance와 비슷합니다.",
+      "id": 128
+    },
+    {
+      "word": "peace",
+      "pron": "/piːs/",
+      "pos": "명사",
+      "meaning": "평화",
+      "example": "Everyone wants world peace.",
+      "exMeaning": "모두가 세계 평화를 원한다.",
+      "grammar": "peace는 셀 수 없는 명사입니다. piece(조각)와 발음이 같습니다.",
+      "id": 129
+    },
+    {
+      "word": "perfect",
+      "pron": "/ˈpɜːrfɪkt/",
+      "pos": "형용사",
+      "meaning": "완벽한",
+      "example": "Nobody is perfect.",
+      "exMeaning": "완벽한 사람은 없다.",
+      "grammar": "Nobody + be동사 + 형용사 = 아무도 ~하지 않다.",
+      "id": 130
+    },
+    {
+      "word": "perhaps",
+      "pron": "/pərˈhæps/",
+      "pos": "부사",
+      "meaning": "아마도",
+      "example": "Perhaps it will rain.",
+      "exMeaning": "아마도 비가 올 것이다.",
+      "grammar": "perhaps는 부사로 불확실한 추측을 나타냅니다. maybe와 비슷합니다.",
+      "id": 131
+    },
+    {
+      "word": "pollution",
+      "pron": "/pəˈluːʃn/",
+      "pos": "명사",
+      "meaning": "오염",
+      "example": "Air pollution is a big problem.",
+      "exMeaning": "대기 오염은 큰 문제이다.",
+      "grammar": "pollution은 셀 수 없는 명사입니다. air pollution = 대기오염.",
+      "id": 132
+    },
+    {
+      "word": "popular",
+      "pron": "/ˈpɑːpjələr/",
+      "pos": "형용사",
+      "meaning": "인기 있는",
+      "example": "This song is popular.",
+      "exMeaning": "이 노래는 인기가 있다.",
+      "grammar": "be popular with/among + 대상 = ~에게 인기 있다.",
+      "id": 133
+    },
+    {
+      "word": "positive",
+      "pron": "/ˈpɑːzətɪv/",
+      "pos": "형용사",
+      "meaning": "긍정적인",
+      "example": "Keep a positive attitude.",
+      "exMeaning": "긍정적인 태도를 유지해라.",
+      "grammar": "positive(형용사) + attitude(명사). (반대: negative)",
+      "id": 134
+    },
+    {
+      "word": "possible",
+      "pron": "/ˈpɑːsəbl/",
+      "pos": "형용사",
+      "meaning": "가능한",
+      "example": "Anything is possible.",
+      "exMeaning": "무엇이든 가능하다.",
+      "grammar": "be동사 + possible. (반대: impossible)",
+      "id": 135
+    },
+    {
+      "word": "power",
+      "pron": "/ˈpaʊər/",
+      "pos": "명사",
+      "meaning": "힘, 권력",
+      "example": "Knowledge gives us power.",
+      "exMeaning": "지식은 우리에게 힘을 준다.",
+      "grammar": "give + 간접목적어(us) + 직접목적어(power). 4형식입니다.",
+      "id": 136
+    },
+    {
+      "word": "practice",
+      "pron": "/ˈpræktɪs/",
+      "pos": "동사/명사",
+      "meaning": "연습하다; 연습",
+      "example": "Practice makes perfect.",
+      "exMeaning": "연습이 완벽을 만든다(숙달의 지름길).",
+      "grammar": "주어(Practice) + 동사(makes) + 목적어(perfect). 속담입니다.",
+      "id": 137
+    },
+    {
+      "word": "prepare",
+      "pron": "/prɪˈper/",
+      "pos": "동사",
+      "meaning": "준비하다",
+      "example": "Prepare for the exam.",
+      "exMeaning": "시험을 준비해라.",
+      "grammar": "prepare for + 명사 = ~을 준비하다. 전치사 for를 씁니다.",
+      "id": 138
+    },
+    {
+      "word": "present",
+      "pron": "/ˈpreznt/",
+      "pos": "명사/형용사",
+      "meaning": "선물; 현재의",
+      "example": "I got a birthday present.",
+      "exMeaning": "나는 생일 선물을 받았다.",
+      "grammar": "명사일 때는 앞 강세, 동사(주다)일 때는 뒤 강세입니다.",
+      "id": 139
+    },
+    {
+      "word": "prevent",
+      "pron": "/prɪˈvent/",
+      "pos": "동사",
+      "meaning": "막다, 예방하다",
+      "example": "Wash hands to prevent disease.",
+      "exMeaning": "질병을 예방하기 위해 손을 씻어라.",
+      "grammar": "prevent + 목적어. prevent A from B-ing = A가 B하는 것을 막다.",
+      "id": 140
+    },
+    {
+      "word": "problem",
+      "pron": "/ˈprɑːbləm/",
+      "pos": "명사",
+      "meaning": "문제",
+      "example": "We need to solve this problem.",
+      "exMeaning": "우리는 이 문제를 해결해야 한다.",
+      "grammar": "solve a problem = 문제를 해결하다. need to + 동사원형.",
+      "id": 141
+    },
+    {
+      "word": "produce",
+      "pron": "/prəˈduːs/",
+      "pos": "동사",
+      "meaning": "생산하다",
+      "example": "Cows produce milk.",
+      "exMeaning": "소는 우유를 생산한다.",
+      "grammar": "produce + 목적어. 무언가를 만들어낼 때 씁니다.",
+      "id": 142
+    },
+    {
+      "word": "progress",
+      "pron": "/ˈprɑːɡres/",
+      "pos": "명사",
+      "meaning": "진전, 발전",
+      "example": "You are making progress.",
+      "exMeaning": "너는 발전하고 있다.",
+      "grammar": "make progress = 진전을 이루다. 셀 수 없는 명사입니다.",
+      "id": 143
+    },
+    {
+      "word": "promise",
+      "pron": "/ˈprɑːmɪs/",
+      "pos": "동사/명사",
+      "meaning": "약속하다; 약속",
+      "example": "I promise to help you.",
+      "exMeaning": "나는 너를 돕겠다고 약속한다.",
+      "grammar": "promise + to부정사 = ~하기로 약속하다. keep a promise = 약속을 지키다.",
+      "id": 144
+    },
+    {
+      "word": "protect",
+      "pron": "/prəˈtekt/",
+      "pos": "동사",
+      "meaning": "보호하다",
+      "example": "Parents protect their children.",
+      "exMeaning": "부모는 자녀를 보호한다.",
+      "grammar": "protect A from B = A를 B로부터 보호하다.",
+      "id": 145
+    },
+    {
+      "word": "proud",
+      "pron": "/praʊd/",
+      "pos": "형용사",
+      "meaning": "자랑스러운",
+      "example": "I am proud of you.",
+      "exMeaning": "나는 네가 자랑스럽다.",
+      "grammar": "be proud of + 명사/동명사 = ~을 자랑스러워하다.",
+      "id": 146
+    },
+    {
+      "word": "provide",
+      "pron": "/prəˈvaɪd/",
+      "pos": "동사",
+      "meaning": "제공하다",
+      "example": "The school provides free lunch.",
+      "exMeaning": "그 학교는 무료 점심을 제공한다.",
+      "grammar": "provide + 목적어. provide A with B = A에게 B를 제공하다.",
+      "id": 147
+    },
+    {
+      "word": "purpose",
+      "pron": "/ˈpɜːrpəs/",
+      "pos": "명사",
+      "meaning": "목적",
+      "example": "What is the purpose of life?",
+      "exMeaning": "인생의 목적은 무엇인가?",
+      "grammar": "the purpose of + 명사 = ~의 목적. on purpose = 고의로.",
+      "id": 148
+    },
+    {
+      "word": "quality",
+      "pron": "/ˈkwɑːləti/",
+      "pos": "명사",
+      "meaning": "질, 품질",
+      "example": "This product has good quality.",
+      "exMeaning": "이 제품은 품질이 좋다.",
+      "grammar": "quality(품질)와 quantity(양)을 구별하세요.",
+      "id": 149
+    },
+    {
+      "word": "realize",
+      "pron": "/ˈriːəlaɪz/",
+      "pos": "동사",
+      "meaning": "깨닫다, 실현하다",
+      "example": "I realized my mistake.",
+      "exMeaning": "나는 내 실수를 깨달았다.",
+      "grammar": "realize + 목적어/that절. 갑자기 이해하게 될 때 씁니다.",
+      "id": 150
+    },
+    {
+      "word": "reason",
+      "pron": "/ˈriːzn/",
+      "pos": "명사",
+      "meaning": "이유",
+      "example": "Tell me the reason.",
+      "exMeaning": "이유를 말해줘.",
+      "grammar": "the reason for/why = ~의 이유. 원인을 나타냅니다.",
+      "id": 151
+    },
+    {
+      "word": "receive",
+      "pron": "/rɪˈsiːv/",
+      "pos": "동사",
+      "meaning": "받다",
+      "example": "I received a letter.",
+      "exMeaning": "나는 편지를 받았다.",
+      "grammar": "ei 철자에 주의(i before e except after c 규칙).",
+      "id": 152
+    },
+    {
+      "word": "recommend",
+      "pron": "/ˌrekəˈmend/",
+      "pos": "동사",
+      "meaning": "추천하다",
+      "example": "I recommend this book.",
+      "exMeaning": "나는 이 책을 추천한다.",
+      "grammar": "recommend + 목적어. m이 두 개인 철자에 주의하세요.",
+      "id": 153
+    },
+    {
+      "word": "reduce",
+      "pron": "/rɪˈduːs/",
+      "pos": "동사",
+      "meaning": "줄이다",
+      "example": "Reduce your screen time.",
+      "exMeaning": "화면 보는 시간을 줄여라.",
+      "grammar": "reduce + 목적어. 양이나 정도를 줄일 때 씁니다.",
+      "id": 154
+    },
+    {
+      "word": "relationship",
+      "pron": "/rɪˈleɪʃnʃɪp/",
+      "pos": "명사",
+      "meaning": "관계",
+      "example": "We have a good relationship.",
+      "exMeaning": "우리는 좋은 관계를 가지고 있다.",
+      "grammar": "relationship between A and B = A와 B의 관계.",
+      "id": 155
+    },
+    {
+      "word": "remember",
+      "pron": "/rɪˈmembər/",
+      "pos": "동사",
+      "meaning": "기억하다",
+      "example": "Remember to lock the door.",
+      "exMeaning": "문 잠그는 것을 기억해라.",
+      "grammar": "remember + to부정사 = ~할 것을 기억하다(미래). remember + 동명사 = ~한 것을 기억하다(과거).",
+      "id": 156
+    },
+    {
+      "word": "repeat",
+      "pron": "/rɪˈpiːt/",
+      "pos": "동사",
+      "meaning": "반복하다",
+      "example": "Please repeat after me.",
+      "exMeaning": "저를 따라 반복해 주세요.",
+      "grammar": "repeat + 목적어. 다시 말하거나 행할 때 씁니다.",
+      "id": 157
+    },
+    {
+      "word": "respect",
+      "pron": "/rɪˈspekt/",
+      "pos": "동사/명사",
+      "meaning": "존경하다; 존경",
+      "example": "Respect your parents.",
+      "exMeaning": "부모님을 공경해라.",
+      "grammar": "respect + 목적어. 사람이나 규칙을 존중할 때 씁니다.",
+      "id": 158
+    },
+    {
+      "word": "result",
+      "pron": "/rɪˈzʌlt/",
+      "pos": "명사",
+      "meaning": "결과",
+      "example": "The result was surprising.",
+      "exMeaning": "그 결과는 놀라웠다.",
+      "grammar": "as a result = 결과적으로. result in = ~을 초래하다.",
+      "id": 159
+    },
+    {
+      "word": "return",
+      "pron": "/rɪˈtɜːrn/",
+      "pos": "동사",
+      "meaning": "돌아오다, 반납하다",
+      "example": "Return the book to the library.",
+      "exMeaning": "그 책을 도서관에 반납해라.",
+      "grammar": "return A to B = A를 B에 돌려주다.",
+      "id": 160
+    },
+    {
+      "word": "reward",
+      "pron": "/rɪˈwɔːrd/",
+      "pos": "명사/동사",
+      "meaning": "보상; 보상하다",
+      "example": "Hard work brings reward.",
+      "exMeaning": "노력은 보상을 가져온다.",
+      "grammar": "reward는 노력의 대가로 받는 것입니다.",
+      "id": 161
+    },
+    {
+      "word": "safe",
+      "pron": "/seɪf/",
+      "pos": "형용사",
+      "meaning": "안전한",
+      "example": "Stay safe at home.",
+      "exMeaning": "집에서 안전하게 지내라.",
+      "grammar": "be동사/stay + 형용사(safe). (반대: dangerous)",
+      "id": 162
+    },
+    {
+      "word": "scientific",
+      "pron": "/ˌsaɪənˈtɪfɪk/",
+      "pos": "형용사",
+      "meaning": "과학적인",
+      "example": "We need a scientific approach.",
+      "exMeaning": "우리는 과학적인 접근이 필요하다.",
+      "grammar": "scientific(형용사) + approach(명사) 구조입니다.",
+      "id": 163
+    },
+    {
+      "word": "season",
+      "pron": "/ˈsiːzn/",
+      "pos": "명사",
+      "meaning": "계절",
+      "example": "Spring is my favorite season.",
+      "exMeaning": "봄은 내가 가장 좋아하는 계절이다.",
+      "grammar": "four seasons = 사계절. season은 셀 수 있는 명사입니다.",
+      "id": 164
+    },
+    {
+      "word": "secret",
+      "pron": "/ˈsiːkrət/",
+      "pos": "명사/형용사",
+      "meaning": "비밀; 비밀의",
+      "example": "Can you keep a secret?",
+      "exMeaning": "비밀을 지킬 수 있니?",
+      "grammar": "keep a secret = 비밀을 지키다.",
+      "id": 165
+    },
+    {
+      "word": "sense",
+      "pron": "/sens/",
+      "pos": "명사",
+      "meaning": "감각, 의미",
+      "example": "That makes sense.",
+      "exMeaning": "그것은 말이 된다(이해가 된다).",
+      "grammar": "make sense = 말이 되다/이해가 되다. 관용 표현입니다.",
+      "id": 166
+    },
+    {
+      "word": "serious",
+      "pron": "/ˈsɪriəs/",
+      "pos": "형용사",
+      "meaning": "심각한, 진지한",
+      "example": "This is a serious matter.",
+      "exMeaning": "이것은 심각한 문제이다.",
+      "grammar": "serious(형용사) + matter(명사). 중요성을 강조합니다.",
+      "id": 167
+    },
+    {
+      "word": "several",
+      "pron": "/ˈsevrəl/",
+      "pos": "형용사",
+      "meaning": "몇몇의",
+      "example": "I have several questions.",
+      "exMeaning": "나는 몇 가지 질문이 있다.",
+      "grammar": "several + 복수명사(questions). '몇 개의'를 나타냅니다.",
+      "id": 168
+    },
+    {
+      "word": "share",
+      "pron": "/ʃer/",
+      "pos": "동사",
+      "meaning": "공유하다, 나누다",
+      "example": "Share your food with others.",
+      "exMeaning": "음식을 다른 사람들과 나눠라.",
+      "grammar": "share A with B = A를 B와 나누다/공유하다.",
+      "id": 169
+    },
+    {
+      "word": "similar",
+      "pron": "/ˈsɪmələr/",
+      "pos": "형용사",
+      "meaning": "비슷한",
+      "example": "Our ideas are similar.",
+      "exMeaning": "우리의 생각은 비슷하다.",
+      "grammar": "be similar to + 명사 = ~와 비슷하다.",
+      "id": 170
+    },
+    {
+      "word": "simple",
+      "pron": "/ˈsɪmpl/",
+      "pos": "형용사",
+      "meaning": "간단한, 단순한",
+      "example": "The answer is simple.",
+      "exMeaning": "그 답은 간단하다.",
+      "grammar": "be동사(is) + 형용사(simple). (반대: complex)",
+      "id": 171
+    },
+    {
+      "word": "situation",
+      "pron": "/ˌsɪtʃuˈeɪʃn/",
+      "pos": "명사",
+      "meaning": "상황",
+      "example": "It is a difficult situation.",
+      "exMeaning": "그것은 어려운 상황이다.",
+      "grammar": "situation(명사)을 difficult(형용사)가 수식합니다.",
+      "id": 172
+    },
+    {
+      "word": "skill",
+      "pron": "/skɪl/",
+      "pos": "명사",
+      "meaning": "기술, 능력",
+      "example": "Cooking is a useful skill.",
+      "exMeaning": "요리는 유용한 기술이다.",
+      "grammar": "skill(명사)을 useful(형용사)이 수식합니다.",
+      "id": 173
+    },
+    {
+      "word": "society",
+      "pron": "/səˈsaɪəti/",
+      "pos": "명사",
+      "meaning": "사회",
+      "example": "We live in a modern society.",
+      "exMeaning": "우리는 현대 사회에 산다.",
+      "grammar": "society(명사)를 modern(형용사)이 수식합니다.",
+      "id": 174
+    },
+    {
+      "word": "solve",
+      "pron": "/sɑːlv/",
+      "pos": "동사",
+      "meaning": "해결하다, 풀다",
+      "example": "Can you solve this puzzle?",
+      "exMeaning": "이 퍼즐을 풀 수 있니?",
+      "grammar": "solve + 목적어(puzzle/problem). 문제를 풀 때 씁니다.",
+      "id": 175
+    },
+    {
+      "word": "special",
+      "pron": "/ˈspeʃl/",
+      "pos": "형용사",
+      "meaning": "특별한",
+      "example": "Today is a special day.",
+      "exMeaning": "오늘은 특별한 날이다.",
+      "grammar": "special(형용사) + day(명사). 평범하지 않음을 나타냅니다.",
+      "id": 176
+    },
+    {
+      "word": "spread",
+      "pron": "/spred/",
+      "pos": "동사",
+      "meaning": "퍼지다, 펼치다",
+      "example": "The news spread quickly.",
+      "exMeaning": "그 소식은 빠르게 퍼졌다.",
+      "grammar": "spread-spread-spread 불규칙 동사(형태 동일)입니다.",
+      "id": 177
+    },
+    {
+      "word": "strength",
+      "pron": "/streŋθ/",
+      "pos": "명사",
+      "meaning": "힘, 강점",
+      "example": "Patience is his strength.",
+      "exMeaning": "인내는 그의 강점이다.",
+      "grammar": "strength는 strong의 명사형입니다. 셀 수 없는 명사.",
+      "id": 178
+    },
+    {
+      "word": "stress",
+      "pron": "/stres/",
+      "pos": "명사",
+      "meaning": "스트레스, 압박",
+      "example": "Exercise reduces stress.",
+      "exMeaning": "운동은 스트레스를 줄인다.",
+      "grammar": "stress는 셀 수 없는 명사입니다. reduce stress = 스트레스를 줄이다.",
+      "id": 179
+    },
+    {
+      "word": "succeed",
+      "pron": "/səkˈsiːd/",
+      "pos": "동사",
+      "meaning": "성공하다",
+      "example": "Work hard to succeed.",
+      "exMeaning": "성공하기 위해 열심히 일해라.",
+      "grammar": "succeed in + 명사/동명사 = ~에 성공하다.",
+      "id": 180
+    },
+    {
+      "word": "suggest",
+      "pron": "/səˈdʒest/",
+      "pos": "동사",
+      "meaning": "제안하다",
+      "example": "I suggest a different plan.",
+      "exMeaning": "나는 다른 계획을 제안한다.",
+      "grammar": "suggest + 목적어/동명사. suggest to는 잘못된 표현입니다.",
+      "id": 181
+    },
+    {
+      "word": "support",
+      "pron": "/səˈpɔːrt/",
+      "pos": "동사/명사",
+      "meaning": "지지하다, 지원하다",
+      "example": "I support your decision.",
+      "exMeaning": "나는 너의 결정을 지지한다.",
+      "grammar": "support + 목적어. 정신적/물질적으로 도울 때 씁니다.",
+      "id": 182
+    },
+    {
+      "word": "surface",
+      "pron": "/ˈsɜːrfɪs/",
+      "pos": "명사",
+      "meaning": "표면",
+      "example": "The surface is smooth.",
+      "exMeaning": "그 표면은 매끄럽다.",
+      "grammar": "surface(명사)를 smooth(형용사)가 서술합니다.",
+      "id": 183
+    },
+    {
+      "word": "surprise",
+      "pron": "/sərˈpraɪz/",
+      "pos": "동사/명사",
+      "meaning": "놀라게 하다; 놀람",
+      "example": "The gift surprised me.",
+      "exMeaning": "그 선물은 나를 놀라게 했다.",
+      "grammar": "surprise + 목적어. be surprised at = ~에 놀라다.",
+      "id": 184
+    },
+    {
+      "word": "survive",
+      "pron": "/sərˈvaɪv/",
+      "pos": "동사",
+      "meaning": "살아남다, 생존하다",
+      "example": "Only the strong survive.",
+      "exMeaning": "강한 자만이 살아남는다.",
+      "grammar": "survive는 자동사(생존하다)와 타동사(~에서 살아남다) 둘 다 됩니다.",
+      "id": 185
+    },
+    {
+      "word": "symbol",
+      "pron": "/ˈsɪmbl/",
+      "pos": "명사",
+      "meaning": "상징",
+      "example": "A dove is a symbol of peace.",
+      "exMeaning": "비둘기는 평화의 상징이다.",
+      "grammar": "a symbol of + 명사 = ~의 상징.",
+      "id": 186
+    },
+    {
+      "word": "talent",
+      "pron": "/ˈtælənt/",
+      "pos": "명사",
+      "meaning": "재능",
+      "example": "She has a talent for music.",
+      "exMeaning": "그녀는 음악에 재능이 있다.",
+      "grammar": "have a talent for + 명사 = ~에 재능이 있다.",
+      "id": 187
+    },
+    {
+      "word": "technology",
+      "pron": "/tekˈnɑːlədʒi/",
+      "pos": "명사",
+      "meaning": "기술, 과학기술",
+      "example": "Technology changes our lives.",
+      "exMeaning": "기술은 우리의 삶을 바꾼다.",
+      "grammar": "technology는 셀 수 없는 명사입니다.",
+      "id": 188
+    },
+    {
+      "word": "temperature",
+      "pron": "/ˈtemprətʃər/",
+      "pos": "명사",
+      "meaning": "온도, 체온",
+      "example": "The temperature is rising.",
+      "exMeaning": "온도가 오르고 있다.",
+      "grammar": "temperature(주어) + be동사 + rising(현재분사). 진행형입니다.",
+      "id": 189
+    },
+    {
+      "word": "thick",
+      "pron": "/θɪk/",
+      "pos": "형용사",
+      "meaning": "두꺼운",
+      "example": "This is a thick book.",
+      "exMeaning": "이것은 두꺼운 책이다.",
+      "grammar": "thick(형용사) + book(명사). th는 무성음 θ입니다. (반대: thin)",
+      "id": 190
+    },
+    {
+      "word": "though",
+      "pron": "/ðoʊ/",
+      "pos": "접속사",
+      "meaning": "비록 ~일지라도",
+      "example": "Though it was hard, I finished.",
+      "exMeaning": "비록 힘들었지만, 나는 끝냈다.",
+      "grammar": "though + 주어 + 동사 = 비록 ~이지만. 양보의 접속사입니다.",
+      "id": 191
+    },
+    {
+      "word": "throughout",
+      "pron": "/θruːˈaʊt/",
+      "pos": "전치사",
+      "meaning": "~내내, 도처에",
+      "example": "It rained throughout the night.",
+      "exMeaning": "밤새 비가 내렸다.",
+      "grammar": "throughout + 기간/장소 = ~동안 내내/전체에 걸쳐.",
+      "id": 192
+    },
+    {
+      "word": "tradition",
+      "pron": "/trəˈdɪʃn/",
+      "pos": "명사",
+      "meaning": "전통",
+      "example": "We follow family traditions.",
+      "exMeaning": "우리는 가족 전통을 따른다.",
+      "grammar": "tradition(명사)의 복수형은 traditions입니다.",
+      "id": 193
+    },
+    {
+      "word": "translate",
+      "pron": "/trænzˈleɪt/",
+      "pos": "동사",
+      "meaning": "번역하다",
+      "example": "Translate this into Korean.",
+      "exMeaning": "이것을 한국어로 번역해라.",
+      "grammar": "translate A into B = A를 B로 번역하다.",
+      "id": 194
+    },
+    {
+      "word": "treasure",
+      "pron": "/ˈtreʒər/",
+      "pos": "명사",
+      "meaning": "보물",
+      "example": "Health is our greatest treasure.",
+      "exMeaning": "건강은 우리의 가장 큰 보물이다.",
+      "grammar": "treasure는 s가 ʒ(즈) 발음입니다. 최상급 greatest와 함께.",
+      "id": 195
+    },
+    {
+      "word": "trust",
+      "pron": "/trʌst/",
+      "pos": "동사/명사",
+      "meaning": "신뢰하다; 신뢰",
+      "example": "I trust my friends.",
+      "exMeaning": "나는 내 친구들을 신뢰한다.",
+      "grammar": "trust + 목적어. 믿음을 나타내는 동사입니다.",
+      "id": 196
+    },
+    {
+      "word": "understand",
+      "pron": "/ˌʌndərˈstænd/",
+      "pos": "동사",
+      "meaning": "이해하다",
+      "example": "I understand your feelings.",
+      "exMeaning": "나는 너의 감정을 이해한다.",
+      "grammar": "understand-understood-understood 불규칙 동사입니다.",
+      "id": 197
+    },
+    {
+      "word": "useful",
+      "pron": "/ˈjuːsfl/",
+      "pos": "형용사",
+      "meaning": "유용한",
+      "example": "This tool is very useful.",
+      "exMeaning": "이 도구는 매우 유용하다.",
+      "grammar": "use + ful = useful. (반대: useless)",
+      "id": 198
+    },
+    {
+      "word": "usual",
+      "pron": "/ˈjuːʒuəl/",
+      "pos": "형용사",
+      "meaning": "보통의, 평소의",
+      "example": "I woke up at my usual time.",
+      "exMeaning": "나는 평소 시간에 일어났다.",
+      "grammar": "as usual = 평소처럼. (반대: unusual)",
+      "id": 199
+    },
+    {
+      "word": "valuable",
+      "pron": "/ˈvæljuəbl/",
+      "pos": "형용사",
+      "meaning": "귀중한, 값진",
+      "example": "Time is valuable.",
+      "exMeaning": "시간은 귀중하다.",
+      "grammar": "value + able = valuable. 가치가 높음을 나타냅니다.",
+      "id": 200
+    },
+    {
+      "word": "various",
+      "pron": "/ˈveriəs/",
+      "pos": "형용사",
+      "meaning": "다양한",
+      "example": "There are various options.",
+      "exMeaning": "다양한 선택지가 있다.",
+      "grammar": "various + 복수명사(options). '여러 가지의'를 뜻합니다.",
+      "id": 201
+    },
+    {
+      "word": "victory",
+      "pron": "/ˈvɪktəri/",
+      "pos": "명사",
+      "meaning": "승리",
+      "example": "We celebrated our victory.",
+      "exMeaning": "우리는 우리의 승리를 축하했다.",
+      "grammar": "victory(명사)의 복수형은 victories입니다. (반대: defeat)",
+      "id": 202
+    },
+    {
+      "word": "volunteer",
+      "pron": "/ˌvɑːlənˈtɪr/",
+      "pos": "명사/동사",
+      "meaning": "자원봉사자; 자원하다",
+      "example": "I volunteer at a hospital.",
+      "exMeaning": "나는 병원에서 자원봉사를 한다.",
+      "grammar": "volunteer는 명사와 동사 둘 다 됩니다.",
+      "id": 203
+    },
+    {
+      "word": "weather",
+      "pron": "/ˈweðər/",
+      "pos": "명사",
+      "meaning": "날씨",
+      "example": "The weather is nice today.",
+      "exMeaning": "오늘 날씨가 좋다.",
+      "grammar": "weather는 셀 수 없는 명사입니다. whether(~인지)와 발음 동일.",
+      "id": 204
+    },
+    {
+      "word": "weight",
+      "pron": "/weɪt/",
+      "pos": "명사",
+      "meaning": "무게, 체중",
+      "example": "I want to lose weight.",
+      "exMeaning": "나는 체중을 줄이고 싶다.",
+      "grammar": "lose weight = 살을 빼다. gain weight = 살이 찌다. gh는 묵음.",
+      "id": 205
+    },
+    {
+      "word": "whole",
+      "pron": "/hoʊl/",
+      "pos": "형용사",
+      "meaning": "전체의, 온전한",
+      "example": "I ate the whole pizza.",
+      "exMeaning": "나는 피자 전체를 먹었다.",
+      "grammar": "the whole + 명사 = 전체의 ~. w는 묵음입니다.",
+      "id": 206
+    },
+    {
+      "word": "wonder",
+      "pron": "/ˈwʌndər/",
+      "pos": "동사",
+      "meaning": "궁금해하다",
+      "example": "I wonder what will happen.",
+      "exMeaning": "나는 무슨 일이 일어날지 궁금하다.",
+      "grammar": "wonder + 의문사절 = ~을 궁금해하다.",
+      "id": 207
+    },
+    {
+      "word": "worth",
+      "pron": "/wɜːrθ/",
+      "pos": "형용사",
+      "meaning": "~할 가치가 있는",
+      "example": "This book is worth reading.",
+      "exMeaning": "이 책은 읽을 가치가 있다.",
+      "grammar": "be worth + 동명사 = ~할 가치가 있다.",
+      "id": 208
     }
   ],
   "metadata": {
-    "totalWords": 20,
-    "plannedTotal": 1200,
-    "level": "Middle School Essential Vocabulary",
-    "note": "여기 나열한 20개는 샘플입니다. 실제 운영 시 1200개로 확장됩니다."
+    "totalWords": 208,
+    "level": "중학교 필수 어휘",
+    "features": [
+      "발음기호",
+      "예문",
+      "예문해석",
+      "문법해설"
+    ],
+    "description": "180일 매일 학습용 중학 필수 영단어"
   }
 }

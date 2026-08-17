@@ -1,210 +1,1245 @@
 {
   "hanja": [
     {
-      "id": 1,
-      "character": "生",
-      "meaning": "살 생",
+      "char": "生",
       "reading": "생",
+      "meaning": "날 생",
       "koreanWord": "생명(生命)",
-      "meaning_detail": "생명, 삶을 뜻합니다",
-      "example": "생명의 소중함을 배운다",
-      "frequency": "very_common"
+      "wordMeaning": "살아 있는 목숨",
+      "sentence": "모든 생명은 소중하므로 함부로 대해서는 안 된다.",
+      "relatedWords": "생활(生活), 학생(學生), 인생(人生)",
+      "id": 1
     },
     {
-      "id": 2,
-      "character": "死",
-      "meaning": "죽을 사",
+      "char": "死",
       "reading": "사",
+      "meaning": "죽을 사",
       "koreanWord": "사망(死亡)",
-      "meaning_detail": "죽음, 끝을 뜻합니다",
-      "example": "죽음을 앞에 두다",
-      "frequency": "very_common"
+      "wordMeaning": "사람이 죽음",
+      "sentence": "교통사고로 인한 사망을 예방하려면 안전 운전이 필수이다.",
+      "relatedWords": "사후(死後), 생사(生死), 필사(必死)",
+      "id": 2
     },
     {
-      "id": 3,
-      "character": "火",
-      "meaning": "불 화",
-      "reading": "화",
-      "koreanWord": "화염(火炎)",
-      "meaning_detail": "불, 열을 뜻합니다",
-      "example": "화염 방사기",
-      "frequency": "very_common"
-    },
-    {
-      "id": 4,
-      "character": "水",
-      "meaning": "물 수",
+      "char": "水",
       "reading": "수",
+      "meaning": "물 수",
       "koreanWord": "수력(水力)",
-      "meaning_detail": "물, 수분을 뜻합니다",
-      "example": "수력 발전",
-      "frequency": "very_common"
+      "wordMeaning": "물의 힘",
+      "sentence": "수력 발전은 물의 힘으로 전기를 만드는 친환경 방식이다.",
+      "relatedWords": "수도(水道), 온수(溫水), 홍수(洪水)",
+      "id": 3
     },
     {
-      "id": 5,
-      "character": "木",
-      "meaning": "나무 목",
-      "reading": "목",
-      "koreanWord": "목재(木材)",
-      "meaning_detail": "나무, 식물을 뜻합니다",
-      "example": "목재 가공",
-      "frequency": "very_common"
-    },
-    {
-      "id": 6,
-      "character": "金",
-      "meaning": "쇠 금",
-      "reading": "금",
-      "koreanWord": "금속(金屬)",
-      "meaning_detail": "쇠, 귀금속을 뜻합니다",
-      "example": "금속 제련",
-      "frequency": "very_common"
-    },
-    {
-      "id": 7,
-      "character": "土",
-      "meaning": "흙 토",
-      "reading": "토",
-      "koreanWord": "토지(土地)",
-      "meaning_detail": "흙, 땅을 뜻합니다",
-      "example": "토지 개혁",
-      "frequency": "very_common"
-    },
-    {
-      "id": 8,
-      "character": "人",
-      "meaning": "사람 인",
-      "reading": "인",
-      "koreanWord": "인간(人間)",
-      "meaning_detail": "사람, 인류를 뜻합니다",
-      "example": "인간관계",
-      "frequency": "very_common"
-    },
-    {
-      "id": 9,
-      "character": "天",
-      "meaning": "하늘 천",
-      "reading": "천",
-      "koreanWord": "천체(天體)",
-      "meaning_detail": "하늘, 우주를 뜻합니다",
-      "example": "천체 관측",
-      "frequency": "very_common"
-    },
-    {
-      "id": 10,
-      "character": "地",
-      "meaning": "땅 지",
-      "reading": "지",
-      "koreanWord": "지구(地球)",
-      "meaning_detail": "땅, 지표면을 뜻합니다",
-      "example": "지구 온난화",
-      "frequency": "very_common"
-    },
-    {
-      "id": 11,
-      "character": "學",
-      "meaning": "배울 학",
-      "reading": "학",
-      "koreanWord": "학문(學問)",
-      "meaning_detail": "배움, 학문을 뜻합니다",
-      "example": "학문 연구",
-      "frequency": "very_common"
-    },
-    {
-      "id": 12,
-      "character": "業",
-      "meaning": "일 업",
-      "reading": "업",
-      "koreanWord": "사업(事業)",
-      "meaning_detail": "일, 산업을 뜻합니다",
-      "example": "사업 확장",
-      "frequency": "very_common"
-    },
-    {
-      "id": 13,
-      "character": "國",
-      "meaning": "나라 국",
-      "reading": "국",
-      "koreanWord": "국가(國家)",
-      "meaning_detail": "나라, 국민 공동체를 뜻합니다",
-      "example": "국가 발전",
-      "frequency": "very_common"
-    },
-    {
-      "id": 14,
-      "character": "民",
-      "meaning": "백성 민",
-      "reading": "민",
-      "koreanWord": "국민(國民)",
-      "meaning_detail": "백성, 국민을 뜻합니다",
-      "example": "국민 건강",
-      "frequency": "very_common"
-    },
-    {
-      "id": 15,
-      "character": "心",
-      "meaning": "마음 심",
-      "reading": "심",
-      "koreanWord": "심리(心理)",
-      "meaning_detail": "마음, 정신을 뜻합니다",
-      "example": "심리 치료",
-      "frequency": "very_common"
-    },
-    {
-      "id": 16,
-      "character": "道",
-      "meaning": "길 도",
-      "reading": "도",
-      "koreanWord": "도덕(道德)",
-      "meaning_detail": "길, 방법, 이치를 뜻합니다",
-      "example": "도덕 교육",
-      "frequency": "very_common"
-    },
-    {
-      "id": 17,
-      "character": "德",
-      "meaning": "덕 덕",
-      "reading": "덕",
-      "koreanWord": "덕행(德行)",
-      "meaning_detail": "덕, 품덕을 뜻합니다",
-      "example": "덕행 있는 사람",
-      "frequency": "very_common"
-    },
-    {
-      "id": 18,
-      "character": "信",
-      "meaning": "믿을 신",
-      "reading": "신",
-      "koreanWord": "신뢰(信賴)",
-      "meaning_detail": "믿음, 신용을 뜻합니다",
-      "example": "신뢰 관계",
-      "frequency": "very_common"
-    },
-    {
-      "id": 19,
-      "character": "和",
-      "meaning": "화할 화",
+      "char": "火",
       "reading": "화",
-      "koreanWord": "평화(平和)",
-      "meaning_detail": "화목, 조화를 뜻합니다",
-      "example": "평화 통일",
-      "frequency": "very_common"
+      "meaning": "불 화",
+      "koreanWord": "화재(火災)",
+      "wordMeaning": "불로 인한 재난",
+      "sentence": "겨울철에는 화재 예방을 위해 난방기구를 조심해야 한다.",
+      "relatedWords": "화산(火山), 소화(消火), 발화(發火)",
+      "id": 4
     },
     {
-      "id": 20,
-      "character": "善",
-      "meaning": "좋을 선",
+      "char": "木",
+      "reading": "목",
+      "meaning": "나무 목",
+      "koreanWord": "목재(木材)",
+      "wordMeaning": "건축이나 가구에 쓰는 나무",
+      "sentence": "이 가구는 천연 목재로 만들어져 향이 좋다.",
+      "relatedWords": "목수(木手), 식목(植木), 원목(原木)",
+      "id": 5
+    },
+    {
+      "char": "金",
+      "reading": "금",
+      "meaning": "쇠 금",
+      "koreanWord": "금속(金屬)",
+      "wordMeaning": "쇠붙이 종류의 물질",
+      "sentence": "금속은 열과 전기를 잘 전달하는 성질이 있다.",
+      "relatedWords": "황금(黃金), 금고(金庫), 요금(料金)",
+      "id": 6
+    },
+    {
+      "char": "土",
+      "reading": "토",
+      "meaning": "흙 토",
+      "koreanWord": "토지(土地)",
+      "wordMeaning": "사람이 이용하는 땅",
+      "sentence": "농사를 지으려면 비옥한 토지가 필요하다.",
+      "relatedWords": "토양(土壤), 국토(國土), 영토(領土)",
+      "id": 7
+    },
+    {
+      "char": "人",
+      "reading": "인",
+      "meaning": "사람 인",
+      "koreanWord": "인간(人間)",
+      "wordMeaning": "사람",
+      "sentence": "인간은 사회적 동물이라 서로 도우며 살아간다.",
+      "relatedWords": "인구(人口), 개인(個人), 위인(偉人)",
+      "id": 8
+    },
+    {
+      "char": "天",
+      "reading": "천",
+      "meaning": "하늘 천",
+      "koreanWord": "천국(天國)",
+      "wordMeaning": "하늘의 나라, 이상향",
+      "sentence": "성경은 믿는 자에게 천국을 약속하고 있다.",
+      "relatedWords": "천지(天地), 천사(天使), 천재(天才)",
+      "id": 9
+    },
+    {
+      "char": "地",
+      "reading": "지",
+      "meaning": "땅 지",
+      "koreanWord": "지구(地球)",
+      "wordMeaning": "우리가 사는 행성",
+      "sentence": "지구 온난화를 막기 위해 온실가스를 줄여야 한다.",
+      "relatedWords": "지역(地域), 토지(土地), 지도(地圖)",
+      "id": 10
+    },
+    {
+      "char": "日",
+      "reading": "일",
+      "meaning": "날 일",
+      "koreanWord": "일상(日常)",
+      "wordMeaning": "날마다 반복되는 생활",
+      "sentence": "규칙적인 일상이 건강한 삶의 기초가 된다.",
+      "relatedWords": "일기(日記), 매일(每日), 휴일(休日)",
+      "id": 11
+    },
+    {
+      "char": "月",
+      "reading": "월",
+      "meaning": "달 월",
+      "koreanWord": "세월(歲月)",
+      "wordMeaning": "흘러가는 시간",
+      "sentence": "세월이 흘러도 변치 않는 우정이 있다.",
+      "relatedWords": "월급(月給), 정월(正月), 명월(明月)",
+      "id": 12
+    },
+    {
+      "char": "山",
+      "reading": "산",
+      "meaning": "메 산",
+      "koreanWord": "등산(登山)",
+      "wordMeaning": "산에 오름",
+      "sentence": "주말마다 등산을 하니 체력이 눈에 띄게 좋아졌다.",
+      "relatedWords": "산맥(山脈), 화산(火山), 산림(山林)",
+      "id": 13
+    },
+    {
+      "char": "川",
+      "reading": "천",
+      "meaning": "내 천",
+      "koreanWord": "하천(河川)",
+      "wordMeaning": "강과 시내",
+      "sentence": "하천이 오염되지 않도록 쓰레기를 버리면 안 된다.",
+      "relatedWords": "산천(山川), 대천(大川)",
+      "id": 14
+    },
+    {
+      "char": "學",
+      "reading": "학",
+      "meaning": "배울 학",
+      "koreanWord": "학문(學問)",
+      "wordMeaning": "배우고 익히는 지식",
+      "sentence": "학문에는 왕도가 없으니 꾸준히 노력해야 한다.",
+      "relatedWords": "학교(學校), 과학(科學), 유학(留學)",
+      "id": 15
+    },
+    {
+      "char": "問",
+      "reading": "문",
+      "meaning": "물을 문",
+      "koreanWord": "질문(質問)",
+      "wordMeaning": "모르는 것을 물음",
+      "sentence": "좋은 질문은 좋은 배움의 시작이다.",
+      "relatedWords": "문제(問題), 의문(疑問), 학문(學問)",
+      "id": 16
+    },
+    {
+      "char": "敎",
+      "reading": "교",
+      "meaning": "가르칠 교",
+      "koreanWord": "교육(敎育)",
+      "wordMeaning": "가르쳐 기름",
+      "sentence": "교육은 한 사람의 인생을 바꾸는 큰 힘이 있다.",
+      "relatedWords": "교사(敎師), 종교(宗敎), 선교(宣敎)",
+      "id": 17
+    },
+    {
+      "char": "育",
+      "reading": "육",
+      "meaning": "기를 육",
+      "koreanWord": "양육(養育)",
+      "wordMeaning": "아이를 보살펴 기름",
+      "sentence": "부모의 양육 태도가 자녀의 성격 형성에 영향을 준다.",
+      "relatedWords": "체육(體育), 육성(育成), 사육(飼育)",
+      "id": 18
+    },
+    {
+      "char": "心",
+      "reading": "심",
+      "meaning": "마음 심",
+      "koreanWord": "심리(心理)",
+      "wordMeaning": "마음의 움직임",
+      "sentence": "상대방의 심리를 이해하면 대화가 훨씬 수월해진다.",
+      "relatedWords": "관심(關心), 중심(中心), 양심(良心)",
+      "id": 19
+    },
+    {
+      "char": "身",
+      "reading": "신",
+      "meaning": "몸 신",
+      "koreanWord": "신체(身體)",
+      "wordMeaning": "사람의 몸",
+      "sentence": "꾸준한 운동은 신체를 건강하게 유지시켜 준다.",
+      "relatedWords": "자신(自身), 출신(出身), 헌신(獻身)",
+      "id": 20
+    },
+    {
+      "char": "體",
+      "reading": "체",
+      "meaning": "몸 체",
+      "koreanWord": "체력(體力)",
+      "wordMeaning": "몸의 힘, 활동 능력",
+      "sentence": "입대를 준비하며 체력을 기르는 것이 무엇보다 중요하다.",
+      "relatedWords": "체육(體育), 신체(身體), 단체(團體)",
+      "id": 21
+    },
+    {
+      "char": "力",
+      "reading": "력",
+      "meaning": "힘 력",
+      "koreanWord": "노력(努力)",
+      "wordMeaning": "힘써 애씀",
+      "sentence": "타고난 재능보다 꾸준한 노력이 성공을 만든다.",
+      "relatedWords": "체력(體力), 능력(能力), 협력(協力)",
+      "id": 22
+    },
+    {
+      "char": "氣",
+      "reading": "기",
+      "meaning": "기운 기",
+      "koreanWord": "기운(氣運)",
+      "wordMeaning": "활동하는 힘",
+      "sentence": "충분히 자고 났더니 온몸에 기운이 넘친다.",
+      "relatedWords": "용기(勇氣), 기분(氣分), 감기(感氣)",
+      "id": 23
+    },
+    {
+      "char": "食",
+      "reading": "식",
+      "meaning": "밥 식",
+      "koreanWord": "식사(食事)",
+      "wordMeaning": "음식을 먹는 일",
+      "sentence": "규칙적인 식사는 건강 관리의 기본이다.",
+      "relatedWords": "식당(食堂), 음식(飮食), 간식(間食)",
+      "id": 24
+    },
+    {
+      "char": "飮",
+      "reading": "음",
+      "meaning": "마실 음",
+      "koreanWord": "음료(飮料)",
+      "wordMeaning": "마시는 것",
+      "sentence": "운동 후에는 당분이 적은 음료를 마시는 것이 좋다.",
+      "relatedWords": "음식(飮食), 음주(飮酒)",
+      "id": 25
+    },
+    {
+      "char": "眠",
+      "reading": "면",
+      "meaning": "잘 면",
+      "koreanWord": "수면(睡眠)",
+      "wordMeaning": "잠을 잠",
+      "sentence": "충분한 수면은 다음 날의 집중력을 좌우한다.",
+      "relatedWords": "불면(不眠), 동면(冬眠)",
+      "id": 26
+    },
+    {
+      "char": "時",
+      "reading": "시",
+      "meaning": "때 시",
+      "koreanWord": "시간(時間)",
+      "wordMeaning": "흐르는 때의 사이",
+      "sentence": "시간을 잘 관리하는 사람이 목표를 이룬다.",
+      "relatedWords": "시대(時代), 당시(當時), 임시(臨時)",
+      "id": 27
+    },
+    {
+      "char": "間",
+      "reading": "간",
+      "meaning": "사이 간",
+      "koreanWord": "공간(空間)",
+      "wordMeaning": "비어 있는 자리",
+      "sentence": "이 방은 공간이 넓어 운동하기에 적합하다.",
+      "relatedWords": "시간(時間), 인간(人間), 순간(瞬間)",
+      "id": 28
+    },
+    {
+      "char": "目",
+      "reading": "목",
+      "meaning": "눈 목",
+      "koreanWord": "목표(目標)",
+      "wordMeaning": "이루려는 대상",
+      "sentence": "명확한 목표가 있으면 매일의 훈련이 즐거워진다.",
+      "relatedWords": "목적(目的), 주목(注目), 종목(種目)",
+      "id": 29
+    },
+    {
+      "char": "標",
+      "reading": "표",
+      "meaning": "표할 표",
+      "koreanWord": "목표(目標)",
+      "wordMeaning": "도달하려는 지점",
+      "sentence": "목표를 종이에 적어두면 실천 가능성이 높아진다.",
+      "relatedWords": "표시(標示), 지표(指標), 상표(商標)",
+      "id": 30
+    },
+    {
+      "char": "成",
+      "reading": "성",
+      "meaning": "이룰 성",
+      "koreanWord": "성공(成功)",
+      "wordMeaning": "뜻한 바를 이룸",
+      "sentence": "작은 습관의 반복이 큰 성공을 만든다.",
+      "relatedWords": "성장(成長), 완성(完成), 달성(達成)",
+      "id": 31
+    },
+    {
+      "char": "長",
+      "reading": "장",
+      "meaning": "길 장/어른 장",
+      "koreanWord": "성장(成長)",
+      "wordMeaning": "자라서 커짐",
+      "sentence": "실패의 경험도 성장의 밑거름이 된다.",
+      "relatedWords": "교장(校長), 장점(長點), 사장(社長)",
+      "id": 32
+    },
+    {
+      "char": "功",
+      "reading": "공",
+      "meaning": "공 공",
+      "koreanWord": "성공(成功)",
+      "wordMeaning": "목적을 이룬 결과",
+      "sentence": "성공한 사람들은 대부분 꾸준함을 강조한다.",
+      "relatedWords": "공로(功勞), 공적(功績), 공부(工夫)",
+      "id": 33
+    },
+    {
+      "char": "習",
+      "reading": "습",
+      "meaning": "익힐 습",
+      "koreanWord": "습관(習慣)",
+      "wordMeaning": "몸에 밴 행동",
+      "sentence": "좋은 습관 하나가 인생 전체를 바꿀 수 있다.",
+      "relatedWords": "학습(學習), 연습(練習), 복습(復習)",
+      "id": 34
+    },
+    {
+      "char": "慣",
+      "reading": "관",
+      "meaning": "익숙할 관",
+      "koreanWord": "습관(習慣)",
+      "wordMeaning": "익숙해진 버릇",
+      "sentence": "나쁜 습관을 고치려면 의식적인 노력이 필요하다.",
+      "relatedWords": "관례(慣例), 관습(慣習)",
+      "id": 35
+    },
+    {
+      "char": "訓",
+      "reading": "훈",
+      "meaning": "가르칠 훈",
+      "koreanWord": "훈련(訓練)",
+      "wordMeaning": "익히도록 가르침",
+      "sentence": "반복된 훈련이 위기의 순간에 몸을 움직이게 한다.",
+      "relatedWords": "교훈(敎訓), 훈계(訓戒)",
+      "id": 36
+    },
+    {
+      "char": "練",
+      "reading": "련",
+      "meaning": "익힐 련",
+      "koreanWord": "연습(練習)",
+      "wordMeaning": "익숙해지도록 되풀이함",
+      "sentence": "연습은 완벽을 만든다는 말을 늘 기억하자.",
+      "relatedWords": "훈련(訓練), 숙련(熟練)",
+      "id": 37
+    },
+    {
+      "char": "軍",
+      "reading": "군",
+      "meaning": "군사 군",
+      "koreanWord": "군대(軍隊)",
+      "wordMeaning": "국방을 담당하는 조직",
+      "sentence": "군대는 규율과 협동을 배우는 곳이기도 하다.",
+      "relatedWords": "군인(軍人), 공군(空軍), 해군(海軍)",
+      "id": 38
+    },
+    {
+      "char": "空",
+      "reading": "공",
+      "meaning": "빌 공/하늘 공",
+      "koreanWord": "공군(空軍)",
+      "wordMeaning": "하늘을 지키는 군대",
+      "sentence": "그는 공군에 입대하기 위해 체력을 기르고 있다.",
+      "relatedWords": "공간(空間), 항공(航空), 공기(空氣)",
+      "id": 39
+    },
+    {
+      "char": "陸",
+      "reading": "륙",
+      "meaning": "뭍 륙",
+      "koreanWord": "육군(陸軍)",
+      "wordMeaning": "땅에서 싸우는 군대",
+      "sentence": "육군, 해군, 공군이 협력해 나라를 지킨다.",
+      "relatedWords": "대륙(大陸), 육지(陸地), 착륙(着陸)",
+      "id": 40
+    },
+    {
+      "char": "海",
+      "reading": "해",
+      "meaning": "바다 해",
+      "koreanWord": "해군(海軍)",
+      "wordMeaning": "바다를 지키는 군대",
+      "sentence": "해군 함정이 넓은 바다를 순찰하고 있다.",
+      "relatedWords": "해양(海洋), 해외(海外), 항해(航海)",
+      "id": 41
+    },
+    {
+      "char": "國",
+      "reading": "국",
+      "meaning": "나라 국",
+      "koreanWord": "국가(國家)",
+      "wordMeaning": "일정한 영토와 국민을 가진 사회",
+      "sentence": "국가의 안전은 국민 모두의 관심에서 시작된다.",
+      "relatedWords": "국민(國民), 외국(外國), 애국(愛國)",
+      "id": 42
+    },
+    {
+      "char": "民",
+      "reading": "민",
+      "meaning": "백성 민",
+      "koreanWord": "국민(國民)",
+      "wordMeaning": "나라를 이루는 사람들",
+      "sentence": "국민 한 사람 한 사람의 힘이 나라를 지탱한다.",
+      "relatedWords": "민족(民族), 시민(市民), 농민(農民)",
+      "id": 43
+    },
+    {
+      "char": "家",
+      "reading": "가",
+      "meaning": "집 가",
+      "koreanWord": "가족(家族)",
+      "wordMeaning": "한 집에 사는 친족",
+      "sentence": "가족의 응원이 가장 큰 힘이 된다.",
+      "relatedWords": "가정(家庭), 국가(國家), 작가(作家)",
+      "id": 44
+    },
+    {
+      "char": "族",
+      "reading": "족",
+      "meaning": "겨레 족",
+      "koreanWord": "민족(民族)",
+      "wordMeaning": "같은 핏줄의 집단",
+      "sentence": "우리 민족은 오랜 역사와 문화를 이어왔다.",
+      "relatedWords": "가족(家族), 부족(部族), 종족(種族)",
+      "id": 45
+    },
+    {
+      "char": "愛",
+      "reading": "애",
+      "meaning": "사랑 애",
+      "koreanWord": "사랑(愛)",
+      "wordMeaning": "아끼고 위하는 마음",
+      "sentence": "이웃 사랑은 말이 아니라 행동으로 드러난다.",
+      "relatedWords": "애국(愛國), 연애(戀愛), 애정(愛情)",
+      "id": 46
+    },
+    {
+      "char": "信",
+      "reading": "신",
+      "meaning": "믿을 신",
+      "koreanWord": "신뢰(信賴)",
+      "wordMeaning": "믿고 의지함",
+      "sentence": "신뢰는 오랜 시간에 걸쳐 쌓이는 소중한 자산이다.",
+      "relatedWords": "신앙(信仰), 확신(確信), 자신(自信)",
+      "id": 47
+    },
+    {
+      "char": "仰",
+      "reading": "앙",
+      "meaning": "우러를 앙",
+      "koreanWord": "신앙(信仰)",
+      "wordMeaning": "신을 믿고 받드는 일",
+      "sentence": "굳건한 신앙은 삶의 어려움을 이기는 힘이 된다.",
+      "relatedWords": "신앙심(信仰心), 앙망(仰望)",
+      "id": 48
+    },
+    {
+      "char": "望",
+      "reading": "망",
+      "meaning": "바랄 망",
+      "koreanWord": "희망(希望)",
+      "wordMeaning": "바라고 기대함",
+      "sentence": "희망을 잃지 않는 사람은 반드시 다시 일어선다.",
+      "relatedWords": "소망(所望), 절망(絶望), 전망(展望)",
+      "id": 49
+    },
+    {
+      "char": "希",
+      "reading": "희",
+      "meaning": "바랄 희",
+      "koreanWord": "희망(希望)",
+      "wordMeaning": "앞날에 대한 기대",
+      "sentence": "작은 희망의 불씨가 큰 변화를 이끌어낸다.",
+      "relatedWords": "희구(希求), 희소(希少)",
+      "id": 50
+    },
+    {
+      "char": "和",
+      "reading": "화",
+      "meaning": "화할 화",
+      "koreanWord": "평화(平和)",
+      "wordMeaning": "평온하고 화목함",
+      "sentence": "세계 평화는 서로에 대한 이해에서 시작된다.",
+      "relatedWords": "조화(調和), 화합(和合), 온화(溫和)",
+      "id": 51
+    },
+    {
+      "char": "平",
+      "reading": "평",
+      "meaning": "평평할 평",
+      "koreanWord": "평화(平和)",
+      "wordMeaning": "다툼 없이 고요한 상태",
+      "sentence": "평범한 일상이 사실은 가장 큰 축복이다.",
+      "relatedWords": "평등(平等), 공평(公平), 평소(平素)",
+      "id": 52
+    },
+    {
+      "char": "善",
       "reading": "선",
+      "meaning": "착할 선",
       "koreanWord": "선행(善行)",
-      "meaning_detail": "선함, 착함을 뜻합니다",
-      "example": "선행 베풀기",
-      "frequency": "very_common"
+      "wordMeaning": "착한 행동",
+      "sentence": "작은 선행이 모여 따뜻한 세상을 만든다.",
+      "relatedWords": "선인(善人), 개선(改善), 최선(最善)",
+      "id": 53
+    },
+    {
+      "char": "惡",
+      "reading": "악",
+      "meaning": "악할 악",
+      "koreanWord": "악행(惡行)",
+      "wordMeaning": "나쁜 행동",
+      "sentence": "악행은 언젠가 반드시 대가를 치르게 된다.",
+      "relatedWords": "악인(惡人), 선악(善惡), 죄악(罪惡)",
+      "id": 54
+    },
+    {
+      "char": "德",
+      "reading": "덕",
+      "meaning": "큰 덕",
+      "koreanWord": "도덕(道德)",
+      "wordMeaning": "마땅히 지켜야 할 도리",
+      "sentence": "도덕은 법으로 강제하기 전에 스스로 지키는 것이다.",
+      "relatedWords": "덕행(德行), 미덕(美德), 은덕(恩德)",
+      "id": 55
+    },
+    {
+      "char": "道",
+      "reading": "도",
+      "meaning": "길 도",
+      "koreanWord": "도리(道理)",
+      "wordMeaning": "사람이 지켜야 할 이치",
+      "sentence": "사람의 도리를 다하는 것이 진정한 어른의 자세이다.",
+      "relatedWords": "도덕(道德), 도로(道路), 인도(人道)",
+      "id": 56
+    },
+    {
+      "char": "義",
+      "reading": "의",
+      "meaning": "옳을 의",
+      "koreanWord": "정의(正義)",
+      "wordMeaning": "올바른 도리",
+      "sentence": "정의로운 사회는 약자를 배려하는 데서 시작된다.",
+      "relatedWords": "의무(義務), 의리(義理), 주의(主義)",
+      "id": 57
+    },
+    {
+      "char": "正",
+      "reading": "정",
+      "meaning": "바를 정",
+      "koreanWord": "정직(正直)",
+      "wordMeaning": "거짓 없이 바름",
+      "sentence": "정직은 신뢰를 쌓는 가장 확실한 방법이다.",
+      "relatedWords": "정의(正義), 정확(正確), 수정(修正)",
+      "id": 58
+    },
+    {
+      "char": "直",
+      "reading": "직",
+      "meaning": "곧을 직",
+      "koreanWord": "정직(正直)",
+      "wordMeaning": "마음이 곧고 바름",
+      "sentence": "정직한 사람은 결국 사람들의 인정을 받는다.",
+      "relatedWords": "직접(直接), 직선(直線), 솔직(率直)",
+      "id": 59
+    },
+    {
+      "char": "勇",
+      "reading": "용",
+      "meaning": "날랠 용",
+      "koreanWord": "용기(勇氣)",
+      "wordMeaning": "두려움에 맞서는 마음",
+      "sentence": "진정한 용기는 두렵지만 앞으로 나아가는 것이다.",
+      "relatedWords": "용감(勇敢), 용맹(勇猛)",
+      "id": 60
+    },
+    {
+      "char": "敢",
+      "reading": "감",
+      "meaning": "감히 감",
+      "koreanWord": "용감(勇敢)",
+      "wordMeaning": "용기 있고 씩씩함",
+      "sentence": "용감한 결단이 인생의 방향을 바꾸기도 한다.",
+      "relatedWords": "과감(果敢), 감행(敢行)",
+      "id": 61
+    },
+    {
+      "char": "誠",
+      "reading": "성",
+      "meaning": "정성 성",
+      "koreanWord": "성실(誠實)",
+      "wordMeaning": "정성스럽고 참됨",
+      "sentence": "성실함은 재능보다 오래가는 강점이다.",
+      "relatedWords": "성의(誠意), 충성(忠誠), 정성(精誠)",
+      "id": 62
+    },
+    {
+      "char": "實",
+      "reading": "실",
+      "meaning": "열매 실",
+      "koreanWord": "실천(實踐)",
+      "wordMeaning": "실제로 행함",
+      "sentence": "아무리 좋은 계획도 실천 없이는 소용없다.",
+      "relatedWords": "실제(實際), 사실(事實), 현실(現實)",
+      "id": 63
+    },
+    {
+      "char": "努",
+      "reading": "노",
+      "meaning": "힘쓸 노",
+      "koreanWord": "노력(努力)",
+      "wordMeaning": "힘을 다해 애씀",
+      "sentence": "매일의 작은 노력이 쌓여 큰 결실을 맺는다.",
+      "relatedWords": "노력가(努力家)",
+      "id": 64
+    },
+    {
+      "char": "勤",
+      "reading": "근",
+      "meaning": "부지런할 근",
+      "koreanWord": "근면(勤勉)",
+      "wordMeaning": "부지런히 힘씀",
+      "sentence": "근면 성실한 태도는 어디서나 인정받는다.",
+      "relatedWords": "근무(勤務), 출근(出勤), 근로(勤勞)",
+      "id": 65
+    },
+    {
+      "char": "忍",
+      "reading": "인",
+      "meaning": "참을 인",
+      "koreanWord": "인내(忍耐)",
+      "wordMeaning": "참고 견딤",
+      "sentence": "인내는 쓰지만 그 열매는 달다.",
+      "relatedWords": "인고(忍苦), 잔인(殘忍)",
+      "id": 66
+    },
+    {
+      "char": "耐",
+      "reading": "내",
+      "meaning": "견딜 내",
+      "koreanWord": "인내(忍耐)",
+      "wordMeaning": "어려움을 견뎌냄",
+      "sentence": "힘든 훈련을 견뎌내는 인내가 사람을 강하게 만든다.",
+      "relatedWords": "내구(耐久), 내성(耐性)",
+      "id": 67
+    },
+    {
+      "char": "希",
+      "reading": "희",
+      "meaning": "바랄 희",
+      "koreanWord": "희생(犧牲)",
+      "wordMeaning": "남을 위해 자신을 바침",
+      "sentence": "부모의 희생 위에 자녀의 성장이 있다.",
+      "relatedWords": "희망(希望)",
+      "id": 68
+    },
+    {
+      "char": "福",
+      "reading": "복",
+      "meaning": "복 복",
+      "koreanWord": "행복(幸福)",
+      "wordMeaning": "만족스러운 상태",
+      "sentence": "행복은 멀리 있지 않고 일상 속에 있다.",
+      "relatedWords": "축복(祝福), 복지(福祉), 다복(多福)",
+      "id": 69
+    },
+    {
+      "char": "幸",
+      "reading": "행",
+      "meaning": "다행 행",
+      "koreanWord": "행복(幸福)",
+      "wordMeaning": "좋은 운수와 만족",
+      "sentence": "작은 것에 감사할 때 진정한 행복이 찾아온다.",
+      "relatedWords": "행운(幸運), 다행(多幸), 불행(不幸)",
+      "id": 70
+    },
+    {
+      "char": "感",
+      "reading": "감",
+      "meaning": "느낄 감",
+      "koreanWord": "감사(感謝)",
+      "wordMeaning": "고마움을 느낌",
+      "sentence": "감사하는 마음은 삶을 풍요롭게 만든다.",
+      "relatedWords": "감동(感動), 감정(感情), 실감(實感)",
+      "id": 71
+    },
+    {
+      "char": "謝",
+      "reading": "사",
+      "meaning": "사례할 사",
+      "koreanWord": "감사(感謝)",
+      "wordMeaning": "고맙게 여겨 인사함",
+      "sentence": "도움을 준 사람에게 감사의 인사를 전했다.",
+      "relatedWords": "사죄(謝罪), 사례(謝禮)",
+      "id": 72
+    },
+    {
+      "char": "祈",
+      "reading": "기",
+      "meaning": "빌 기",
+      "koreanWord": "기도(祈禱)",
+      "wordMeaning": "바라는 바를 빎",
+      "sentence": "매일 아침 기도로 하루를 시작하는 습관이 있다.",
+      "relatedWords": "기원(祈願)",
+      "id": 73
+    },
+    {
+      "char": "禱",
+      "reading": "도",
+      "meaning": "빌 도",
+      "koreanWord": "기도(祈禱)",
+      "wordMeaning": "신에게 간구함",
+      "sentence": "어려운 순간일수록 간절한 기도가 힘이 된다.",
+      "relatedWords": "묵도(默禱)",
+      "id": 74
+    },
+    {
+      "char": "敬",
+      "reading": "경",
+      "meaning": "공경 경",
+      "koreanWord": "존경(尊敬)",
+      "wordMeaning": "높이 받들어 공경함",
+      "sentence": "진심으로 존경받는 지도자는 먼저 섬긴다.",
+      "relatedWords": "경의(敬意), 공경(恭敬), 경례(敬禮)",
+      "id": 75
+    },
+    {
+      "char": "尊",
+      "reading": "존",
+      "meaning": "높을 존",
+      "koreanWord": "존중(尊重)",
+      "wordMeaning": "높이어 귀중히 여김",
+      "sentence": "서로의 다름을 존중할 때 공동체가 건강해진다.",
+      "relatedWords": "존경(尊敬), 자존(自尊), 존엄(尊嚴)",
+      "id": 76
+    },
+    {
+      "char": "友",
+      "reading": "우",
+      "meaning": "벗 우",
+      "koreanWord": "우정(友情)",
+      "wordMeaning": "친구 사이의 정",
+      "sentence": "진정한 우정은 어려울 때 빛을 발한다.",
+      "relatedWords": "우애(友愛), 교우(交友), 우호(友好)",
+      "id": 77
+    },
+    {
+      "char": "情",
+      "reading": "정",
+      "meaning": "뜻 정",
+      "koreanWord": "정서(情緖)",
+      "wordMeaning": "마음에 이는 감정",
+      "sentence": "음악은 사람의 정서를 안정시키는 힘이 있다.",
+      "relatedWords": "감정(感情), 우정(友情), 애정(愛情)",
+      "id": 78
+    },
+    {
+      "char": "協",
+      "reading": "협",
+      "meaning": "화합할 협",
+      "koreanWord": "협동(協同)",
+      "wordMeaning": "힘을 합쳐 함께 함",
+      "sentence": "협동하면 혼자서는 못 할 일도 해낼 수 있다.",
+      "relatedWords": "협력(協力), 협조(協助), 타협(妥協)",
+      "id": 79
+    },
+    {
+      "char": "同",
+      "reading": "동",
+      "meaning": "한가지 동",
+      "koreanWord": "공동(共同)",
+      "wordMeaning": "여럿이 함께 함",
+      "sentence": "공동의 목표가 있을 때 팀은 강해진다.",
+      "relatedWords": "동일(同一), 협동(協同), 동료(同僚)",
+      "id": 80
+    },
+    {
+      "char": "共",
+      "reading": "공",
+      "meaning": "함께 공",
+      "koreanWord": "공동체(共同體)",
+      "wordMeaning": "운명을 함께하는 집단",
+      "sentence": "건강한 공동체는 구성원의 신뢰 위에 세워진다.",
+      "relatedWords": "공감(共感), 공존(共存), 공유(共有)",
+      "id": 81
+    },
+    {
+      "char": "責",
+      "reading": "책",
+      "meaning": "꾸짖을 책",
+      "koreanWord": "책임(責任)",
+      "wordMeaning": "맡아서 해야 할 의무",
+      "sentence": "자신의 행동에 책임을 지는 것이 어른의 시작이다.",
+      "relatedWords": "책무(責務), 문책(問責)",
+      "id": 82
+    },
+    {
+      "char": "任",
+      "reading": "임",
+      "meaning": "맡길 임",
+      "koreanWord": "책임(責任)",
+      "wordMeaning": "맡겨진 임무",
+      "sentence": "주어진 책임을 성실히 감당하는 사람이 신뢰받는다.",
+      "relatedWords": "임무(任務), 담임(擔任), 신임(信任)",
+      "id": 83
+    },
+    {
+      "char": "規",
+      "reading": "규",
+      "meaning": "법 규",
+      "koreanWord": "규칙(規則)",
+      "wordMeaning": "정해진 법칙",
+      "sentence": "규칙적인 생활이 몸과 마음을 건강하게 한다.",
+      "relatedWords": "규정(規定), 규율(規律), 법규(法規)",
+      "id": 84
+    },
+    {
+      "char": "律",
+      "reading": "률",
+      "meaning": "법 률",
+      "koreanWord": "규율(規律)",
+      "wordMeaning": "지켜야 할 질서",
+      "sentence": "군대는 엄격한 규율 속에서 협동을 배우는 곳이다.",
+      "relatedWords": "법률(法律), 자율(自律), 율동(律動)",
+      "id": 85
+    },
+    {
+      "char": "自",
+      "reading": "자",
+      "meaning": "스스로 자",
+      "koreanWord": "자기(自己)",
+      "wordMeaning": "자신",
+      "sentence": "자기 관리를 잘하는 사람이 결국 앞서간다.",
+      "relatedWords": "자유(自由), 자신(自信), 자연(自然)",
+      "id": 86
+    },
+    {
+      "char": "由",
+      "reading": "유",
+      "meaning": "말미암을 유",
+      "koreanWord": "자유(自由)",
+      "wordMeaning": "구속 없이 행동함",
+      "sentence": "진정한 자유에는 책임이 뒤따른다.",
+      "relatedWords": "이유(理由), 경유(經由)",
+      "id": 87
+    },
+    {
+      "char": "己",
+      "reading": "기",
+      "meaning": "몸 기",
+      "koreanWord": "자기(自己)",
+      "wordMeaning": "자기 자신",
+      "sentence": "극기(克己)는 자신을 이기는 힘을 뜻한다.",
+      "relatedWords": "극기(克己), 이기(利己)",
+      "id": 88
+    },
+    {
+      "char": "克",
+      "reading": "극",
+      "meaning": "이길 극",
+      "koreanWord": "극복(克服)",
+      "wordMeaning": "어려움을 이겨냄",
+      "sentence": "한계를 극복한 경험은 평생의 자산이 된다.",
+      "relatedWords": "극기(克己), 초극(超克)",
+      "id": 89
+    },
+    {
+      "char": "服",
+      "reading": "복",
+      "meaning": "옷 복/따를 복",
+      "koreanWord": "극복(克服)",
+      "wordMeaning": "눌러 이겨냄",
+      "sentence": "두려움을 극복하려면 작은 도전부터 시작하라.",
+      "relatedWords": "복종(服從), 의복(衣服), 설복(說服)",
+      "id": 90
+    },
+    {
+      "char": "挑",
+      "reading": "도",
+      "meaning": "돋울 도",
+      "koreanWord": "도전(挑戰)",
+      "wordMeaning": "맞서 싸움을 걺",
+      "sentence": "새로운 일에 도전하는 용기가 성장을 만든다.",
+      "relatedWords": "도발(挑發)",
+      "id": 91
+    },
+    {
+      "char": "戰",
+      "reading": "전",
+      "meaning": "싸울 전",
+      "koreanWord": "도전(挑戰)",
+      "wordMeaning": "맞서 겨룸",
+      "sentence": "인생은 끊임없는 도전의 연속이다.",
+      "relatedWords": "전쟁(戰爭), 작전(作戰), 전투(戰鬪)",
+      "id": 92
+    },
+    {
+      "char": "復",
+      "reading": "복",
+      "meaning": "회복할 복",
+      "koreanWord": "회복(回復)",
+      "wordMeaning": "원래 상태로 돌아옴",
+      "sentence": "충분한 휴식은 빠른 회복을 돕는다.",
+      "relatedWords": "복습(復習), 복구(復舊), 광복(光復)",
+      "id": 93
+    },
+    {
+      "char": "回",
+      "reading": "회",
+      "meaning": "돌아올 회",
+      "koreanWord": "회복(回復)",
+      "wordMeaning": "본래대로 돌아감",
+      "sentence": "부상에서 회복한 뒤 그는 더 강해졌다.",
+      "relatedWords": "회전(回轉), 회의(回議), 만회(挽回)",
+      "id": 94
+    },
+    {
+      "char": "健",
+      "reading": "건",
+      "meaning": "굳셀 건",
+      "koreanWord": "건강(健康)",
+      "wordMeaning": "몸과 마음이 튼튼함",
+      "sentence": "건강을 잃으면 모든 것을 잃는 것과 같다.",
+      "relatedWords": "건전(健全), 보건(保健)",
+      "id": 95
+    },
+    {
+      "char": "康",
+      "reading": "강",
+      "meaning": "편안할 강",
+      "koreanWord": "건강(健康)",
+      "wordMeaning": "탈 없이 튼튼함",
+      "sentence": "건강한 몸에 건강한 정신이 깃든다.",
+      "relatedWords": "강녕(康寧)",
+      "id": 96
+    },
+    {
+      "char": "强",
+      "reading": "강",
+      "meaning": "강할 강",
+      "koreanWord": "강인(强靭)",
+      "wordMeaning": "굳세고 질김",
+      "sentence": "강인한 정신력은 반복된 훈련에서 나온다.",
+      "relatedWords": "강력(强力), 강조(强調), 최강(最强)",
+      "id": 97
+    },
+    {
+      "char": "弱",
+      "reading": "약",
+      "meaning": "약할 약",
+      "koreanWord": "약점(弱點)",
+      "wordMeaning": "모자라는 부분",
+      "sentence": "자신의 약점을 아는 것이 성장의 출발점이다.",
+      "relatedWords": "허약(虛弱), 약자(弱者), 나약(懦弱)",
+      "id": 98
+    },
+    {
+      "char": "始",
+      "reading": "시",
+      "meaning": "비로소 시",
+      "koreanWord": "시작(始作)",
+      "wordMeaning": "처음으로 함",
+      "sentence": "천 리 길도 한 걸음의 시작에서 비롯된다.",
+      "relatedWords": "시초(始初), 개시(開始), 원시(原始)",
+      "id": 99
+    },
+    {
+      "char": "終",
+      "reading": "종",
+      "meaning": "마칠 종",
+      "koreanWord": "종료(終了)",
+      "wordMeaning": "끝마침",
+      "sentence": "시작만큼 아름다운 종료를 준비하는 것도 중요하다.",
+      "relatedWords": "종말(終末), 최종(最終), 임종(臨終)",
+      "id": 100
+    },
+    {
+      "char": "完",
+      "reading": "완",
+      "meaning": "완전할 완",
+      "koreanWord": "완성(完成)",
+      "wordMeaning": "완전히 이룸",
+      "sentence": "180일 프로젝트의 완성을 향해 오늘도 나아간다.",
+      "relatedWords": "완주(完走), 완벽(完璧), 보완(補完)",
+      "id": 101
+    },
+    {
+      "char": "走",
+      "reading": "주",
+      "meaning": "달릴 주",
+      "koreanWord": "완주(完走)",
+      "wordMeaning": "끝까지 달림",
+      "sentence": "마라톤 완주는 속도가 아니라 꾸준함의 결과다.",
+      "relatedWords": "주행(走行), 도주(逃走), 폭주(暴走)",
+      "id": 102
+    },
+    {
+      "char": "未",
+      "reading": "미",
+      "meaning": "아닐 미",
+      "koreanWord": "미래(未來)",
+      "wordMeaning": "아직 오지 않은 때",
+      "sentence": "오늘의 준비가 밝은 미래를 만든다.",
+      "relatedWords": "미완(未完), 미만(未滿), 미정(未定)",
+      "id": 103
+    },
+    {
+      "char": "來",
+      "reading": "래",
+      "meaning": "올 래",
+      "koreanWord": "미래(未來)",
+      "wordMeaning": "앞으로 다가올 날",
+      "sentence": "미래는 준비하는 자에게 기회를 준다.",
+      "relatedWords": "내일(來日), 왕래(往來), 유래(由來)",
+      "id": 104
+    },
+    {
+      "char": "過",
+      "reading": "과",
+      "meaning": "지날 과",
+      "koreanWord": "과거(過去)",
+      "wordMeaning": "지나간 때",
+      "sentence": "과거의 실수를 배움으로 삼으면 성장한다.",
+      "relatedWords": "과정(過程), 통과(通過), 초과(超過)",
+      "id": 105
+    },
+    {
+      "char": "去",
+      "reading": "거",
+      "meaning": "갈 거",
+      "koreanWord": "과거(過去)",
+      "wordMeaning": "지나가 버린 시간",
+      "sentence": "과거에 머물지 말고 현재에 최선을 다하자.",
+      "relatedWords": "제거(除去), 철거(撤去)",
+      "id": 106
+    },
+    {
+      "char": "現",
+      "reading": "현",
+      "meaning": "나타날 현",
+      "koreanWord": "현재(現在)",
+      "wordMeaning": "지금 이 순간",
+      "sentence": "현재에 충실한 삶이 가장 지혜로운 삶이다.",
+      "relatedWords": "현실(現實), 표현(表現), 출현(出現)",
+      "id": 107
+    },
+    {
+      "char": "在",
+      "reading": "재",
+      "meaning": "있을 재",
+      "koreanWord": "존재(存在)",
+      "wordMeaning": "실제로 있음",
+      "sentence": "모든 사람은 존재만으로 소중한 가치를 지닌다.",
+      "relatedWords": "현재(現在), 재학(在學), 잠재(潛在)",
+      "id": 108
+    },
+    {
+      "char": "知",
+      "reading": "지",
+      "meaning": "알 지",
+      "koreanWord": "지식(知識)",
+      "wordMeaning": "배워서 아는 것",
+      "sentence": "지식은 나눌수록 커지는 특별한 자산이다.",
+      "relatedWords": "지혜(知慧), 인지(認知), 무지(無知)",
+      "id": 109
+    },
+    {
+      "char": "識",
+      "reading": "식",
+      "meaning": "알 식",
+      "koreanWord": "지식(知識)",
+      "wordMeaning": "사물을 분별해 아는 것",
+      "sentence": "올바른 지식은 올바른 판단의 바탕이 된다.",
+      "relatedWords": "의식(意識), 상식(常識), 인식(認識)",
+      "id": 110
+    },
+    {
+      "char": "智",
+      "reading": "지",
+      "meaning": "슬기 지",
+      "koreanWord": "지혜(智慧)",
+      "wordMeaning": "사리를 밝게 아는 슬기",
+      "sentence": "지식보다 지혜로운 사람이 세상을 이끈다.",
+      "relatedWords": "지능(智能)",
+      "id": 111
+    },
+    {
+      "char": "慧",
+      "reading": "혜",
+      "meaning": "슬기로울 혜",
+      "koreanWord": "지혜(智慧)",
+      "wordMeaning": "밝고 슬기로움",
+      "sentence": "지혜는 경험과 성찰을 통해 깊어진다.",
+      "relatedWords": "혜안(慧眼)",
+      "id": 112
+    },
+    {
+      "char": "讀",
+      "reading": "독",
+      "meaning": "읽을 독",
+      "koreanWord": "독서(讀書)",
+      "wordMeaning": "책을 읽음",
+      "sentence": "독서는 마음의 양식이라 불릴 만큼 중요하다.",
+      "relatedWords": "독자(讀者), 낭독(朗讀), 정독(精讀)",
+      "id": 113
+    },
+    {
+      "char": "書",
+      "reading": "서",
+      "meaning": "글 서",
+      "koreanWord": "서적(書籍)",
+      "wordMeaning": "책",
+      "sentence": "좋은 서적 한 권이 인생의 방향을 바꾸기도 한다.",
+      "relatedWords": "독서(讀書), 성서(聖書), 문서(文書)",
+      "id": 114
+    },
+    {
+      "char": "文",
+      "reading": "문",
+      "meaning": "글월 문",
+      "koreanWord": "문화(文化)",
+      "wordMeaning": "삶의 방식과 정신적 산물",
+      "sentence": "각 나라의 문화를 존중하는 태도가 필요하다.",
+      "relatedWords": "문장(文章), 문학(文學), 논문(論文)",
+      "id": 115
+    },
+    {
+      "char": "化",
+      "reading": "화",
+      "meaning": "될 화",
+      "koreanWord": "변화(變化)",
+      "wordMeaning": "바뀌어 달라짐",
+      "sentence": "작은 습관의 변화가 인생을 바꾼다.",
+      "relatedWords": "문화(文化), 화학(化學), 진화(進化)",
+      "id": 116
+    },
+    {
+      "char": "變",
+      "reading": "변",
+      "meaning": "변할 변",
+      "koreanWord": "변화(變化)",
+      "wordMeaning": "모습이 달라짐",
+      "sentence": "두려워하지 말고 변화를 성장의 기회로 삼자.",
+      "relatedWords": "변경(變更), 변동(變動), 급변(急變)",
+      "id": 117
+    },
+    {
+      "char": "世",
+      "reading": "세",
+      "meaning": "세상 세",
+      "koreanWord": "세상(世上)",
+      "wordMeaning": "사람이 살아가는 사회",
+      "sentence": "세상을 바꾸려면 먼저 자신을 바꿔야 한다.",
+      "relatedWords": "세계(世界), 세대(世代), 별세(別世)",
+      "id": 118
+    },
+    {
+      "char": "界",
+      "reading": "계",
+      "meaning": "지경 계",
+      "koreanWord": "세계(世界)",
+      "wordMeaning": "지구 위의 모든 지역",
+      "sentence": "세계 여러 나라가 환경 문제로 협력하고 있다.",
+      "relatedWords": "경계(境界), 한계(限界), 업계(業界)",
+      "id": 119
+    },
+    {
+      "char": "光",
+      "reading": "광",
+      "meaning": "빛 광",
+      "koreanWord": "영광(榮光)",
+      "wordMeaning": "빛나는 명예",
+      "sentence": "모든 영광을 하나님께 돌린다는 고백이 있다.",
+      "relatedWords": "광명(光明), 관광(觀光), 야광(夜光)",
+      "id": 120
+    },
+    {
+      "char": "明",
+      "reading": "명",
+      "meaning": "밝을 명",
+      "koreanWord": "광명(光明)",
+      "wordMeaning": "밝은 빛, 밝은 미래",
+      "sentence": "어둠이 깊을수록 광명은 더 밝게 빛난다.",
+      "relatedWords": "명확(明確), 설명(說明), 발명(發明)",
+      "id": 121
+    },
+    {
+      "char": "眞",
+      "reading": "진",
+      "meaning": "참 진",
+      "koreanWord": "진리(眞理)",
+      "wordMeaning": "참된 이치",
+      "sentence": "진리를 추구하는 삶은 흔들림이 적다.",
+      "relatedWords": "진실(眞實), 진심(眞心), 사진(寫眞)",
+      "id": 122
+    },
+    {
+      "char": "理",
+      "reading": "리",
+      "meaning": "다스릴 리",
+      "koreanWord": "이치(理致)",
+      "wordMeaning": "사물의 정당한 도리",
+      "sentence": "자연의 이치를 이해하면 삶이 겸손해진다.",
+      "relatedWords": "이유(理由), 관리(管理), 정리(整理)",
+      "id": 123
     }
   ],
   "metadata": {
-    "totalCharacters": 20,
-    "plannedTotal": 100,
-    "categories": ["기본 획수 문자", "자연 원소", "인간 관계", "도덕 덕행", "사회 용어", "학문 용어"],
-    "note": "여기 나열한 20개는 샘플입니다. 실제 운영 시 100개로 확장됩니다."
+    "totalCharacters": 123,
+    "description": "한국에서 자주 쓰이는 한자 - 뜻, 한국용어, 용어풀이, 예문 포함",
+    "features": [
+      "훈음",
+      "한국용어",
+      "용어의미",
+      "구체적예문",
+      "관련단어"
+    ]
   }
 }

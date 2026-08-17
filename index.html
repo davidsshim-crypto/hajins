@@ -1,1767 +1,533 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>180일 전인적 성장 프로젝트 - Hajin 입대 준비 프로그램</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #1e3a8a;
-            --secondary: #d97706;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
-            --light-bg: #f9fafb;
-            --border: #e5e7eb;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-        }
-
-        body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--light-bg);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* 헤더 */
-        header {
-            background: linear-gradient(135deg, var(--primary), #1e40af);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .header-subtitle {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .countdown-section {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 1.5rem auto;
-            max-width: 900px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .countdown-item {
-            text-align: center;
-            background: rgba(255,255,255,0.15);
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--accent);
-        }
-
-        .countdown-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* 탭 네비게이션 */
-        .nav-tabs {
-            display: flex;
-            gap: 0.5rem;
-            padding: 1rem;
-            background: white;
-            border-bottom: 2px solid var(--border);
-            flex-wrap: wrap;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-tab {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            background: transparent;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-light);
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-
-        .nav-tab:hover {
-            color: var(--primary);
-        }
-
-        .nav-tab.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
-
-        /* 컨테이너 */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* 카드 레이아웃 */
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--primary);
-        }
-
-        .card h2 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .card h3 {
-            font-size: 1.1rem;
-            margin: 1.5rem 0 1rem;
-            color: var(--text-dark);
-        }
-
-        /* 폼 요소 */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-family: inherit;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
-        }
-
-        /* 버튼 */
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #1e3a8a;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #059669;
-        }
-
-        .btn-secondary {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .btn-secondary:hover {
-            background: #b45309;
-        }
-
-        .btn-danger {
-            background: var(--danger);
-            color: white;
-        }
-
-        .btn-small {
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-        }
-
-        /* 그리드 레이아웃 */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* 오늘의 목표 */
-        .today-goals {
-            background: linear-gradient(135deg, #fef3c7, #fef08a);
-            padding: 1.5rem;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent);
-            margin-bottom: 2rem;
-        }
-
-        .today-goals h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .goal-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem;
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-        }
-
-        .goal-checkbox {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-        }
-
-        .goal-item.completed {
-            opacity: 0.6;
-        }
-
-        .goal-item.completed .goal-text {
-            text-decoration: line-through;
-        }
-
-        /* 진행률 바 */
-        .progress-bar {
-            background: var(--border);
-            height: 12px;
-            border-radius: 6px;
-            overflow: hidden;
-            margin: 0.5rem 0;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        /* 통계 박스 */
-        .stat-box {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            border-top: 4px solid var(--primary);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin: 0.5rem 0;
-        }
-
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* 단어 카드 */
-        .word-card {
-            background: white;
-            border: 2px solid var(--primary);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .word-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.15);
-        }
-
-        .word-card.flipped {
-            background: var(--primary);
-            color: white;
-        }
-
-        .word-main {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 1rem 0;
-        }
-
-        .word-detail {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            margin: 1rem 0;
-        }
-
-        /* 퀴즈 카드 */
-        .quiz-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .quiz-question {
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .quiz-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.75rem;
-        }
-
-        .option {
-            padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: white;
-        }
-
-        .option:hover {
-            border-color: var(--primary);
-            background: rgba(30, 58, 138, 0.05);
-        }
-
-        .option.selected {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .option.correct {
-            background: var(--success);
-            color: white;
-            border-color: var(--success);
-        }
-
-        .option.incorrect {
-            background: var(--danger);
-            color: white;
-            border-color: var(--danger);
-        }
-
-        /* 메시지 박스 */
-        .message-box {
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid;
-        }
-
-        .message-info {
-            background: #dbeafe;
-            border-left-color: #0284c7;
-            color: #0c4a6e;
-        }
-
-        .message-success {
-            background: #dcfce7;
-            border-left-color: #15803d;
-            color: #166534;
-        }
-
-        .message-warning {
-            background: #fef08a;
-            border-left-color: #ca8a04;
-            color: #78350f;
-        }
-
-        .message-error {
-            background: #fee2e2;
-            border-left-color: #dc2626;
-            color: #7f1d1d;
-        }
-
-        /* 응답 섹션 */
-        .ai-response {
-            background: #f0f9ff;
-            border-left: 4px solid var(--primary);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-            line-height: 1.8;
-        }
-
-        .ai-response strong {
-            color: var(--primary);
-        }
-
-        /* 데이터 테이블 */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .data-table th {
-            background: var(--primary);
-            color: white;
-            padding: 1rem;
-            text-align: left;
-            font-weight: 500;
-        }
-
-        .data-table td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .data-table tr:hover {
-            background: var(--light-bg);
-        }
-
-        /* 로딩 스피너 */
-        .spinner {
-            border: 4px solid var(--border);
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 2rem auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* 반응형 */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.4rem;
-            }
-
-            .nav-tabs {
-                gap: 0.25rem;
-            }
-
-            .nav-tab {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            .card {
-                padding: 1.5rem;
-            }
-
-            .countdown-section {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .word-main {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* 하단 네비게이션 (모바일) */
-        .bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            border-top: 1px solid var(--border);
-            box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
-        }
-
-        @media (max-width: 600px) {
-            .nav-tabs {
-                display: none;
-            }
-
-            .container {
-                padding-bottom: 6rem;
-            }
-
-            .bottom-nav {
-                display: flex;
-                justify-content: space-around;
-            }
-
-            .bottom-nav button {
-                flex: 1;
-                padding: 1rem;
-                border: none;
-                background: transparent;
-                cursor: pointer;
-                font-size: 0.8rem;
-                color: var(--text-light);
-                transition: all 0.3s ease;
-            }
-
-            .bottom-nav button.active {
-                color: var(--primary);
-            }
-        }
-
-        /* 영적 메시지 */
-        .spiritual-message {
-            background: linear-gradient(135deg, #fef3c7, #ffeaa7);
-            border-left: 4px solid var(--secondary);
-            padding: 1.5rem;
-            border-radius: 8px;
-            font-style: italic;
-            color: #78350f;
-            margin-bottom: 2rem;
-        }
-
-        .spiritual-message strong {
-            color: var(--secondary);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>180일 전인적 성장 프로젝트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  /* 요일 테마 기본값 (월요일) - JS가 매일 덮어씀 */
+  --bg:#0f1b2d;
+  --surface:#16273f;
+  --surface-2:#1e3350;
+  --ink:#eaf1fb;
+  --ink-soft:#a9bdd8;
+  --accent:#4a90d9;
+  --accent-2:#f0b429;
+  --line:rgba(255,255,255,0.08);
+  --good:#3fb27f;
+  --bad:#e0576b;
+  --radius:16px;
+  --shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans KR',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  transition:background .6s ease,color .6s ease;
+  min-height:100vh;
+  padding-bottom:80px;
+}
+.serif{font-family:'Gowun Batang',serif}
+
+/* ===== 헤더 ===== */
+header{
+  background:linear-gradient(160deg,var(--surface),var(--bg));
+  border-bottom:1px solid var(--line);
+  padding:24px 20px 28px;
+  position:relative;
+  overflow:hidden;
+}
+header::after{
+  content:"";position:absolute;top:-40%;right:-10%;width:320px;height:320px;
+  background:radial-gradient(circle,var(--accent) 0%,transparent 70%);
+  opacity:.12;pointer-events:none;
+}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.brand{font-size:1.35rem;font-weight:900;letter-spacing:-.5px}
+.brand small{display:block;font-size:.72rem;font-weight:400;color:var(--ink-soft);letter-spacing:1px;margin-top:2px}
+.day-badge{
+  background:var(--surface-2);border:1px solid var(--line);
+  padding:6px 14px;border-radius:999px;font-size:.8rem;color:var(--ink-soft);
+  display:flex;align-items:center;gap:8px;
+}
+.day-dot{width:9px;height:9px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 10px var(--accent-2)}
+
+/* 카운트다운 스트립 */
+.counters{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px;
+}
+.counter{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 10px;text-align:center;position:relative;
+}
+.counter .num{font-size:1.7rem;font-weight:900;color:var(--accent-2);line-height:1}
+.counter .lbl{font-size:.68rem;color:var(--ink-soft);margin-top:6px;letter-spacing:.5px}
+
+/* ===== 탭 네비 ===== */
+.tabs{
+  display:flex;gap:4px;padding:10px 12px;overflow-x:auto;
+  background:var(--surface);border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;-webkit-overflow-scrolling:touch;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;padding:9px 15px;border:none;background:transparent;color:var(--ink-soft);
+  font-family:inherit;font-size:.9rem;font-weight:500;cursor:pointer;border-radius:10px;
+  transition:.25s;white-space:nowrap;
+}
+.tab:hover{color:var(--ink)}
+.tab.active{background:var(--accent);color:#fff;font-weight:700}
+
+/* ===== 레이아웃 ===== */
+.wrap{max-width:920px;margin:0 auto;padding:22px 16px}
+.view{display:none;animation:fade .4s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;margin-bottom:18px;box-shadow:var(--shadow);
+}
+.card h2{font-size:1.15rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.card h3{font-size:1rem;font-weight:700;margin:14px 0 10px;color:var(--ink)}
+.muted{color:var(--ink-soft);font-size:.9rem}
+
+/* 오늘의 한마디 */
+.daily-quote{
+  background:linear-gradient(135deg,var(--surface-2),var(--surface));
+  border:1px solid var(--line);border-left:4px solid var(--accent-2);
+  border-radius:var(--radius);padding:24px;margin-bottom:18px;position:relative;
+}
+.daily-quote .phase-tag{
+  display:inline-block;font-size:.72rem;color:var(--accent-2);font-weight:700;
+  letter-spacing:1px;margin-bottom:10px;text-transform:uppercase;
+}
+.daily-quote .msg{font-family:'Gowun Batang',serif;font-size:1.28rem;line-height:1.75;font-weight:700}
+.daily-quote .verse{
+  margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);
+  font-size:.9rem;color:var(--ink-soft);font-style:italic;
+}
+.daily-quote .verse b{color:var(--accent-2);font-style:normal}
+
+/* 진행 바 */
+.bar{background:var(--surface-2);height:12px;border-radius:99px;overflow:hidden;margin:8px 0}
+.bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));border-radius:99px;transition:width .5s ease}
+
+/* 목표 체크 */
+.goal{
+  display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:12px;margin-bottom:8px;transition:.25s;
+}
+.goal input{width:22px;height:22px;accent-color:var(--good);cursor:pointer;flex:0 0 auto}
+.goal .g-txt b{font-size:.95rem}
+.goal .g-txt span{display:block;font-size:.8rem;color:var(--ink-soft);margin-top:2px}
+.goal.done{opacity:.55}
+.goal.done .g-txt b{text-decoration:line-through}
+
+/* 통계 그리드 */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.stat{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:12px;
+  padding:16px;text-align:center;
+}
+.stat .v{font-size:1.6rem;font-weight:900;color:var(--accent)}
+.stat .l{font-size:.72rem;color:var(--ink-soft);margin-top:4px}
+
+/* 폼 */
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.85rem;font-weight:500;margin-bottom:6px;color:var(--ink-soft)}
+.field input,.field select,.field textarea{
+  width:100%;padding:11px 13px;background:var(--bg);color:var(--ink);
+  border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent)}
+.field textarea{resize:vertical;min-height:80px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.grid2{grid-template-columns:1fr}}
+
+/* 버튼 */
+.btn{
+  padding:11px 18px;border:none;border-radius:10px;font-family:inherit;font-size:.92rem;
+  font-weight:700;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;gap:7px;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{filter:brightness(1.1)}
+.btn-accent{background:var(--accent-2);color:#20160a}
+.btn-accent:hover{filter:brightness(1.05)}
+.btn-ghost{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--accent)}
+.btn-good{background:var(--good);color:#fff}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+
+/* 단어/한자 카드 */
+.flash{
+  background:linear-gradient(150deg,var(--surface-2),var(--surface));
+  border:2px solid var(--accent);border-radius:var(--radius);padding:30px 24px;text-align:center;
+  cursor:pointer;transition:.3s;position:relative;user-select:none;
+}
+.flash:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.35)}
+.flash .headword{font-size:2.3rem;font-weight:900;letter-spacing:-.5px}
+.flash .pron{font-size:1.05rem;color:var(--accent-2);margin-top:6px;font-family:'Gowun Batang',serif}
+.flash .pos{display:inline-block;margin-top:10px;font-size:.72rem;background:var(--accent);color:#fff;padding:3px 12px;border-radius:99px}
+.flash .mean{font-size:1.25rem;font-weight:700;margin-top:14px;min-height:1.2em}
+.flash .hint{font-size:.75rem;color:var(--ink-soft);margin-top:12px}
+.hanja-char{font-size:4.5rem;font-weight:900;font-family:'Gowun Batang',serif;line-height:1.1}
+
+/* 정보 박스 */
+.infobox{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:12px;
+  padding:16px;margin-top:14px;
+}
+.infobox .tag{font-size:.72rem;font-weight:700;color:var(--accent-2);letter-spacing:.5px;margin-bottom:6px}
+.infobox .en{font-size:1rem;font-weight:500;margin-bottom:4px}
+.infobox .ko{font-size:.9rem;color:var(--ink-soft)}
+.infobox .analysis{font-size:.88rem;line-height:1.7;margin-top:4px}
+
+/* 퀴즈 */
+.opt{
+  padding:14px 16px;background:var(--surface-2);border:2px solid var(--line);border-radius:12px;
+  cursor:pointer;transition:.2s;margin-bottom:9px;font-size:.95rem;
+}
+.opt:hover{border-color:var(--accent)}
+.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 20%,var(--surface-2))}
+.opt.correct{border-color:var(--good);background:color-mix(in srgb,var(--good) 22%,var(--surface-2))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 22%,var(--surface-2))}
+
+/* 결과 박스 */
+.result{border-radius:12px;padding:16px;margin-top:14px;border:1px solid var(--line)}
+.result.ok{background:color-mix(in srgb,var(--good) 15%,var(--surface));border-color:var(--good)}
+.result.no{background:color-mix(in srgb,var(--bad) 15%,var(--surface));border-color:var(--bad)}
+.result .verdict{font-weight:700;margin-bottom:8px}
+.result .exp{font-size:.9rem;line-height:1.7;color:var(--ink)}
+
+/* 복습 그리드 */
+.review-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}
+.review-item{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:14px;font-size:.85rem;
+}
+.review-item .w{font-weight:700;font-size:.95rem}
+.review-item .m{color:var(--ink-soft);margin-top:3px}
+.review-item.hanja-r{text-align:center}
+.review-item.hanja-r .c{font-size:2rem;font-family:'Gowun Batang',serif}
+
+/* AI 코칭 */
+.coach-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.coach-tag{
+  padding:8px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:99px;
+  cursor:pointer;font-size:.85rem;transition:.2s;
+}
+.coach-tag:hover{border-color:var(--accent)}
+.coach-tag.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.coach-response{
+  background:linear-gradient(150deg,var(--surface-2),var(--surface));
+  border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;
+  padding:20px;margin-top:16px;line-height:1.8;font-size:.95rem;
+}
+.coach-response h4{color:var(--accent-2);margin-bottom:10px;font-size:1.05rem}
+.coach-response .metric{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)}
+.coach-response .metric b{color:var(--accent)}
+.spinner{width:34px;height:34px;border:3px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;margin:20px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 하단 모바일 네비 */
+.mobile-nav{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;
+  background:var(--surface);border-top:1px solid var(--line);
+}
+.mobile-nav button{
+  flex:1;padding:10px 4px;border:none;background:transparent;color:var(--ink-soft);
+  font-family:inherit;font-size:.65rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;
+}
+.mobile-nav button .ico{font-size:1.15rem}
+.mobile-nav button.active{color:var(--accent)}
+@media(max-width:640px){
+  .tabs{display:none}
+  .mobile-nav{display:flex}
+  .counters{grid-template-columns:repeat(2,1fr)}
+  .flash .headword{font-size:1.9rem}
+}
+
+/* 셀렉트 옵션 색상 보정 */
+select option{background:var(--surface);color:var(--ink)}
+
+/* 요일 표시 도트 */
+.weekday-strip{display:flex;gap:6px;margin-top:14px;justify-content:center;flex-wrap:wrap}
+.wd{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-soft)}
+.wd.today{background:var(--accent);color:#fff;border-color:var(--accent);transform:scale(1.12)}
+
+/* 저장 토스트 */
+.toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--good);color:#fff;padding:12px 22px;border-radius:99px;font-weight:700;font-size:.9rem;
+  opacity:0;pointer-events:none;transition:.3s;z-index:200;box-shadow:var(--shadow);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
 </head>
 <body>
-    <header>
-        <h1>🏃 180일 전인적 성장 프로젝트</h1>
-        <p class="header-subtitle">몸 · 마음 · 지식 · 영혼의 균형잡힌 성장</p>
-        
-        <div class="countdown-section">
-            <div class="countdown-item">
-                <div class="countdown-number" id="daysRemaining">180</div>
-                <div class="countdown-label">입대까지</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="fitnessScore">0</div>
-                <div class="countdown-label">체력점수</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="wordsLearned">0</div>
-                <div class="countdown-label">단어 학습</div>
-            </div>
-            <div class="countdown-item">
-                <div class="countdown-number" id="triviaScore">0</div>
-                <div class="countdown-label">상식 정답</div>
-            </div>
-        </div>
-    </header>
 
-    <nav class="nav-tabs">
-        <button class="nav-tab active" onclick="switchTab('dashboard')">📊 대시보드</button>
-        <button class="nav-tab" onclick="switchTab('fitness')">💪 체력</button>
-        <button class="nav-tab" onclick="switchTab('english')">🌍 영어</button>
-        <button class="nav-tab" onclick="switchTab('trivia')">🧠 상식</button>
-        <button class="nav-tab" onclick="switchTab('hanja')">🔤 한자</button>
-        <button class="nav-tab" onclick="switchTab('coaching')">🤖 AI 코칭</button>
-    </nav>
+<header>
+  <div class="header-top">
+    <div class="brand">180일 전인적 성장 프로젝트<small>몸 · 마음 · 지식 · 영혼의 균형</small></div>
+    <div class="day-badge"><span class="day-dot"></span><span id="weekdayLabel">월요일</span></div>
+  </div>
+  <div class="counters">
+    <div class="counter"><div class="num" id="cDday">D-180</div><div class="lbl">입대까지</div></div>
+    <div class="counter"><div class="num" id="cFitness">0</div><div class="lbl">체력점수</div></div>
+    <div class="counter"><div class="num" id="cWords">0</div><div class="lbl">영어 누적</div></div>
+    <div class="counter"><div class="num" id="cHanja">0</div><div class="lbl">한자 누적</div></div>
+  </div>
+  <div class="weekday-strip" id="weekdayStrip"></div>
+</header>
 
-    <div class="container">
-        <!-- 대시보드 탭 -->
-        <div id="dashboard" class="tab-content active">
-            <div class="spiritual-message">
-                <strong>"네가 무엇을 하든지 마음을 다하여 주께 하듯 하고 사람에게 하듯 하지 말라."</strong><br>
-                — 골로새서 3:23
-            </div>
+<nav class="tabs">
+  <button class="tab active" data-view="dashboard">📊 대시보드</button>
+  <button class="tab" data-view="fitness">💪 체력</button>
+  <button class="tab" data-view="english">🌍 영어</button>
+  <button class="tab" data-view="trivia">🧠 상식</button>
+  <button class="tab" data-view="hanja">🔤 한자</button>
+  <button class="tab" data-view="coaching">🤖 AI코칭</button>
+  <button class="tab" data-view="settings">⚙️ 설정</button>
+</nav>
 
-            <div class="card">
-                <h2>📅 오늘의 목표</h2>
-                <div class="today-goals" id="todayGoals"></div>
-            </div>
+<div class="wrap">
 
-            <div class="grid-2">
-                <div class="stat-box">
-                    <div class="stat-label">오늘 완료율</div>
-                    <div class="stat-number" id="todayCompletionRate">0%</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="todayProgressFill" style="width: 0%"></div>
-                    </div>
-                </div>
-
-                <div class="stat-box">
-                    <div class="stat-label">이번 주 완료율</div>
-                    <div class="stat-number" id="weekCompletionRate">0%</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="weekProgressFill" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>📈 성장 그래프</h2>
-                <canvas id="growthChart" height="80"></canvas>
-            </div>
-
-            <div class="card">
-                <h2>🎯 주간 요약</h2>
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>항목</th>
-                            <th>목표</th>
-                            <th>달성</th>
-                            <th>진도율</th>
-                        </tr>
-                    </thead>
-                    <tbody id="weeklySummary">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 체력 탭 -->
-        <div id="fitness" class="tab-content">
-            <div class="card">
-                <h2>💪 오늘의 운동 기록</h2>
-                
-                <div class="form-group">
-                    <label>기상 시간</label>
-                    <input type="time" id="wakeupTime" onchange="updateFitnessData()">
-                </div>
-
-                <div class="form-group">
-                    <label>팔굽혀펴기 (회)</label>
-                    <input type="number" id="pushups" min="0" onchange="updateFitnessData()">
-                </div>
-
-                <div class="form-group">
-                    <label>턱걸이 (회)</label>
-                    <input type="number" id="pullups" min="0" onchange="updateFitnessData()">
-                </div>
-
-                <div class="form-group">
-                    <label>스쿼트 (회)</label>
-                    <input type="number" id="squats" min="0" onchange="updateFitnessData()">
-                </div>
-
-                <div class="form-group">
-                    <label>플랭크 (초)</label>
-                    <input type="number" id="plank" min="0" onchange="updateFitnessData()">
-                </div>
-
-                <div class="form-group">
-                    <label>달리기 (km)</label>
-                    <input type="number" id="running" min="0" step="0.1" onchange="updateFitnessData()">
-                </div>
-
-                <div class="form-group">
-                    <label>체중 (kg)</label>
-                    <input type="number" id="weight" min="0" step="0.1" onchange="updateFitnessData()">
-                </div>
-
-                <div class="form-group">
-                    <label>취침 시간</label>
-                    <input type="time" id="sleepTime" onchange="updateFitnessData()">
-                </div>
-
-                <div class="form-group">
-                    <label>컨디션 (1~5)</label>
-                    <select id="condition" onchange="updateFitnessData()">
-                        <option value="">선택하세요</option>
-                        <option value="1">1 - 매우 피곤함</option>
-                        <option value="2">2 - 피곤함</option>
-                        <option value="3">3 - 보통</option>
-                        <option value="4">4 - 좋음</option>
-                        <option value="5">5 - 최고의 컨디션</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>메모</label>
-                    <textarea id="fitnessMemo" onchange="updateFitnessData()"></textarea>
-                </div>
-
-                <button class="btn btn-primary" onclick="saveFitnessRecord()">✅ 오늘 운동 저장</button>
-            </div>
-
-            <div class="card">
-                <h2>📊 운동 성장 그래프</h2>
-                <canvas id="fitnessChart" height="80"></canvas>
-            </div>
-
-            <div class="card">
-                <h2>📋 최근 기록</h2>
-                <table class="data-table" id="fitnessHistory">
-                    <thead>
-                        <tr>
-                            <th>날짜</th>
-                            <th>팔굽혀펴기</th>
-                            <th>턱걸이</th>
-                            <th>스쿼트</th>
-                            <th>컨디션</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 영어 탭 -->
-        <div id="english" class="tab-content">
-            <div class="card">
-                <h2>🌍 오늘의 영어 단어</h2>
-                <div id="englishWord" class="word-card" onclick="toggleWordFlip(this)">
-                    <div class="word-main" id="wordDisplay">loading...</div>
-                    <div class="word-detail" id="wordMeaning"></div>
-                    <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 1rem;">
-                        클릭하여 뜻을 확인하세요
-                    </p>
-                </div>
-
-                <div id="wordExample" style="background: #f3f4f6; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <strong>예문:</strong> <span id="exampleText"></span>
-                </div>
-
-                <button class="btn btn-success" onclick="markWordAsMemorized()">✨ 암기 완료!</button>
-                <button class="btn btn-secondary" onclick="skipWord()">⏭️ 다음 단어</button>
-                <button class="btn btn-primary" onclick="reviewWords()">🔄 복습하기</button>
-            </div>
-
-            <div class="card">
-                <h2>📚 학습 통계</h2>
-                <div class="grid-2">
-                    <div class="stat-box">
-                        <div class="stat-label">오늘 학습</div>
-                        <div class="stat-number" id="todayWordsLearned">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">누적 학습</div>
-                        <div class="stat-number" id="totalWordsLearned">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">복습 필요</div>
-                        <div class="stat-number" id="wordsForReview">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">암기율</div>
-                        <div class="stat-number" id="memorizedRate">0%</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>🎓 복습 단어</h2>
-                <div id="reviewWordsList"></div>
-            </div>
-        </div>
-
-        <!-- 상식 탭 -->
-        <div id="trivia" class="tab-content">
-            <div class="card">
-                <h2>🧠 오늘의 상식 도전</h2>
-                <div class="quiz-card" id="triviaQuiz">
-                    <div class="quiz-question" id="triviaQuestion"></div>
-                    <div class="quiz-options" id="triviaOptions"></div>
-                    <button class="btn btn-primary" onclick="submitTriviaAnswer()">✓ 답변 제출</button>
-                    <button class="btn btn-secondary" onclick="skipTrivia()">⏭️ 건너뛰기</button>
-                </div>
-
-                <div id="triviaResult" style="display: none;"></div>
-            </div>
-
-            <div class="card">
-                <h2>📊 상식 점수</h2>
-                <div class="grid-2">
-                    <div class="stat-box">
-                        <div class="stat-label">오늘 정답</div>
-                        <div class="stat-number" id="todayTriviaCorrect">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">정답률</div>
-                        <div class="stat-number" id="triviaAccuracy">0%</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">총 도전</div>
-                        <div class="stat-number" id="triviaTotalAttempts">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">누적 점수</div>
-                        <div class="stat-number" id="triviaTotalScore">0</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>🏆 최근 기록</h2>
-                <table class="data-table" id="triviaHistory">
-                    <thead>
-                        <tr>
-                            <th>날짜</th>
-                            <th>카테고리</th>
-                            <th>결과</th>
-                            <th>점수</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- 한자 탭 -->
-        <div id="hanja" class="tab-content">
-            <div class="card">
-                <h2>🔤 오늘의 한자</h2>
-                <div class="word-card" style="background: linear-gradient(135deg, #f5f3ff, #ede9fe);">
-                    <div class="word-main" id="hanjaCharacter" style="font-size: 3.5rem;">水</div>
-                    <div class="word-detail" id="hanjaMeaning"></div>
-                </div>
-
-                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary); margin-bottom: 1.5rem;">
-                    <h4 style="color: var(--secondary); margin-bottom: 0.5rem;">📖 용례</h4>
-                    <p id="hanjaExample" style="font-size: 1rem; line-height: 1.6;"></p>
-                </div>
-
-                <div style="background: white; padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--primary); margin-bottom: 1.5rem;">
-                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">🎯 한국 용어</h4>
-                    <p id="hanjaKoreanWord" style="font-size: 1rem; font-weight: 500;"></p>
-                </div>
-
-                <button class="btn btn-success" onclick="markHanjaAsLearned()">✨ 학습 완료!</button>
-                <button class="btn btn-secondary" onclick="nextHanja()">⏭️ 다음 한자</button>
-            </div>
-
-            <div class="card">
-                <h2>📚 한자 학습 진도</h2>
-                <div class="grid-2">
-                    <div class="stat-box">
-                        <div class="stat-label">오늘 학습</div>
-                        <div class="stat-number" id="todayHanjaLearned">0</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-label">누적 학습</div>
-                        <div class="stat-number" id="totalHanjaLearned">0</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>🎓 배운 한자 복습</h2>
-                <div id="hanjaReviewList" class="grid-2"></div>
-            </div>
-        </div>
-
-        <!-- AI 코칭 탭 -->
-        <div id="coaching" class="tab-content">
-            <div class="card">
-                <h2>🤖 AI 코칭 시스템</h2>
-                
-                <div class="form-group">
-                    <label>오늘의 도전 주제를 선택하세요</label>
-                    <select id="coachingTopic" onchange="updateCoachingOptions()">
-                        <option value="">선택하세요</option>
-                        <option value="fitness">💪 체력 향상</option>
-                        <option value="motivation">🔥 동기부여</option>
-                        <option value="english">🌍 영어 학습</option>
-                        <option value="discipline">⚡ 자기 관리</option>
-                        <option value="nutrition">🥗 영양 조언</option>
-                        <option value="sleep">😴 수면 개선</option>
-                        <option value="spiritual">✝️ 영적 성장</option>
-                        <option value="general">📢 일반 조언</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>구체적인 질문이나 상황을 설명해주세요</label>
-                    <textarea id="coachingQuestion" placeholder="예: 요즘 팔굽혀펴기가 잘 안 늘고 있는데 어떻게 해야 할까요?"></textarea>
-                </div>
-
-                <button class="btn btn-primary" onclick="getCoaching()">🚀 AI 코칭 받기</button>
-            </div>
-
-            <div id="coachingResponse"></div>
-
-            <div class="card">
-                <h2>📋 최근 코칭 기록</h2>
-                <div id="coachingHistory"></div>
-            </div>
-        </div>
+  <!-- ===== 대시보드 ===== -->
+  <section id="dashboard" class="view active">
+    <div class="daily-quote">
+      <span class="phase-tag" id="phaseTag">시작과 습관</span>
+      <div class="msg serif" id="dailyMsg">오늘의 작은 시작이 180일 후의 나를 만든다.</div>
+      <div class="verse" id="dailyVerse"></div>
     </div>
 
-    <!-- 모바일 하단 네비게이션 -->
-    <nav class="bottom-nav">
-        <button class="active" onclick="switchTab('dashboard')">대시보드</button>
-        <button onclick="switchTab('fitness')">체력</button>
-        <button onclick="switchTab('english')">영어</button>
-        <button onclick="switchTab('trivia')">상식</button>
-        <button onclick="switchTab('hanja')">한자</button>
-        <button onclick="switchTab('coaching')">코칭</button>
-    </nav>
-
-    <script>
-        // ============================================
-        // 글로벌 상태 관리
-        // ============================================
-        const APP_STATE = {
-            startDate: localStorage.getItem('startDate') || new Date().toISOString().split('T')[0],
-            daysRemaining: parseInt(localStorage.getItem('daysRemaining')) || 180,
-            currentEnglishWordIndex: parseInt(localStorage.getItem('currentEnglishWordIndex')) || 0,
-            currentTriviaIndex: parseInt(localStorage.getItem('currentTriviaIndex')) || 0,
-            currentHanjaIndex: parseInt(localStorage.getItem('currentHanjaIndex')) || 0,
-            englishWords: [],
-            triviaQuestions: [],
-            hanjaCharacters: [],
-            dailyRecords: JSON.parse(localStorage.getItem('dailyRecords')) || {},
-            wordProgress: JSON.parse(localStorage.getItem('wordProgress')) || {},
-            triviaProgress: JSON.parse(localStorage.getItem('triviaProgress')) || {},
-            hanjaProgress: JSON.parse(localStorage.getItem('hanjaProgress')) || {},
-            coachingHistory: JSON.parse(localStorage.getItem('coachingHistory')) || []
-        };
-
-        // ============================================
-        // 초기화
-        // ============================================
-        async function initializeApp() {
-            await loadData();
-            setupToday();
-            renderDashboard();
-            updateCountdown();
-        }
-
-        async function loadData() {
-            try {
-                // 영어 단어 로드
-                const vocabResponse = await fetch('data_vocabulary.json');
-                if (vocabResponse.ok) {
-                    const vocabData = await vocabResponse.json();
-                    APP_STATE.englishWords = vocabData.english;
-                }
-
-                // 상식 문제 로드
-                const triviaResponse = await fetch('data_trivia.json');
-                if (triviaResponse.ok) {
-                    const triviaData = await triviaResponse.json();
-                    APP_STATE.triviaQuestions = triviaData.trivia;
-                }
-
-                // 한자 로드
-                const hanjaResponse = await fetch('data_hanja.json');
-                if (hanjaResponse.ok) {
-                    const hanjaData = await hanjaResponse.json();
-                    APP_STATE.hanjaCharacters = hanjaData.hanja;
-                }
-            } catch (error) {
-                console.log('데이터 로드 중 오류 (로컬 파일 사용):', error);
-                // 테스트용 기본 데이터 사용
-                initializeDefaultData();
-            }
-        }
-
-        function initializeDefaultData() {
-            // 테스트용 기본 데이터
-            if (APP_STATE.englishWords.length === 0) {
-                APP_STATE.englishWords = [
-                    { id: 1, word: 'ability', meaning: '능력', example: 'He has the ability to lead.', partOfSpeech: 'noun' },
-                    { id: 2, word: 'accept', meaning: '받아들이다', example: 'I accept your offer.', partOfSpeech: 'verb' },
-                    { id: 3, word: 'achieve', meaning: '달성하다', example: 'She achieved her goal.', partOfSpeech: 'verb' }
-                ];
-            }
-
-            if (APP_STATE.triviaQuestions.length === 0) {
-                APP_STATE.triviaQuestions = [
-                    { id: 1, question: '한글은 언제 창제되었을까?', options: ['1392년', '1443년', '1594년', '1776년'], correctAnswer: 1, explanation: '세종대왕이 1443년에 한글을 창제했습니다.' },
-                    { id: 2, question: '한국에서 가장 높은 산은?', options: ['설악산', '지리산', '한라산', '북한산'], correctAnswer: 2, explanation: '한라산은 제주도의 최고봉입니다.' }
-                ];
-            }
-
-            if (APP_STATE.hanjaCharacters.length === 0) {
-                APP_STATE.hanjaCharacters = [
-                    { id: 1, character: '生', meaning: '살 생', koreanWord: '생명(生命)', example: '생명의 소중함', reading: '생' },
-                    { id: 2, character: '水', meaning: '물 수', koreanWord: '수력(水力)', example: '수력 발전', reading: '수' }
-                ];
-            }
-        }
-
-        function setupToday() {
-            const today = new Date().toISOString().split('T')[0];
-            if (!APP_STATE.dailyRecords[today]) {
-                APP_STATE.dailyRecords[today] = {
-                    date: today,
-                    fitness: {},
-                    english: { learned: 0, reviewed: 0 },
-                    trivia: { attempted: 0, correct: 0 },
-                    hanja: { learned: 0 }
-                };
-            }
-        }
-
-        // ============================================
-        // 탭 전환
-        // ============================================
-        function switchTab(tabName) {
-            // 모든 탭 숨기기
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-
-            // 모든 네비게이션 버튼 비활성화
-            document.querySelectorAll('.nav-tab, .bottom-nav button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // 선택된 탭 표시
-            document.getElementById(tabName).classList.add('active');
-
-            // 해당 네비게이션 버튼 활성화
-            document.querySelectorAll(`.nav-tab[onclick*="'${tabName}'"], .bottom-nav button[onclick*="'${tabName}'"]`).forEach(btn => {
-                btn.classList.add('active');
-            });
-
-            // 탭별 특수 처리
-            if (tabName === 'dashboard') {
-                renderDashboard();
-            } else if (tabName === 'english') {
-                renderEnglishWord();
-            } else if (tabName === 'trivia') {
-                renderTrivia();
-            } else if (tabName === 'hanja') {
-                renderHanja();
-            } else if (tabName === 'fitness') {
-                renderFitnessChart();
-            }
-        }
-
-        // ============================================
-        // 대시보드
-        // ============================================
-        function renderDashboard() {
-            updateCountdown();
-            renderTodayGoals();
-            renderWeeklySummary();
-            renderGrowthChart();
-        }
-
-        function updateCountdown() {
-            const today = new Date();
-            const startDate = new Date(APP_STATE.startDate);
-            const daysElapsed = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-            const daysRemaining = Math.max(0, APP_STATE.daysRemaining - daysElapsed);
-
-            document.getElementById('daysRemaining').textContent = daysRemaining;
-
-            // 다른 카운트도 업데이트
-            updateHeaderStats();
-        }
-
-        function updateHeaderStats() {
-            const today = new Date().toISOString().split('T')[0];
-            const todayData = APP_STATE.dailyRecords[today] || {};
-
-            let fitnessScore = 0;
-            if (todayData.fitness) {
-                fitnessScore = (todayData.fitness.pushups || 0) / 10 + 
-                              (todayData.fitness.pullups || 0) * 2 +
-                              (todayData.fitness.squats || 0) / 10 +
-                              (todayData.fitness.plank || 0) / 30;
-            }
-
-            let wordsLearned = 0;
-            let triviaCorrect = 0;
-            for (let date in APP_STATE.dailyRecords) {
-                wordsLearned += APP_STATE.dailyRecords[date].english?.learned || 0;
-                triviaCorrect += APP_STATE.dailyRecords[date].trivia?.correct || 0;
-            }
-
-            document.getElementById('fitnessScore').textContent = Math.round(fitnessScore);
-            document.getElementById('wordsLearned').textContent = wordsLearned;
-            document.getElementById('triviaScore').textContent = triviaCorrect;
-        }
-
-        function renderTodayGoals() {
-            const goalHtml = `
-                <div class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goalFitness" onchange="updateProgressBars()">
-                    <div class="goal-text">
-                        <strong>🏃 운동</strong><br>
-                        팔굽혀펴기 40회 · 턱걸이 5회 · 스쿼트 50회 · 플랭크 90초 · 달리기 3km
-                    </div>
-                </div>
-                <div class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goalEnglish" onchange="updateProgressBars()">
-                    <div class="goal-text">
-                        <strong>🌍 영어</strong><br>
-                        오늘의 단어 학습 + 복습 2회
-                    </div>
-                </div>
-                <div class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goalTrivia" onchange="updateProgressBars()">
-                    <div class="goal-text">
-                        <strong>🧠 상식</strong><br>
-                        오늘의 상식 도전 (정답률 70% 이상)
-                    </div>
-                </div>
-                <div class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goalHanja" onchange="updateProgressBars()">
-                    <div class="goal-text">
-                        <strong>🔤 한자</strong><br>
-                        오늘의 한자 학습 + 용례 숙지
-                    </div>
-                </div>
-                <div class="goal-item">
-                    <input type="checkbox" class="goal-checkbox" id="goalSleep" onchange="updateProgressBars()">
-                    <div class="goal-text">
-                        <strong>😴 생활습관</strong><br>
-                        정시 기상 · 7~8시간 수면 · 정시 취침
-                    </div>
-                </div>
-            `;
-            document.getElementById('todayGoals').innerHTML = goalHtml;
-            updateProgressBars();
-        }
-
-        function updateProgressBars() {
-            const checkboxes = document.querySelectorAll('.goal-checkbox');
-            let completed = 0;
-            checkboxes.forEach(cb => {
-                if (cb.checked) {
-                    completed++;
-                    cb.closest('.goal-item').classList.add('completed');
-                } else {
-                    cb.closest('.goal-item').classList.remove('completed');
-                }
-            });
-
-            const rate = Math.round((completed / checkboxes.length) * 100);
-            document.getElementById('todayCompletionRate').textContent = rate + '%';
-            document.getElementById('todayProgressFill').style.width = rate + '%';
-        }
-
-        function renderWeeklySummary() {
-            let html = '';
-            const categories = [
-                { name: '체력 (운동 회수)', key: 'fitness', unit: '회' },
-                { name: '영어 학습', key: 'english', unit: '개' },
-                { name: '상식 정답', key: 'trivia', unit: '개' },
-                { name: '한자 학습', key: 'hanja', unit: '개' }
-            ];
-
-            categories.forEach(cat => {
-                let total = 0;
-                for (let date in APP_STATE.dailyRecords) {
-                    const record = APP_STATE.dailyRecords[date][cat.key];
-                    if (cat.key === 'fitness') {
-                        total += (record?.pushups || 0) + (record?.pullups || 0) * 2 + (record?.squats || 0);
-                    } else if (cat.key === 'english') {
-                        total += record?.learned || 0;
-                    } else if (cat.key === 'trivia') {
-                        total += record?.correct || 0;
-                    } else if (cat.key === 'hanja') {
-                        total += record?.learned || 0;
-                    }
-                }
-                html += `<tr><td>${cat.name}</td><td>-</td><td>${total}</td><td>계속 중...</td></tr>`;
-            });
-
-            document.getElementById('weeklySummary').innerHTML = html;
-        }
-
-        function renderGrowthChart() {
-            const ctx = document.getElementById('growthChart').getContext('2d');
-            
-            // 날짜별 체력 점수 계산
-            const dates = [];
-            const scores = [];
-            for (let i = 0; i < 7; i++) {
-                const date = new Date();
-                date.setDate(date.getDate() - (6 - i));
-                const dateStr = date.toISOString().split('T')[0];
-                dates.push(dateStr.substring(5));
-
-                const record = APP_STATE.dailyRecords[dateStr];
-                let score = 0;
-                if (record && record.fitness) {
-                    score = (record.fitness.pushups || 0) / 10 + 
-                           (record.fitness.pullups || 0) * 2 +
-                           (record.fitness.squats || 0) / 10;
-                }
-                scores.push(Math.max(0, score));
-            }
-
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: dates,
-                    datasets: [{
-                        label: '체력 점수',
-                        data: scores,
-                        borderColor: '#1e3a8a',
-                        backgroundColor: 'rgba(30, 58, 138, 0.1)',
-                        tension: 0.4,
-                        fill: true,
-                        pointRadius: 5,
-                        pointBackgroundColor: '#1e3a8a'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    plugins: {
-                        legend: { display: true }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100
-                        }
-                    }
-                }
-            });
-        }
-
-        // ============================================
-        // 체력 관리
-        // ============================================
-        function updateFitnessData() {
-            // 실시간 업데이트
-        }
-
-        function saveFitnessRecord() {
-            const today = new Date().toISOString().split('T')[0];
-            const record = {
-                wakeupTime: document.getElementById('wakeupTime').value,
-                pushups: parseInt(document.getElementById('pushups').value) || 0,
-                pullups: parseInt(document.getElementById('pullups').value) || 0,
-                squats: parseInt(document.getElementById('squats').value) || 0,
-                plank: parseInt(document.getElementById('plank').value) || 0,
-                running: parseFloat(document.getElementById('running').value) || 0,
-                weight: parseFloat(document.getElementById('weight').value) || 0,
-                sleepTime: document.getElementById('sleepTime').value,
-                condition: document.getElementById('condition').value,
-                memo: document.getElementById('memo').value
-            };
-
-            if (!APP_STATE.dailyRecords[today]) {
-                APP_STATE.dailyRecords[today] = {
-                    date: today,
-                    fitness: {},
-                    english: {},
-                    trivia: {},
-                    hanja: {}
-                };
-            }
-
-            APP_STATE.dailyRecords[today].fitness = record;
-            localStorage.setItem('dailyRecords', JSON.stringify(APP_STATE.dailyRecords));
-
-            alert('✅ 오늘의 운동 기록이 저장되었습니다!');
-            renderFitnessChart();
-        }
-
-        function renderFitnessChart() {
-            const ctx = document.getElementById('fitnessChart').getContext('2d');
-            
-            const dates = [];
-            const pushupData = [];
-            const pullupData = [];
-            
-            for (let i = 0; i < 14; i++) {
-                const date = new Date();
-                date.setDate(date.getDate() - (13 - i));
-                const dateStr = date.toISOString().split('T')[0];
-                dates.push(dateStr.substring(5));
-
-                const record = APP_STATE.dailyRecords[dateStr];
-                pushupData.push(record?.fitness?.pushups || 0);
-                pullupData.push(record?.fitness?.pullups || 0);
-            }
-
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: dates,
-                    datasets: [
-                        {
-                            label: '팔굽혀펴기',
-                            data: pushupData,
-                            backgroundColor: '#1e3a8a'
-                        },
-                        {
-                            label: '턱걸이',
-                            data: pullupData,
-                            backgroundColor: '#d97706'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: { beginAtZero: true }
-                    }
-                }
-            });
-        }
-
-        // ============================================
-        // 영어 학습
-        // ============================================
-        function renderEnglishWord() {
-            if (APP_STATE.englishWords.length === 0) {
-                document.getElementById('englishWord').innerHTML = '<p>데이터 로딩 중...</p>';
-                return;
-            }
-
-            const word = APP_STATE.englishWords[APP_STATE.currentEnglishWordIndex % APP_STATE.englishWords.length];
-            document.getElementById('wordDisplay').textContent = word.word.toUpperCase();
-            document.getElementById('wordMeaning').textContent = word.meaning;
-            document.getElementById('exampleText').textContent = word.example;
-
-            document.getElementById('englishWord').classList.remove('flipped');
-            
-            updateEnglishStats();
-        }
-
-        function toggleWordFlip(element) {
-            element.classList.toggle('flipped');
-        }
-
-        function markWordAsMemorized() {
-            const today = new Date().toISOString().split('T')[0];
-            const word = APP_STATE.englishWords[APP_STATE.currentEnglishWordIndex % APP_STATE.englishWords.length];
-            
-            if (!APP_STATE.wordProgress[word.id]) {
-                APP_STATE.wordProgress[word.id] = { learned: false, reviewCount: 0 };
-            }
-            APP_STATE.wordProgress[word.id].learned = true;
-
-            if (!APP_STATE.dailyRecords[today]) {
-                APP_STATE.dailyRecords[today] = { english: {} };
-            }
-            APP_STATE.dailyRecords[today].english.learned = (APP_STATE.dailyRecords[today].english.learned || 0) + 1;
-
-            localStorage.setItem('wordProgress', JSON.stringify(APP_STATE.wordProgress));
-            localStorage.setItem('dailyRecords', JSON.stringify(APP_STATE.dailyRecords));
-
-            alert('✨ 단어가 암기 목록에 추가되었습니다!');
-            nextWord();
-        }
-
-        function nextWord() {
-            APP_STATE.currentEnglishWordIndex++;
-            localStorage.setItem('currentEnglishWordIndex', APP_STATE.currentEnglishWordIndex);
-            renderEnglishWord();
-        }
-
-        function skipWord() {
-            nextWord();
-        }
-
-        function reviewWords() {
-            let reviewList = '<div class="grid-2">';
-            
-            for (let wordId in APP_STATE.wordProgress) {
-                const progress = APP_STATE.wordProgress[wordId];
-                if (progress.learned) {
-                    const word = APP_STATE.englishWords.find(w => w.id == wordId);
-                    if (word) {
-                        reviewList += `
-                            <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid #1e3a8a;">
-                                <strong>${word.word}</strong><br>
-                                ${word.meaning}<br>
-                                <small style="color: #6b7280;">${word.example}</small><br>
-                                <button class="btn btn-small btn-success" onclick="markWordAsReviewed(${wordId})">✓ 복습 완료</button>
-                            </div>
-                        `;
-                    }
-                }
-            }
-            
-            reviewList += '</div>';
-            document.getElementById('reviewWordsList').innerHTML = reviewList;
-        }
-
-        function markWordAsReviewed(wordId) {
-            APP_STATE.wordProgress[wordId].reviewCount++;
-            localStorage.setItem('wordProgress', JSON.stringify(APP_STATE.wordProgress));
-            alert('👏 복습이 완료되었습니다!');
-            reviewWords();
-        }
-
-        function updateEnglishStats() {
-            let learned = 0, reviewed = 0;
-            for (let wordId in APP_STATE.wordProgress) {
-                if (APP_STATE.wordProgress[wordId].learned) {
-                    learned++;
-                    reviewed += APP_STATE.wordProgress[wordId].reviewCount || 0;
-                }
-            }
-
-            document.getElementById('totalWordsLearned').textContent = learned;
-            document.getElementById('wordsForReview').textContent = Math.max(0, learned - reviewed);
-            document.getElementById('memorizedRate').textContent = 
-                Math.round((learned / (APP_STATE.englishWords.length || 1)) * 100) + '%';
-
-            const today = new Date().toISOString().split('T')[0];
-            const todayLearned = APP_STATE.dailyRecords[today]?.english?.learned || 0;
-            document.getElementById('todayWordsLearned').textContent = todayLearned;
-        }
-
-        // ============================================
-        // 상식 도전
-        // ============================================
-        function renderTrivia() {
-            if (APP_STATE.triviaQuestions.length === 0) {
-                document.getElementById('triviaQuiz').innerHTML = '<p>데이터 로딩 중...</p>';
-                return;
-            }
-
-            const question = APP_STATE.triviaQuestions[APP_STATE.currentTriviaIndex % APP_STATE.triviaQuestions.length];
-            document.getElementById('triviaQuestion').textContent = question.question;
-
-            let optionsHtml = '';
-            question.options.forEach((option, idx) => {
-                optionsHtml += `
-                    <div class="option" onclick="selectOption(this, ${idx})">
-                        ${String.fromCharCode(65 + idx)}) ${option}
-                    </div>
-                `;
-            });
-            document.getElementById('triviaOptions').innerHTML = optionsHtml;
-            document.getElementById('triviaResult').style.display = 'none';
-
-            updateTriviaStats();
-        }
-
-        function selectOption(element, index) {
-            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-            element.classList.add('selected');
-            element.dataset.selectedIndex = index;
-        }
-
-        function submitTriviaAnswer() {
-            const question = APP_STATE.triviaQuestions[APP_STATE.currentTriviaIndex % APP_STATE.triviaQuestions.length];
-            const selectedElement = document.querySelector('.option.selected');
-            
-            if (!selectedElement) {
-                alert('답을 선택해주세요!');
-                return;
-            }
-
-            const selectedIndex = parseInt(selectedElement.dataset.selectedIndex);
-            const isCorrect = selectedIndex === question.correctAnswer;
-
-            const today = new Date().toISOString().split('T')[0];
-            if (!APP_STATE.dailyRecords[today]) {
-                APP_STATE.dailyRecords[today] = { trivia: {} };
-            }
-            APP_STATE.dailyRecords[today].trivia.attempted = (APP_STATE.dailyRecords[today].trivia.attempted || 0) + 1;
-            if (isCorrect) {
-                APP_STATE.dailyRecords[today].trivia.correct = (APP_STATE.dailyRecords[today].trivia.correct || 0) + 1;
-            }
-
-            localStorage.setItem('dailyRecords', JSON.stringify(APP_STATE.dailyRecords));
-
-            let resultHtml = `
-                <div class="message-box ${isCorrect ? 'message-success' : 'message-error'}">
-                    <strong>${isCorrect ? '✅ 정답입니다!' : '❌ 틀렸습니다.'}</strong><br>
-                    정답: ${question.options[question.correctAnswer]}<br>
-                    <br>
-                    <strong>📖 해설:</strong><br>
-                    ${question.explanation}
-                </div>
-                <button class="btn btn-primary" onclick="nextTrivia()">⏭️ 다음 문제</button>
-            `;
-            
-            document.getElementById('triviaResult').innerHTML = resultHtml;
-            document.getElementById('triviaResult').style.display = 'block';
-
-            // 옵션 비활성화
-            document.querySelectorAll('.option').forEach(opt => {
-                opt.style.pointerEvents = 'none';
-            });
-        }
-
-        function nextTrivia() {
-            APP_STATE.currentTriviaIndex++;
-            localStorage.setItem('currentTriviaIndex', APP_STATE.currentTriviaIndex);
-            renderTrivia();
-        }
-
-        function skipTrivia() {
-            nextTrivia();
-        }
-
-        function updateTriviaStats() {
-            const today = new Date().toISOString().split('T')[0];
-            const todayData = APP_STATE.dailyRecords[today]?.trivia || {};
-            const attempted = todayData.attempted || 0;
-            const correct = todayData.correct || 0;
-
-            document.getElementById('todayTriviaCorrect').textContent = correct;
-            document.getElementById('triviaTotalAttempts').textContent = attempted;
-            
-            let totalAttempts = 0, totalCorrect = 0;
-            for (let date in APP_STATE.dailyRecords) {
-                totalAttempts += APP_STATE.dailyRecords[date].trivia?.attempted || 0;
-                totalCorrect += APP_STATE.dailyRecords[date].trivia?.correct || 0;
-            }
-
-            document.getElementById('triviaAccuracy').textContent = 
-                (totalAttempts > 0) ? Math.round((totalCorrect / totalAttempts) * 100) + '%' : '0%';
-            document.getElementById('triviaTotalScore').textContent = totalCorrect;
-        }
-
-        // ============================================
-        // 한자 학습
-        // ============================================
-        function renderHanja() {
-            if (APP_STATE.hanjaCharacters.length === 0) {
-                document.getElementById('hanjaCharacter').innerHTML = '데이터 로딩 중...';
-                return;
-            }
-
-            const hanja = APP_STATE.hanjaCharacters[APP_STATE.currentHanjaIndex % APP_STATE.hanjaCharacters.length];
-            document.getElementById('hanjaCharacter').textContent = hanja.character;
-            document.getElementById('hanjaMeaning').textContent = hanja.meaning;
-            document.getElementById('hanjaExample').textContent = hanja.example;
-            document.getElementById('hanjaKoreanWord').textContent = hanja.koreanWord;
-
-            updateHanjaStats();
-        }
-
-        function markHanjaAsLearned() {
-            const today = new Date().toISOString().split('T')[0];
-            const hanja = APP_STATE.hanjaCharacters[APP_STATE.currentHanjaIndex % APP_STATE.hanjaCharacters.length];
-
-            if (!APP_STATE.hanjaProgress[hanja.id]) {
-                APP_STATE.hanjaProgress[hanja.id] = { learned: false };
-            }
-            APP_STATE.hanjaProgress[hanja.id].learned = true;
-
-            if (!APP_STATE.dailyRecords[today]) {
-                APP_STATE.dailyRecords[today] = { hanja: {} };
-            }
-            APP_STATE.dailyRecords[today].hanja.learned = (APP_STATE.dailyRecords[today].hanja.learned || 0) + 1;
-
-            localStorage.setItem('hanjaProgress', JSON.stringify(APP_STATE.hanjaProgress));
-            localStorage.setItem('dailyRecords', JSON.stringify(APP_STATE.dailyRecords));
-
-            alert('✨ 한자가 학습 목록에 추가되었습니다!');
-            nextHanja();
-        }
-
-        function nextHanja() {
-            APP_STATE.currentHanjaIndex++;
-            localStorage.setItem('currentHanjaIndex', APP_STATE.currentHanjaIndex);
-            renderHanja();
-        }
-
-        function updateHanjaStats() {
-            let learned = 0;
-            for (let hanjaId in APP_STATE.hanjaProgress) {
-                if (APP_STATE.hanjaProgress[hanjaId].learned) {
-                    learned++;
-                }
-            }
-
-            document.getElementById('totalHanjaLearned').textContent = learned;
-
-            const today = new Date().toISOString().split('T')[0];
-            const todayLearned = APP_STATE.dailyRecords[today]?.hanja?.learned || 0;
-            document.getElementById('todayHanjaLearned').textContent = todayLearned;
-
-            // 복습 목록
-            let reviewList = '<div class="grid-2">';
-            for (let hanjaId in APP_STATE.hanjaProgress) {
-                if (APP_STATE.hanjaProgress[hanjaId].learned) {
-                    const hanja = APP_STATE.hanjaCharacters.find(h => h.id == hanjaId);
-                    if (hanja) {
-                        reviewList += `
-                            <div style="background: white; padding: 1rem; border-radius: 8px; border-left: 4px solid #d97706; text-align: center;">
-                                <div style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">${hanja.character}</div>
-                                <div style="color: #6b7280; font-size: 0.9rem; margin-bottom: 0.5rem;">${hanja.meaning}</div>
-                                <div style="color: #1e3a8a; font-weight: 500;">${hanja.koreanWord}</div>
-                            </div>
-                        `;
-                    }
-                }
-            }
-            reviewList += '</div>';
-            document.getElementById('hanjaReviewList').innerHTML = reviewList;
-        }
-
-        // ============================================
-        // AI 코칭 (Claude API)
-        // ============================================
-        async function getCoaching() {
-            const topic = document.getElementById('coachingTopic').value;
-            const question = document.getElementById('coachingQuestion').value;
-
-            if (!topic || !question) {
-                alert('주제와 질문을 모두 입력해주세요!');
-                return;
-            }
-
-            const responseDiv = document.getElementById('coachingResponse');
-            responseDiv.innerHTML = '<div class="spinner"></div>';
-
-            try {
-                // Claude API 호출 (서버 필요)
-                // 현재는 로컬 시뮬레이션
-                const coachingResponse = generateCoachingResponse(topic, question);
-                
-                const today = new Date().toISOString().split('T')[0];
-                APP_STATE.coachingHistory.unshift({
-                    date: today,
-                    topic: topic,
-                    question: question,
-                    response: coachingResponse
-                });
-                localStorage.setItem('coachingHistory', JSON.stringify(APP_STATE.coachingHistory));
-
-                responseDiv.innerHTML = `
-                    <div class="card">
-                        <h3>🤖 AI 코칭 응답</h3>
-                        <div class="ai-response">${coachingResponse}</div>
-                    </div>
-                `;
-
-                document.getElementById('coachingQuestion').value = '';
-            } catch (error) {
-                responseDiv.innerHTML = `
-                    <div class="message-box message-error">
-                        <strong>오류가 발생했습니다.</strong><br>
-                        ${error.message}
-                    </div>
-                `;
-            }
-        }
-
-        function generateCoachingResponse(topic, question) {
-            const responses = {
-                fitness: `
-                    <strong>💪 체력 향상 코칭</strong><br><br>
-                    당신의 질문을 분석했습니다: "${question}"<br><br>
-                    <strong>추천 전략:</strong><br>
-                    1. <strong>점진적 증가:</strong> 매주 5~10% 정도 운동량을 늘려보세요.<br>
-                    2. <strong>휴식의 중요성:</strong> 근육 회복을 위해 충분한 수면이 필수입니다.<br>
-                    3. <strong>다양한 운동:</strong> 같은 근육도 여러 각도에서 자극하세요.<br>
-                    4. <strong>영양 관리:</strong> 단백질 섭취를 늘려 근력 발달을 도와주세요.<br><br>
-                    <strong>이번 주 목표:</strong> 오늘보다 2회 더 많이 하는 것을 목표로 하세요!
-                `,
-                motivation: `
-                    <strong>🔥 동기부여 메시지</strong><br><br>
-                    "작은 것에 충실한 사람이 큰 것도 맡을 수 있습니다."<br>
-                    — 누가복음 16:10<br><br>
-                    지금 이 순간의 훈련이 180일 후 당신을 강하게 만들 것입니다.<br>
-                    오늘 하루를 충실하게 살아내세요. 그것이 가장 강력한 성장의 시작입니다.<br><br>
-                    <strong>오늘 하루의 성공을 축하합니다! 🎉</strong>
-                `,
-                english: `
-                    <strong>🌍 영어 학습 코칭</strong><br><br>
-                    영어 단어 암기의 핵심은 <strong>반복과 다양한 맥락</strong>입니다.<br><br>
-                    <strong>효과적인 학습법:</strong><br>
-                    1. <strong>스토리텔링:</strong> 단어를 문장에 넣어 이야기로 만들어보세요.<br>
-                    2. <strong>음성 녹음:</strong> 자신의 목소리로 단어를 녹음해 들어보세요.<br>
-                    3. <strong>일일 복습:</strong> 배운 단어를 매일 10개씩 복습하세요.<br>
-                    4. <strong>실생활 적용:</strong> 실제로 말하고 쓰며 사용해보세요.<br><br>
-                    당신은 이미 좋은 시작을 했습니다. 계속 앞으로 나아가세요! 💪
-                `,
-                discipline: `
-                    <strong>⚡ 자기 관리 코칭</strong><br><br>
-                    자기 관리는 단순히 의지의 문제가 아닙니다. 그것은 <strong>시스템과 습관</strong>입니다.<br><br>
-                    <strong>자기 관리 4단계:</strong><br>
-                    1. <strong>계획:</strong> 구체적인 목표를 세우세요.<br>
-                    2. <strong>기록:</strong> 매일 실행 결과를 기록하세요.<br>
-                    3. <strong>검토:</strong> 주 1회 진행 상황을 점검하세요.<br>
-                    4. <strong>조정:</strong> 필요하면 계획을 수정하세요.<br><br>
-                    당신이 지금 하고 있는 이 앱 사용 자체가 최고의 자기 관리입니다! 👏
-                `,
-                default: `
-                    <strong>🎯 일반 조언</strong><br><br>
-                    당신의 노력을 존경합니다!<br><br>
-                    성공의 공식:<br>
-                    <strong>좋은 목표 + 일관된 행동 + 정기적인 평가 = 성장</strong><br><br>
-                    180일이라는 기간은 충분하고도 남습니다.<br>
-                    오늘 하루하루가 내일의 더 나은 당신을 만듭니다.<br><br>
-                    계속하세요! 🚀
-                `
-            };
-
-            return responses[topic] || responses.default;
-        }
-
-        // ============================================
-        // 초기화
-        // ============================================
-        window.addEventListener('load', () => {
-            initializeApp();
-            setupToday();
-        });
-    </script>
+    <div class="card">
+      <h2>📅 오늘의 목표</h2>
+      <div id="goalList"></div>
+      <div style="margin-top:14px">
+        <div class="muted" style="display:flex;justify-content:space-between"><span>오늘 완료율</span><b id="todayRate">0%</b></div>
+        <div class="bar"><span id="todayBar" style="width:0%"></span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📈 종합 성장 그래프</h2>
+      <p class="muted" style="margin-bottom:14px">운동·영어·상식·한자·생활습관이 함께 성장하는 모습을 보여줍니다.</p>
+      <canvas id="growthChart" height="150"></canvas>
+    </div>
+
+    <div class="card">
+      <h2>🎯 영역별 누적 현황</h2>
+      <div class="stats" id="dashStats"></div>
+    </div>
+  </section>
+
+  <!-- ===== 체력 ===== -->
+  <section id="fitness" class="view">
+    <div class="card">
+      <h2>💪 오늘의 운동 기록</h2>
+      <p class="muted" style="margin-bottom:16px">각 항목을 입력하고 저장하면 아래 그래프가 실시간으로 반영됩니다.</p>
+      <div class="grid2">
+        <div class="field"><label>팔굽혀펴기 (회)</label><input type="number" id="f_pushups" min="0" placeholder="0"></div>
+        <div class="field"><label>턱걸이 (회)</label><input type="number" id="f_pullups" min="0" placeholder="0"></div>
+        <div class="field"><label>스쿼트 (회)</label><input type="number" id="f_squats" min="0" placeholder="0"></div>
+        <div class="field"><label>플랭크 (초)</label><input type="number" id="f_plank" min="0" placeholder="0"></div>
+        <div class="field"><label>달리기 (km)</label><input type="number" id="f_running" min="0" step="0.1" placeholder="0"></div>
+        <div class="field"><label>체중 (kg)</label><input type="number" id="f_weight" min="0" step="0.1" placeholder="0"></div>
+        <div class="field"><label>기상 시간</label><input type="time" id="f_wake"></div>
+        <div class="field"><label>취침 시간</label><input type="time" id="f_sleep"></div>
+      </div>
+      <div class="field"><label>컨디션 (1~5)</label>
+        <select id="f_condition">
+          <option value="">선택</option><option value="1">1 · 매우 피곤</option><option value="2">2 · 피곤</option>
+          <option value="3">3 · 보통</option><option value="4">4 · 좋음</option><option value="5">5 · 최상</option>
+        </select>
+      </div>
+      <div class="field"><label>메모</label><textarea id="f_memo" placeholder="오늘의 운동 느낌을 적어보세요"></textarea></div>
+      <button class="btn btn-primary" id="saveFitness">✅ 오늘 운동 저장</button>
+    </div>
+
+    <div class="card">
+      <h2>📊 종목별 성장 추이</h2>
+      <p class="muted" style="margin-bottom:14px">최근 14일간 종목마다 얼마나 성장했는지 실시간으로 보여줍니다.</p>
+      <canvas id="fitnessChart" height="160"></canvas>
+    </div>
+
+    <div class="card">
+      <h2>🏃 종목별 개별 그래프</h2>
+      <div class="btn-row" id="eventPicker" style="margin-bottom:14px"></div>
+      <canvas id="eventChart" height="140"></canvas>
+    </div>
+  </section>
+
+  <!-- ===== 영어 ===== -->
+  <section id="english" class="view">
+    <div class="card">
+      <h2>🌍 오늘의 영어 단어</h2>
+      <div class="flash" id="wordFlash">
+        <div class="headword" id="w_word">loading</div>
+        <div class="pron" id="w_pron"></div>
+        <div class="pos" id="w_pos"></div>
+        <div class="mean" id="w_mean" style="visibility:hidden"></div>
+        <div class="hint" id="w_hint">카드를 눌러 뜻을 확인하세요</div>
+      </div>
+      <div class="infobox">
+        <div class="tag">📖 예문</div>
+        <div class="en" id="w_ex"></div>
+        <div class="ko" id="w_exko"></div>
+      </div>
+      <div class="infobox">
+        <div class="tag">🔍 문장 구성 해설</div>
+        <div class="analysis" id="w_grammar"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-good" id="w_memorize">✨ 암기 완료</button>
+        <button class="btn btn-ghost" id="w_next">⏭️ 다음 단어</button>
+        <button class="btn btn-accent" id="w_review">🔄 복습 보기</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📚 학습 현황</h2>
+      <div class="stats" id="engStats"></div>
+    </div>
+
+    <div class="card" id="reviewCard" style="display:none">
+      <h2>🎓 복습할 단어</h2>
+      <div class="review-grid" id="wordReview"></div>
+    </div>
+  </section>
+
+  <!-- ===== 상식 ===== -->
+  <section id="trivia" class="view">
+    <div class="card">
+      <h2>🧠 오늘의 상식</h2>
+      <p class="muted" id="triviaCat" style="margin-bottom:12px"></p>
+      <div style="font-size:1.1rem;font-weight:700;margin-bottom:16px" id="triviaQ"></div>
+      <div id="triviaOpts"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="t_submit">✓ 제출</button>
+        <button class="btn btn-ghost" id="t_skip">⏭️ 다음</button>
+      </div>
+      <div id="triviaResult"></div>
+    </div>
+
+    <div class="card">
+      <h2>📊 상식 점수</h2>
+      <div class="stats" id="triviaStats"></div>
+    </div>
+  </section>
+
+  <!-- ===== 한자 ===== -->
+  <section id="hanja" class="view">
+    <div class="card">
+      <h2>🔤 오늘의 한자</h2>
+      <div class="flash" id="hanjaFlash" style="border-color:var(--accent-2)">
+        <div class="hanja-char" id="h_char">水</div>
+        <div class="pron" id="h_reading"></div>
+        <div class="mean" id="h_mean" style="visibility:hidden"></div>
+        <div class="hint" id="h_hint">카드를 눌러 뜻을 확인하세요</div>
+      </div>
+      <div class="infobox">
+        <div class="tag">🎯 한국 용어</div>
+        <div class="en" id="h_word"></div>
+        <div class="ko" id="h_wordmean"></div>
+      </div>
+      <div class="infobox">
+        <div class="tag">📝 예문</div>
+        <div class="analysis" id="h_sentence"></div>
+      </div>
+      <div class="infobox">
+        <div class="tag">🔗 관련 단어</div>
+        <div class="ko" id="h_related"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-good" id="h_learn">✨ 학습 완료</button>
+        <button class="btn btn-ghost" id="h_next">⏭️ 다음 한자</button>
+        <button class="btn btn-accent" id="h_review">🔄 복습 보기</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📚 한자 학습 현황</h2>
+      <div class="stats" id="hanjaStats"></div>
+    </div>
+
+    <div class="card" id="hanjaReviewCard" style="display:none">
+      <h2>🎓 배운 한자</h2>
+      <div class="review-grid" id="hanjaReview"></div>
+    </div>
+  </section>
+
+  <!-- ===== AI 코칭 ===== -->
+  <section id="coaching" class="view">
+    <div class="card">
+      <h2>🤖 AI 코칭</h2>
+      <p class="muted" style="margin-bottom:14px">지금까지의 기록을 분석해 프로젝트 수행 상태를 진단하고 맞춤 조언을 드립니다.</p>
+      <button class="btn btn-primary" id="c_diagnose" style="margin-bottom:8px">📋 현재 상태 진단받기</button>
+      <div id="diagnoseResult"></div>
+    </div>
+
+    <div class="card">
+      <h2>💬 맞춤 조언 요청</h2>
+      <p class="muted" style="margin-bottom:10px">주제를 선택하세요</p>
+      <div class="coach-tags" id="coachTags">
+        <span class="coach-tag" data-topic="fitness">💪 체력 성장</span>
+        <span class="coach-tag" data-topic="english">🌍 영어 공부</span>
+        <span class="coach-tag" data-topic="motivation">🔥 동기부여</span>
+        <span class="coach-tag" data-topic="discipline">⚡ 자기관리</span>
+        <span class="coach-tag" data-topic="sleep">😴 수면·생활</span>
+        <span class="coach-tag" data-topic="special">🎯 특별조언</span>
+      </div>
+      <div class="field" style="margin-top:14px"><label>구체적인 상황이나 질문 (선택)</label>
+        <textarea id="c_question" placeholder="예: 팔굽혀펴기가 3주째 35개에서 안 늘어요"></textarea></div>
+      <button class="btn btn-accent" id="c_ask">🚀 조언 받기</button>
+      <div id="coachResult"></div>
+    </div>
+  </section>
+
+  <!-- ===== 설정 ===== -->
+  <section id="settings" class="view">
+    <div class="card">
+      <h2>⚙️ 프로젝트 설정</h2>
+      <div class="field"><label>입대 예정일 (D-Day)</label><input type="date" id="s_dday"></div>
+      <p class="muted" style="margin-bottom:14px">입대일을 설정하면 카운트다운과 동기부여 메시지가 자동으로 맞춰집니다.</p>
+      <button class="btn btn-primary" id="s_save">저장</button>
+    </div>
+    <div class="card">
+      <h2>💾 데이터 관리</h2>
+      <p class="muted" style="margin-bottom:14px">기록은 이 기기의 브라우저에 안전하게 저장됩니다. 백업 파일로 내보내거나 복원할 수 있습니다.</p>
+      <div class="btn-row">
+        <button class="btn btn-ghost" id="s_export">📤 백업 내보내기</button>
+        <button class="btn btn-ghost" id="s_import">📥 백업 불러오기</button>
+        <button class="btn btn-ghost" id="s_reset" style="color:var(--bad)">🗑️ 전체 초기화</button>
+      </div>
+      <input type="file" id="importFile" accept=".json" style="display:none">
+    </div>
+  </section>
+
+</div>
+
+<nav class="mobile-nav">
+  <button class="active" data-view="dashboard"><span class="ico">📊</span>대시보드</button>
+  <button data-view="fitness"><span class="ico">💪</span>체력</button>
+  <button data-view="english"><span class="ico">🌍</span>영어</button>
+  <button data-view="trivia"><span class="ico">🧠</span>상식</button>
+  <button data-view="hanja"><span class="ico">🔤</span>한자</button>
+  <button data-view="coaching"><span class="ico">🤖</span>코칭</button>
+</nav>
+
+<div class="toast" id="toast">저장되었습니다</div>
+
+<script src="app.js"></script>
 </body>
 </html>
