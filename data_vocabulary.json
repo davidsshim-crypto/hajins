@@ -1,0 +1,150 @@
+{
+  "english": [
+    {
+      "id": 1,
+      "word": "ability",
+      "meaning": "능력, 재능",
+      "example": "He has the ability to lead.",
+      "partOfSpeech": "noun"
+    },
+    {
+      "id": 2,
+      "word": "about",
+      "meaning": "~에 관하여, 약",
+      "example": "Tell me about yourself.",
+      "partOfSpeech": "preposition"
+    },
+    {
+      "id": 3,
+      "word": "above",
+      "meaning": "~위에, 초과하여",
+      "example": "The sky is above us.",
+      "partOfSpeech": "preposition"
+    },
+    {
+      "id": 4,
+      "word": "abroad",
+      "meaning": "해외에, 국외로",
+      "example": "She travels abroad often.",
+      "partOfSpeech": "adverb"
+    },
+    {
+      "id": 5,
+      "word": "absolute",
+      "meaning": "절대적인, 확실한",
+      "example": "That's an absolute truth.",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "id": 6,
+      "word": "accept",
+      "meaning": "받아들이다, 수락하다",
+      "example": "I accept your offer.",
+      "partOfSpeech": "verb"
+    },
+    {
+      "id": 7,
+      "word": "access",
+      "meaning": "접근, 진입",
+      "example": "You have access to the library.",
+      "partOfSpeech": "noun"
+    },
+    {
+      "id": 8,
+      "word": "accident",
+      "meaning": "사고, 우연",
+      "example": "There was a car accident.",
+      "partOfSpeech": "noun"
+    },
+    {
+      "id": 9,
+      "word": "according",
+      "meaning": "~에 따르면",
+      "example": "According to the news...",
+      "partOfSpeech": "preposition"
+    },
+    {
+      "id": 10,
+      "word": "achieve",
+      "meaning": "달성하다, 성취하다",
+      "example": "She achieved her goal.",
+      "partOfSpeech": "verb"
+    },
+    {
+      "id": 11,
+      "word": "acid",
+      "meaning": "산(化學)",
+      "example": "Lemon juice contains acid.",
+      "partOfSpeech": "noun"
+    },
+    {
+      "id": 12,
+      "word": "acquire",
+      "meaning": "얻다, 습득하다",
+      "example": "He acquired new skills.",
+      "partOfSpeech": "verb"
+    },
+    {
+      "id": 13,
+      "word": "across",
+      "meaning": "~건너편에, 가로질러",
+      "example": "Walk across the street.",
+      "partOfSpeech": "preposition"
+    },
+    {
+      "id": 14,
+      "word": "act",
+      "meaning": "행동하다, 역할을 하다",
+      "example": "He acts in movies.",
+      "partOfSpeech": "verb"
+    },
+    {
+      "id": 15,
+      "word": "action",
+      "meaning": "행동, 조치",
+      "example": "Action is needed now.",
+      "partOfSpeech": "noun"
+    },
+    {
+      "id": 16,
+      "word": "active",
+      "meaning": "활발한, 적극적인",
+      "example": "He is an active person.",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "id": 17,
+      "word": "activity",
+      "meaning": "활동, 활동성",
+      "example": "Exercise is a healthy activity.",
+      "partOfSpeech": "noun"
+    },
+    {
+      "id": 18,
+      "word": "actor",
+      "meaning": "배우",
+      "example": "He is a famous actor.",
+      "partOfSpeech": "noun"
+    },
+    {
+      "id": 19,
+      "word": "actual",
+      "meaning": "실제의, 현실의",
+      "example": "What is the actual price?",
+      "partOfSpeech": "adjective"
+    },
+    {
+      "id": 20,
+      "word": "actually",
+      "meaning": "실제로, 사실상",
+      "example": "Actually, I don't know.",
+      "partOfSpeech": "adverb"
+    }
+  ],
+  "metadata": {
+    "totalWords": 20,
+    "plannedTotal": 1200,
+    "level": "Middle School Essential Vocabulary",
+    "note": "여기 나열한 20개는 샘플입니다. 실제 운영 시 1200개로 확장됩니다."
+  }
+}

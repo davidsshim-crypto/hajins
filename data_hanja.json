@@ -1,0 +1,210 @@
+{
+  "hanja": [
+    {
+      "id": 1,
+      "character": "生",
+      "meaning": "살 생",
+      "reading": "생",
+      "koreanWord": "생명(生命)",
+      "meaning_detail": "생명, 삶을 뜻합니다",
+      "example": "생명의 소중함을 배운다",
+      "frequency": "very_common"
+    },
+    {
+      "id": 2,
+      "character": "死",
+      "meaning": "죽을 사",
+      "reading": "사",
+      "koreanWord": "사망(死亡)",
+      "meaning_detail": "죽음, 끝을 뜻합니다",
+      "example": "죽음을 앞에 두다",
+      "frequency": "very_common"
+    },
+    {
+      "id": 3,
+      "character": "火",
+      "meaning": "불 화",
+      "reading": "화",
+      "koreanWord": "화염(火炎)",
+      "meaning_detail": "불, 열을 뜻합니다",
+      "example": "화염 방사기",
+      "frequency": "very_common"
+    },
+    {
+      "id": 4,
+      "character": "水",
+      "meaning": "물 수",
+      "reading": "수",
+      "koreanWord": "수력(水力)",
+      "meaning_detail": "물, 수분을 뜻합니다",
+      "example": "수력 발전",
+      "frequency": "very_common"
+    },
+    {
+      "id": 5,
+      "character": "木",
+      "meaning": "나무 목",
+      "reading": "목",
+      "koreanWord": "목재(木材)",
+      "meaning_detail": "나무, 식물을 뜻합니다",
+      "example": "목재 가공",
+      "frequency": "very_common"
+    },
+    {
+      "id": 6,
+      "character": "金",
+      "meaning": "쇠 금",
+      "reading": "금",
+      "koreanWord": "금속(金屬)",
+      "meaning_detail": "쇠, 귀금속을 뜻합니다",
+      "example": "금속 제련",
+      "frequency": "very_common"
+    },
+    {
+      "id": 7,
+      "character": "土",
+      "meaning": "흙 토",
+      "reading": "토",
+      "koreanWord": "토지(土地)",
+      "meaning_detail": "흙, 땅을 뜻합니다",
+      "example": "토지 개혁",
+      "frequency": "very_common"
+    },
+    {
+      "id": 8,
+      "character": "人",
+      "meaning": "사람 인",
+      "reading": "인",
+      "koreanWord": "인간(人間)",
+      "meaning_detail": "사람, 인류를 뜻합니다",
+      "example": "인간관계",
+      "frequency": "very_common"
+    },
+    {
+      "id": 9,
+      "character": "天",
+      "meaning": "하늘 천",
+      "reading": "천",
+      "koreanWord": "천체(天體)",
+      "meaning_detail": "하늘, 우주를 뜻합니다",
+      "example": "천체 관측",
+      "frequency": "very_common"
+    },
+    {
+      "id": 10,
+      "character": "地",
+      "meaning": "땅 지",
+      "reading": "지",
+      "koreanWord": "지구(地球)",
+      "meaning_detail": "땅, 지표면을 뜻합니다",
+      "example": "지구 온난화",
+      "frequency": "very_common"
+    },
+    {
+      "id": 11,
+      "character": "學",
+      "meaning": "배울 학",
+      "reading": "학",
+      "koreanWord": "학문(學問)",
+      "meaning_detail": "배움, 학문을 뜻합니다",
+      "example": "학문 연구",
+      "frequency": "very_common"
+    },
+    {
+      "id": 12,
+      "character": "業",
+      "meaning": "일 업",
+      "reading": "업",
+      "koreanWord": "사업(事業)",
+      "meaning_detail": "일, 산업을 뜻합니다",
+      "example": "사업 확장",
+      "frequency": "very_common"
+    },
+    {
+      "id": 13,
+      "character": "國",
+      "meaning": "나라 국",
+      "reading": "국",
+      "koreanWord": "국가(國家)",
+      "meaning_detail": "나라, 국민 공동체를 뜻합니다",
+      "example": "국가 발전",
+      "frequency": "very_common"
+    },
+    {
+      "id": 14,
+      "character": "民",
+      "meaning": "백성 민",
+      "reading": "민",
+      "koreanWord": "국민(國民)",
+      "meaning_detail": "백성, 국민을 뜻합니다",
+      "example": "국민 건강",
+      "frequency": "very_common"
+    },
+    {
+      "id": 15,
+      "character": "心",
+      "meaning": "마음 심",
+      "reading": "심",
+      "koreanWord": "심리(心理)",
+      "meaning_detail": "마음, 정신을 뜻합니다",
+      "example": "심리 치료",
+      "frequency": "very_common"
+    },
+    {
+      "id": 16,
+      "character": "道",
+      "meaning": "길 도",
+      "reading": "도",
+      "koreanWord": "도덕(道德)",
+      "meaning_detail": "길, 방법, 이치를 뜻합니다",
+      "example": "도덕 교육",
+      "frequency": "very_common"
+    },
+    {
+      "id": 17,
+      "character": "德",
+      "meaning": "덕 덕",
+      "reading": "덕",
+      "koreanWord": "덕행(德行)",
+      "meaning_detail": "덕, 품덕을 뜻합니다",
+      "example": "덕행 있는 사람",
+      "frequency": "very_common"
+    },
+    {
+      "id": 18,
+      "character": "信",
+      "meaning": "믿을 신",
+      "reading": "신",
+      "koreanWord": "신뢰(信賴)",
+      "meaning_detail": "믿음, 신용을 뜻합니다",
+      "example": "신뢰 관계",
+      "frequency": "very_common"
+    },
+    {
+      "id": 19,
+      "character": "和",
+      "meaning": "화할 화",
+      "reading": "화",
+      "koreanWord": "평화(平和)",
+      "meaning_detail": "화목, 조화를 뜻합니다",
+      "example": "평화 통일",
+      "frequency": "very_common"
+    },
+    {
+      "id": 20,
+      "character": "善",
+      "meaning": "좋을 선",
+      "reading": "선",
+      "koreanWord": "선행(善行)",
+      "meaning_detail": "선함, 착함을 뜻합니다",
+      "example": "선행 베풀기",
+      "frequency": "very_common"
+    }
+  ],
+  "metadata": {
+    "totalCharacters": 20,
+    "plannedTotal": 100,
+    "categories": ["기본 획수 문자", "자연 원소", "인간 관계", "도덕 덕행", "사회 용어", "학문 용어"],
+    "note": "여기 나열한 20개는 샘플입니다. 실제 운영 시 100개로 확장됩니다."
+  }
+}
