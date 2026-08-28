@@ -148,6 +148,155 @@ header::after{
 .finished-book .fb-period{font-size:.8rem;color:var(--ink-soft);margin-top:4px}
 .finished-book .fb-notes{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:.85rem;line-height:1.7}
 
+/* ===== 아빠 보상 카드 ===== */
+.reward-card{
+  border:1px solid var(--line);
+  background:linear-gradient(150deg,color-mix(in srgb,var(--accent-2) 12%,var(--surface)),var(--surface));
+}
+.reward-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.reward-title{font-size:1.1rem;font-weight:800}
+.reward-earned{
+  background:var(--accent-2);color:#20160a;padding:6px 12px;border-radius:99px;
+  font-weight:800;font-size:.82rem;flex:0 0 auto;
+}
+.week-dots{display:flex;gap:10px;margin-bottom:14px}
+.week-dot{
+  flex:1;aspect-ratio:1.4;border-radius:12px;background:var(--surface-2);border:2px dashed var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:.25s;
+}
+.week-dot span{font-size:1.4rem;font-weight:900;color:var(--ink-soft)}
+.week-dot small{font-size:.68rem;color:var(--ink-soft)}
+.week-dot.current{border-style:solid;border-color:var(--accent);background:color-mix(in srgb,var(--accent) 15%,var(--surface-2))}
+.week-dot.current span{color:var(--accent)}
+.week-dot.done{border-style:solid;border-color:var(--good);background:color-mix(in srgb,var(--good) 22%,var(--surface-2))}
+.week-dot.done span{color:var(--good)}
+.reward-status{font-size:.95rem;padding:12px 14px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--accent-2)}
+
+/* ===== 축하 모달 ===== */
+.reward-modal{
+  position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.reward-modal.show{display:flex;animation:fadeIn .3s ease}
+.reward-modal-box{
+  background:linear-gradient(160deg,var(--surface),var(--bg));
+  border:1px solid var(--line);border-radius:24px;padding:36px 28px;max-width:400px;width:100%;
+  text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:pop .45s ease;
+}
+.reward-confetti{font-size:3.5rem;animation:bounce 1s ease infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.reward-modal-title{font-size:1.6rem;font-weight:900;color:var(--accent-2);margin:10px 0}
+.reward-modal-msg{font-size:1rem;line-height:1.7;margin-bottom:18px}
+.reward-modal-verse{
+  font-family:'Gowun Batang',serif;font-style:italic;font-size:.9rem;color:var(--ink-soft);
+  padding:14px;background:var(--surface-2);border-radius:12px;margin-bottom:16px;line-height:1.6;
+}
+.reward-modal-count{font-size:.9rem;color:var(--ink-soft);margin-bottom:18px}
+.reward-modal-count b{color:var(--accent);font-size:1.2rem}
+
+/* ===== 연속 기록(스트릭) 배너 ===== */
+.streak-banner{
+  display:flex;align-items:center;gap:16px;
+  background:linear-gradient(135deg,var(--accent-2),var(--accent));
+  border-radius:var(--radius);padding:20px 22px;margin-bottom:18px;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;color:#fff;
+}
+.streak-banner::after{
+  content:"";position:absolute;right:-20px;bottom:-30px;width:140px;height:140px;
+  background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);pointer-events:none;
+}
+.streak-fire{font-size:2.8rem;line-height:1;filter:drop-shadow(0 2px 6px rgba(0,0,0,.2));flex:0 0 auto}
+.streak-fire.cold{filter:grayscale(1) opacity(.5)}
+.streak-body{flex:1;min-width:0}
+.streak-num{font-size:1rem;font-weight:900;display:flex;align-items:baseline;gap:4px}
+.streak-num span{font-size:2.4rem;line-height:1}
+.streak-num small{font-size:1rem;font-weight:700}
+.streak-msg{font-size:.85rem;opacity:.95;margin-top:2px}
+.streak-best{text-align:center;flex:0 0 auto;background:rgba(255,255,255,.18);border-radius:12px;padding:10px 14px}
+.streak-best-num{font-size:1.5rem;font-weight:900;line-height:1}
+.streak-best-lbl{font-size:.68rem;opacity:.9;margin-top:3px}
+
+/* ===== 오늘의 체크 ===== */
+.check-card h2{margin-bottom:6px}
+.check-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:18px}
+.check-btn{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:var(--surface-2);border:2px solid var(--line);border-radius:16px;
+  padding:20px 12px;cursor:pointer;transition:.25s;font-family:inherit;color:var(--ink);position:relative;
+}
+.check-btn:hover{border-color:var(--accent);transform:translateY(-2px)}
+.check-btn:active{transform:scale(.96)}
+.check-btn .c-ico{font-size:2rem;line-height:1;transition:.3s}
+.check-btn .c-name{font-size:.92rem;font-weight:700}
+.check-btn .c-state{font-size:.72rem;color:var(--ink-soft)}
+.check-btn.done{
+  background:color-mix(in srgb,var(--good) 22%,var(--surface-2));
+  border-color:var(--good);
+}
+.check-btn.done .c-ico{transform:scale(1.15)}
+.check-btn.done .c-state{color:var(--good);font-weight:700}
+.check-btn .c-check{
+  position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;
+  background:var(--good);color:#fff;display:none;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;
+}
+.check-btn.done .c-check{display:flex}
+.big-bar{height:16px}
+.all-done{
+  margin-top:16px;padding:14px;border-radius:12px;text-align:center;font-weight:700;
+  background:color-mix(in srgb,var(--good) 20%,var(--surface));border:1px solid var(--good);color:var(--ink);
+  animation:pop .4s ease;
+}
+@keyframes pop{0%{transform:scale(.9);opacity:0}60%{transform:scale(1.03)}100%{transform:scale(1);opacity:1}}
+
+/* ===== 습관 달력 ===== */
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-title{font-weight:700;font-size:1.05rem}
+.cal-nav{
+  background:var(--surface-2);border:1px solid var(--line);color:var(--ink);
+  width:36px;height:36px;border-radius:10px;cursor:pointer;font-size:1.2rem;font-family:inherit;transition:.2s;
+}
+.cal-nav:hover{border-color:var(--accent)}
+.cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+.cal-weekdays span{text-align:center;font-size:.72rem;color:var(--ink-soft);font-weight:700}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-cell{
+  aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-soft);position:relative;
+  transition:.2s;
+}
+.cal-cell.empty{background:transparent;border:none}
+.cal-cell.today{outline:2px solid var(--accent-2);outline-offset:1px;font-weight:900;color:var(--ink)}
+.cal-cell.future{opacity:.35}
+/* 달성 강도 색상 (0~5개) */
+.cal-cell.d0{}
+.cal-cell.d1{background:color-mix(in srgb,var(--good) 18%,var(--surface-2));color:var(--ink)}
+.cal-cell.d2{background:color-mix(in srgb,var(--good) 34%,var(--surface-2));color:var(--ink)}
+.cal-cell.d3{background:color-mix(in srgb,var(--good) 52%,var(--surface-2));color:#fff}
+.cal-cell.d4{background:color-mix(in srgb,var(--good) 72%,var(--surface-2));color:#fff}
+.cal-cell.d5{background:var(--good);color:#fff;font-weight:700}
+.cal-legend{display:flex;align-items:center;gap:5px;justify-content:flex-end;margin-top:12px}
+.leg{width:16px;height:16px;border-radius:4px;display:inline-block;border:1px solid var(--line)}
+.leg.l0{background:var(--surface-2)}
+.leg.l1{background:color-mix(in srgb,var(--good) 18%,var(--surface-2))}
+.leg.l2{background:color-mix(in srgb,var(--good) 34%,var(--surface-2))}
+.leg.l3{background:color-mix(in srgb,var(--good) 52%,var(--surface-2))}
+.leg.l4{background:color-mix(in srgb,var(--good) 72%,var(--surface-2))}
+.leg.l5{background:var(--good)}
+
+/* ===== 접기 카드 ===== */
+.fold-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:0;margin-bottom:18px;box-shadow:var(--shadow);overflow:hidden;
+}
+.fold-card summary{
+  padding:18px 22px;cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.fold-card summary::-webkit-details-marker{display:none}
+.fold-card summary::after{content:"▾";color:var(--ink-soft);transition:.2s}
+.fold-card[open] summary::after{transform:rotate(180deg)}
+.fold-card > div{padding:0 22px 22px}
+
 /* 오늘의 한마디 */
 .daily-quote{
   background:linear-gradient(135deg,var(--surface-2),var(--surface));
@@ -366,12 +515,64 @@ select option{background:var(--surface);color:var(--ink)}
       </div>
     </div>
 
+    <!-- 연속 기록 (스트릭) -->
+    <div class="streak-banner" id="streakBanner">
+      <div class="streak-fire" id="streakFire">🔥</div>
+      <div class="streak-body">
+        <div class="streak-num"><span id="streakDays">0</span><small>일 연속</small></div>
+        <div class="streak-msg" id="streakMsg">오늘 첫 체크를 시작해보세요!</div>
+      </div>
+      <div class="streak-best">
+        <div class="streak-best-num" id="streakBest">0</div>
+        <div class="streak-best-lbl">최고 기록</div>
+      </div>
+    </div>
+
+    <!-- 아빠 보상 도전 -->
+    <div class="card reward-card" id="rewardCard"></div>
+
+    <!-- 오늘의 체크 -->
+    <div class="card check-card">
+      <h2>✅ 오늘의 체크 <span class="muted" id="checkCount" style="font-weight:400;font-size:.9rem"></span></h2>
+      <p class="muted" style="margin-bottom:16px">양은 신경 쓰지 마세요. <b>했으면 누르기</b>, 그거면 충분합니다.</p>
+      <div class="check-grid" id="checkGrid"></div>
+      <div class="today-progress">
+        <div class="bar big-bar"><span id="todayBar" style="width:0%"></span></div>
+        <div class="muted" style="text-align:center;margin-top:8px"><b id="todayRate">0%</b> 완료</div>
+      </div>
+      <div class="all-done" id="allDone" style="display:none">
+        🎉 오늘 5가지를 모두 해냈습니다! 훌륭합니다.
+      </div>
+    </div>
+
+    <!-- 습관 달력 -->
+    <div class="card">
+      <h2>📅 습관 달력 <span class="muted" style="font-weight:400;font-size:.85rem">(색이 진할수록 많이 한 날)</span></h2>
+      <div class="cal-head">
+        <button class="cal-nav" id="calPrev">‹</button>
+        <div class="cal-title" id="calTitle">2026년 8월</div>
+        <button class="cal-nav" id="calNext">›</button>
+      </div>
+      <div class="cal-weekdays">
+        <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-legend">
+        <span class="muted">적음</span>
+        <span class="leg l0"></span><span class="leg l1"></span><span class="leg l2"></span>
+        <span class="leg l3"></span><span class="leg l4"></span><span class="leg l5"></span>
+        <span class="muted">많음</span>
+      </div>
+    </div>
+
+    <!-- 오늘의 한마디 -->
     <div class="daily-quote">
       <span class="phase-tag" id="phaseTag">시작과 습관</span>
       <div class="msg serif" id="dailyMsg">오늘의 작은 시작이 180일 후의 나를 만든다.</div>
       <div class="verse" id="dailyVerse"></div>
     </div>
 
+    <!-- 절기 + 독서를 한 줄로 축약 -->
     <div class="card">
       <h2>🌾 오늘의 절기</h2>
       <div id="solarTermInfo"><p class="muted">절기 정보를 불러오는 중...</p></div>
@@ -382,25 +583,18 @@ select option{background:var(--surface);color:var(--ink)}
       <div id="dashReading"></div>
     </div>
 
-    <div class="card">
-      <h2>📅 오늘의 목표</h2>
-      <div id="goalList"></div>
-      <div style="margin-top:14px">
-        <div class="muted" style="display:flex;justify-content:space-between"><span>오늘 완료율</span><b id="todayRate">0%</b></div>
-        <div class="bar"><span id="todayBar" style="width:0%"></span></div>
+    <!-- 접어둔 성장 그래프 -->
+    <details class="fold-card">
+      <summary>📈 종합 성장 그래프 보기</summary>
+      <div style="padding:16px 0 0">
+        <canvas id="growthChart" height="150"></canvas>
       </div>
-    </div>
+    </details>
 
-    <div class="card">
-      <h2>📈 종합 성장 그래프</h2>
-      <p class="muted" style="margin-bottom:14px">운동·영어·상식·한자·생활습관이 함께 성장하는 모습을 보여줍니다.</p>
-      <canvas id="growthChart" height="150"></canvas>
-    </div>
-
-    <div class="card">
-      <h2>🎯 영역별 누적 현황</h2>
-      <div class="stats" id="dashStats"></div>
-    </div>
+    <details class="fold-card">
+      <summary>🎯 영역별 누적 현황 보기</summary>
+      <div class="stats" id="dashStats" style="margin-top:16px"></div>
+    </details>
   </section>
 
   <!-- ===== 체력 ===== -->
@@ -635,6 +829,23 @@ select option{background:var(--surface);color:var(--ink)}
 </nav>
 
 <div class="toast" id="toast">저장되었습니다</div>
+
+<!-- 아빠 보상 축하 모달 -->
+<div class="reward-modal" id="rewardModal">
+  <div class="reward-modal-box">
+    <div class="reward-confetti">🎉</div>
+    <h2 class="reward-modal-title">축하합니다!</h2>
+    <p class="reward-modal-msg">
+      <b>3주 연속 매주 5일 이상</b>을 해냈습니다!<br>
+      약속했던 <b>아빠 보상</b>을 받을 시간입니다. 🎁
+    </p>
+    <div class="reward-modal-verse">
+      "네가 적은 일에 충성하였으매 내가 많은 것을 네게 맡기리니"<br><small>— 마태복음 25:21</small>
+    </div>
+    <p class="reward-modal-count">지금까지 아빠 보상 <b id="rewardCount">1</b>회 달성</p>
+    <button class="btn btn-accent" onclick="closeRewardModal()">아빠에게 보여주기 🏅</button>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>

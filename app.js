@@ -26,6 +26,8 @@ function loadState(){
     // 하위 호환: 이전 버전 데이터에 books가 없으면 추가
     if(!s.books) s.books = [];
     if(s.currentBookId === undefined) s.currentBookId = null;
+    if(s.bestStreak === undefined) s.bestStreak = 0;
+    if(s.rewardsClaimed === undefined) s.rewardsClaimed = 0;
     return s;
   }
   catch(e){ return defaultState(); }
@@ -40,6 +42,8 @@ function defaultState(){
     hanLearned: {},     // { hanjaId: true }
     books: [],          // [{id,title,author,pages,genre,why,startDate,endDate,currentPage,finished,notes:[{date,page,text}]}]
     currentBookId: null,
+    bestStreak: 0,      // 최고 연속 기록
+    rewardsClaimed: 0,  // 획득한 아빠 보상 횟수 (3주 세트 완료 시마다 +1)
   };
 }
 function save(){ localStorage.setItem(KEY, JSON.stringify(S)); }
@@ -89,8 +93,25 @@ async function init(){
   bindReading();
   bindCoaching();
   bindSettings();
+  bindCalendar();
   renderAll();
   startClock();
+  checkReward(); // 앱 시작 시 지난 주 달성분 확인
+}
+
+function bindCalendar(){
+  const prev = document.getElementById("calPrev");
+  const next = document.getElementById("calNext");
+  if(prev) prev.addEventListener("click", ()=>{
+    initCalendarMonth();
+    calMonth--; if(calMonth<0){ calMonth=11; calYear--; }
+    renderCalendar();
+  });
+  if(next) next.addEventListener("click", ()=>{
+    initCalendarMonth();
+    calMonth++; if(calMonth>11){ calMonth=0; calYear++; }
+    renderCalendar();
+  });
 }
 
 async function loadData(){
@@ -307,9 +328,12 @@ function fitnessScore(f){
    ========================================================= */
 function renderDashboard(){
   renderHeader();
+  renderStreak();
+  renderRewardCard();
+  renderCheckGrid();
+  renderCalendar();
   renderDailyMessage();
   renderDashReading();
-  renderGoals();
   renderGrowthChart();
   renderDashStats();
 }
@@ -344,44 +368,316 @@ function renderDailyMessage(){
     `"${m.bibleVerse}" &nbsp;<b>— ${m.bibleRef}</b>`;
 }
 
+/* ===== 체크 항목 정의 (5가지 핵심 습관) ===== */
 const GOALS = [
-  {id:"fitness", t:"운동", d:"팔굽혀펴기·턱걸이·스쿼트·플랭크·달리기"},
-  {id:"english", t:"영어", d:"오늘의 단어 학습 + 복습"},
-  {id:"trivia",  t:"상식", d:"오늘의 상식 도전"},
-  {id:"hanja",   t:"한자", d:"오늘의 한자 학습"},
-  {id:"reading", t:"독서", d:"오늘의 독서 진도 + 노트"},
-  {id:"life",    t:"생활습관", d:"정시 기상·7~8시간 수면·정시 취침"},
+  {id:"fitness", t:"운동", ico:"💪"},
+  {id:"english", t:"영어", ico:"🌍"},
+  {id:"trivia",  t:"상식", ico:"🧠"},
+  {id:"hanja",   t:"한자", ico:"🔤"},
+  {id:"reading", t:"독서", ico:"📖"},
 ];
-function renderGoals(){
+
+/* ===== 오늘의 체크 그리드 ===== */
+function renderCheckGrid(){
   const d = ensureDay(todayStr());
-  const box = document.getElementById("goalList");
+  const box = document.getElementById("checkGrid");
+  if(!box) return;
   box.innerHTML = "";
   GOALS.forEach(g=>{
     const done = !!d.goals[g.id];
-    const row = document.createElement("div");
-    row.className = "goal" + (done?" done":"");
-    row.innerHTML = `<input type="checkbox" ${done?"checked":""}>
-      <div class="g-txt"><b>${g.t}</b><span>${g.d}</span></div>`;
-    row.querySelector("input").addEventListener("change", e=>{
-      d.goals[g.id] = e.target.checked; save();
-      row.classList.toggle("done", e.target.checked);
-      updateGoalBar();
-    });
-    box.appendChild(row);
+    const btn = document.createElement("button");
+    btn.className = "check-btn" + (done?" done":"");
+    btn.innerHTML = `
+      <span class="c-check">✓</span>
+      <span class="c-ico">${g.ico}</span>
+      <span class="c-name">${g.t}</span>
+      <span class="c-state">${done?"완료!":"탭하여 체크"}</span>`;
+    btn.addEventListener("click", ()=> toggleCheck(g.id));
+    box.appendChild(btn);
   });
-  updateGoalBar();
+  updateTodayBar();
 }
-function updateGoalBar(){
+
+function toggleCheck(id){
+  const d = ensureDay(todayStr());
+  d.goals[id] = !d.goals[id];
+  // 스트릭 갱신 (오늘 하나라도 체크 시)
+  recomputeBestStreak();
+  save();
+  renderCheckGrid();
+  renderStreak();
+  renderRewardCard();
+  renderCalendar();
+  renderHeader();
+  // 전체 완료 시 축하
+  const allDone = GOALS.every(g=>d.goals[g.id]);
+  const el = document.getElementById("allDone");
+  if(el) el.style.display = allDone ? "block" : "none";
+  if(allDone) toast("🎉 오늘 5가지 모두 완료!");
+  // 아빠 보상 조건 확인 (3주 세트 완성 시 축하 모달)
+  checkReward();
+}
+
+function updateTodayBar(){
   const d = ensureDay(todayStr());
   const done = GOALS.filter(g=>d.goals[g.id]).length;
   const rate = Math.round(done/GOALS.length*100);
-  document.getElementById("todayRate").textContent = rate+"%";
-  document.getElementById("todayBar").style.width = rate+"%";
+  const bar = document.getElementById("todayBar");
+  const rateEl = document.getElementById("todayRate");
+  const cntEl = document.getElementById("checkCount");
+  if(bar) bar.style.width = rate+"%";
+  if(rateEl) rateEl.textContent = rate+"%";
+  if(cntEl) cntEl.textContent = `(${done}/${GOALS.length})`;
+  const allEl = document.getElementById("allDone");
+  if(allEl) allEl.style.display = (done===GOALS.length) ? "block" : "none";
 }
+
+/* ===== 연속 기록(스트릭) 계산 =====
+   "그 날 하나라도 체크한 날"을 활동일로 보고, 오늘부터 거슬러 연속 일수를 센다. */
+function dayDoneCount(dstr){
+  const rec = S.daily[dstr];
+  if(!rec || !rec.goals) return 0;
+  return GOALS.filter(g=>rec.goals[g.id]).length;
+}
+function isActiveDay(dstr){ return dayDoneCount(dstr) > 0; }
+
+function currentStreak(){
+  let streak = 0;
+  let cursor = todayStr();
+  // 오늘이 아직 미체크면 어제부터 세되, 오늘 체크했으면 오늘 포함
+  if(!isActiveDay(cursor)){
+    cursor = addDays(cursor, -1); // 오늘 안 했으면 어제까지의 연속을 보여줌
+  }
+  while(isActiveDay(cursor)){
+    streak++;
+    cursor = addDays(cursor, -1);
+  }
+  return streak;
+}
+function recomputeBestStreak(){
+  const cur = currentStreak();
+  // toggle 직후엔 아직 저장 전이므로, 오늘 포함 재계산
+  if(cur > (S.bestStreak||0)) S.bestStreak = cur;
+}
+
+/* =========================================================
+   주간 달성 & 아빠 보상
+   - 프로젝트 시작일부터 7일씩 끊어 "주"로 계산
+   - 한 주에 활동일(하루라도 체크한 날)이 5일 이상이면 그 주 "달성"
+   - 3주 연속 달성마다 아빠 보상 1회 (반복)
+   ========================================================= */
+const REWARD_TARGET_DAYS = 5;   // 주당 목표 달성일
+const REWARD_WEEKS = 3;         // 연속 달성 주 수
+
+// 특정 주차(0-based)의 시작일 반환
+function weekStartDate(weekIdx){
+  return addDays(S.startDate, weekIdx*7);
+}
+// 오늘이 프로젝트 몇 주차인지 (0-based)
+function currentWeekIndex(){
+  const elapsed = diffDays(S.startDate, todayStr());
+  return Math.floor(elapsed/7);
+}
+// 특정 주차의 활동일 수(5일 채웠는지)
+function weekActiveDays(weekIdx){
+  const start = weekStartDate(weekIdx);
+  let count = 0;
+  for(let i=0;i<7;i++){
+    const ds = addDays(start, i);
+    if(ds > todayStr()) break;       // 미래 날짜는 제외
+    if(isActiveDay(ds)) count++;
+  }
+  return count;
+}
+// 그 주가 "완료된 주"인지 (7일이 모두 과거이거나 오늘 포함 지났는지)
+function isWeekComplete(weekIdx){
+  const lastDay = addDays(weekStartDate(weekIdx), 6);
+  return lastDay <= todayStr();
+}
+// 그 주가 달성(5일 이상)됐는지
+function isWeekAchieved(weekIdx){
+  return weekActiveDays(weekIdx) >= REWARD_TARGET_DAYS;
+}
+
+// 지금까지 "완료되고 달성된" 주들을 바탕으로 3주 연속 세트가 몇 개 완성됐는지 계산
+function completedRewardSets(){
+  const curWeek = currentWeekIndex();
+  let consecutive = 0;
+  let sets = 0;
+  for(let w=0; w<=curWeek; w++){
+    // 완료된 주만 카운트 (진행 중인 주는 아직 확정 안 됨)
+    if(!isWeekComplete(w)) break;
+    if(isWeekAchieved(w)){
+      consecutive++;
+      if(consecutive === REWARD_WEEKS){ sets++; consecutive = 0; }
+    } else {
+      consecutive = 0;
+    }
+  }
+  return sets;
+}
+
+// 현재 진행 중인 3주 세트에서 몇 주 연속 달성 중인지 (완료된 주 기준)
+function currentRewardProgress(){
+  const curWeek = currentWeekIndex();
+  let consecutive = 0;
+  for(let w=0; w<=curWeek; w++){
+    if(!isWeekComplete(w)) break;
+    if(isWeekAchieved(w)){
+      consecutive++;
+      if(consecutive === REWARD_WEEKS) consecutive = 0; // 세트 완성되면 리셋
+    } else {
+      consecutive = 0;
+    }
+  }
+  return consecutive; // 0,1,2
+}
+
+// 보상 상태 점검 → 새 보상 발생 시 축하
+function checkReward(){
+  const earned = completedRewardSets();
+  if(earned > (S.rewardsClaimed||0)){
+    S.rewardsClaimed = earned;
+    save();
+    showRewardCelebration();
+  }
+}
+
+function showRewardCelebration(){
+  const modal = document.getElementById("rewardModal");
+  if(!modal) return;
+  document.getElementById("rewardCount").textContent = S.rewardsClaimed;
+  modal.classList.add("show");
+}
+function closeRewardModal(){
+  const modal = document.getElementById("rewardModal");
+  if(modal) modal.classList.remove("show");
+  renderRewardCard();
+}
+
+function renderStreak(){
+  const s = currentStreak();
+  if(s > (S.bestStreak||0)){ S.bestStreak = s; save(); }
+  const numEl = document.getElementById("streakDays");
+  const msgEl = document.getElementById("streakMsg");
+  const bestEl = document.getElementById("streakBest");
+  const fireEl = document.getElementById("streakFire");
+  if(!numEl) return;
+  numEl.textContent = s;
+  bestEl.textContent = S.bestStreak||0;
+
+  const todayDone = dayDoneCount(todayStr());
+  if(s===0){
+    fireEl.classList.add("cold");
+    msgEl.textContent = "오늘 첫 체크로 불씨를 살려보세요! 🔥";
+  } else {
+    fireEl.classList.remove("cold");
+    if(todayDone===0){
+      msgEl.textContent = `어제까지 ${s}일 연속! 오늘도 이어가면 ${s+1}일이 됩니다.`;
+    } else if(todayDone===GOALS.length){
+      msgEl.textContent = `${s}일 연속 · 오늘 완벽 달성! 이 기세를 이어가세요.`;
+    } else {
+      msgEl.textContent = `${s}일 연속 유지 중! 오늘 ${GOALS.length-todayDone}개 더 하면 완벽합니다.`;
+    }
+  }
+}
+
+/* ===== 아빠 보상 진행 카드 ===== */
+function renderRewardCard(){
+  const el = document.getElementById("rewardCard");
+  if(!el) return;
+
+  const curWeek = currentWeekIndex();
+  const progress = currentRewardProgress(); // 0~2 (현재 세트에서 연속 달성 완료 주)
+  const earned = S.rewardsClaimed || 0;
+
+  // 이번 주(진행 중) 활동일
+  const thisWeekDays = weekActiveDays(curWeek);
+  const thisWeekDone = isWeekAchieved(curWeek);
+
+  // 3주 세트 시각화: 완료된 연속 주 + 이번 주 진행
+  // dots: 각 주의 상태 (achieved / current / pending)
+  let dots = "";
+  for(let i=0;i<REWARD_WEEKS;i++){
+    let cls, label;
+    if(i < progress){
+      cls = "week-dot done"; label = "✓";
+    } else if(i === progress){
+      // 이번 주가 이 자리 (진행 중)
+      cls = "week-dot current"; label = thisWeekDays;
+    } else {
+      cls = "week-dot"; label = "";
+    }
+    dots += `<div class="${cls}"><span>${label}</span><small>${i+1}주차</small></div>`;
+  }
+
+  // 이번 주 남은 목표
+  const remain = Math.max(0, REWARD_TARGET_DAYS - thisWeekDays);
+  let statusMsg;
+  if(thisWeekDone){
+    statusMsg = `이번 주 <b>${thisWeekDays}일</b> 달성! 이번 주 목표를 이뤘습니다. 🎯`;
+  } else {
+    statusMsg = `이번 주 <b>${thisWeekDays}/${REWARD_TARGET_DAYS}일</b> · <b>${remain}일</b> 더 하면 이번 주 달성!`;
+  }
+
+  el.innerHTML = `
+    <div class="reward-head">
+      <div>
+        <div class="reward-title">🎁 아빠 보상 도전</div>
+        <div class="muted" style="font-size:.85rem">3주 연속 매주 5일 이상 달성하면 <b>아빠 보상</b>이 기다립니다!</div>
+      </div>
+      ${earned>0?`<div class="reward-earned">🏅 ${earned}회 획득</div>`:""}
+    </div>
+    <div class="week-dots">${dots}</div>
+    <div class="reward-status">${statusMsg}</div>
+    <div class="muted" style="font-size:.8rem;margin-top:6px">현재 <b>${progress}주 연속</b> 달성 중 · 3주 채우면 보상!</div>
+  `;
+}
+
+/* ===== 습관 달력 ===== */
+let calYear=null, calMonth=null; // 표시 중인 연/월 (0-based month)
+function initCalendarMonth(){
+  if(calYear===null){
+    const p = new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit"}).format(new Date()).split("-");
+    calYear = +p[0]; calMonth = +p[1]-1;
+  }
+}
+function renderCalendar(){
+  initCalendarMonth();
+  const grid = document.getElementById("calGrid");
+  const title = document.getElementById("calTitle");
+  if(!grid) return;
+  title.textContent = `${calYear}년 ${calMonth+1}월`;
+
+  const first = new Date(calYear, calMonth, 1);
+  const startDow = first.getDay(); // 0=일
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const today = todayStr();
+
+  grid.innerHTML = "";
+  // 앞 빈칸
+  for(let i=0;i<startDow;i++){
+    const c=document.createElement("div"); c.className="cal-cell empty"; grid.appendChild(c);
+  }
+  for(let day=1;day<=daysInMonth;day++){
+    const ds = `${calYear}-${String(calMonth+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;
+    const cnt = dayDoneCount(ds);
+    const cell = document.createElement("div");
+    cell.className = `cal-cell d${cnt}`;
+    if(ds===today) cell.classList.add("today");
+    if(ds>today) cell.classList.add("future");
+    cell.textContent = day;
+    if(cnt>0) cell.title = `${ds} · ${cnt}개 완료`;
+    grid.appendChild(cell);
+  }
+}
+
+function updateGoalBar(){ updateTodayBar(); } // 하위호환
 
 /* ---- 종합 성장 그래프 (모든 활동 함께) ---- */
 function renderGrowthChart(){
   const ctx = document.getElementById("growthChart");
+  if(!ctx) return;
   if(charts.growth) charts.growth.destroy();
 
   const days = 14;
@@ -846,7 +1142,7 @@ function diagnose(){
     if(a.triAtt>0 && a.triAcc<60) advice.push("상식 정답률을 높이려면 <b>해설을 소리 내어</b> 읽어보세요.");
     if(a.booksFinished < a.monthsElapsed) advice.push("독서가 목표(월 1권)보다 조금 뒤처져 있습니다. <b>하루 10쪽</b>이면 한 달에 한 권은 충분합니다.");
     else if(a.booksFinished>0) advice.push(`벌써 <b>${a.booksFinished}권</b>을 완독했습니다. 훌륭한 독서 습관입니다!`);
-    if(+a.goalAvg < 3) advice.push("하루 6개 목표 중 평균 " + a.goalAvg + "개를 달성 중입니다. <b>2~3개</b>부터 시작해도 충분합니다.");
+    if(+a.goalAvg < 3) advice.push("하루 5개 목표 중 평균 " + a.goalAvg + "개를 달성 중입니다. <b>2~3개</b>부터 시작해도 충분합니다.");
     advice.push("작은 일에 충실한 사람이 큰 것도 맡습니다. <b>오늘 하루</b>에 집중하세요. (눅 16:10)");
 
     box.innerHTML = `
@@ -859,7 +1155,7 @@ function diagnose(){
         <div class="metric"><span>한자 누적</span><b>${a.hanja}개</b></div>
         <div class="metric"><span>상식 정답률</span><b>${a.triAcc}% (${a.triCor}/${a.triAtt})</b></div>
         <div class="metric"><span>완독</span><b>${a.booksFinished}권 (목표 ${a.monthsElapsed}권)</b></div>
-        <div class="metric"><span>일일 목표 평균</span><b>${a.goalAvg}/6</b></div>
+        <div class="metric"><span>일일 목표 평균</span><b>${a.goalAvg}/5</b></div>
         <h4 style="margin-top:16px">💡 종목별 성장</h4>
         ${growthLines}
         <h4 style="margin-top:16px">🎯 맞춤 조언</h4>
@@ -915,7 +1211,7 @@ function coachAdvice(topic, q, a){
       <p style="margin-top:10px">"네가 무엇을 하든지 마음을 다하여 주께 하듯 하고 사람에게 하듯 하지 말라." (골 3:23)</p>
       <p style="margin-top:8px">오늘의 작은 훈련이 내일의 강한 나를 만듭니다. 결과보다 <b>오늘의 출석</b>에 집중하세요.</p>`,
     discipline: `<h4>⚡ 자기관리 코칭</h4>${qLine}
-      <p>일일 목표 평균 ${a.goalAvg}/6를 달성 중입니다.</p>
+      <p>일일 목표 평균 ${a.goalAvg}/5를 달성 중입니다.</p>
       <ul style="padding-left:18px;line-height:1.9">
         <li><b>계획→기록→검토→조정</b>의 사이클을 매주 돌리세요.</li>
         <li>완벽한 하루보다 <b>다시 시작한 하루</b>가 더 귀합니다.</li>
@@ -1173,6 +1469,7 @@ function toast(msg){
 
 /* ---------- 전역 노출 (인라인 onclick 대응) ---------- */
 window.nextTrivia = nextTrivia;
+window.closeRewardModal = closeRewardModal;
 window.updatePage = updatePage;
 window.saveReadingNote = saveReadingNote;
 window.finishBook = finishBook;
