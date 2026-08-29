@@ -148,6 +148,32 @@ header::after{
 .finished-book .fb-period{font-size:.8rem;color:var(--ink-soft);margin-top:4px}
 .finished-book .fb-notes{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:.85rem;line-height:1.7}
 
+/* ===== 날짜 상세/수정 모달 ===== */
+.day-modal-box{text-align:left;max-width:380px}
+.day-modal-date{font-size:1.3rem;font-weight:900;text-align:center;color:var(--accent-2)}
+.day-modal-sub{text-align:center;font-size:.85rem;margin-top:2px;margin-bottom:18px}
+.day-modal-checks{display:flex;flex-direction:column;gap:8px}
+.day-check-row{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;
+}
+.day-check-row .dc-left{display:flex;align-items:center;gap:10px;font-weight:600}
+.day-check-row .dc-ico{font-size:1.3rem}
+.day-check-row .dc-status{font-size:1.2rem}
+.day-check-row.done{background:color-mix(in srgb,var(--good) 18%,var(--surface-2));border-color:var(--good)}
+.day-check-row.editable{cursor:pointer;transition:.2s}
+.day-check-row.editable:hover{border-color:var(--accent)}
+.day-modal-lock{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+.day-modal-lock.hidden{display:none}
+.day-edit-hint{
+  text-align:center;font-size:.82rem;color:var(--good);font-weight:700;
+  margin-top:14px;padding:8px;background:color-mix(in srgb,var(--good) 12%,transparent);border-radius:8px;
+}
+
+/* 클릭 가능한 달력 셀 */
+.cal-cell:not(.empty){cursor:pointer}
+.cal-cell:not(.empty):hover{outline:2px solid var(--accent);outline-offset:1px}
+
 /* ===== 아빠 보상 카드 ===== */
 .reward-card{
   border:1px solid var(--line);
@@ -481,7 +507,7 @@ select option{background:var(--surface);color:var(--ink)}
     <div class="day-badge"><span class="day-dot"></span><span id="weekdayLabel">월요일</span></div>
   </div>
   <div class="counters">
-    <div class="counter"><div class="num" id="cDday">D-</div><div class="lbl">입대까지</div></div>
+    <div class="counter"><div class="num" id="cDday">D-180</div><div class="lbl">입대까지</div></div>
     <div class="counter"><div class="num" id="cFitness">0</div><div class="lbl">체력점수</div></div>
     <div class="counter"><div class="num" id="cWords">0</div><div class="lbl">영어 누적</div></div>
     <div class="counter"><div class="num" id="cHanja">0</div><div class="lbl">한자 누적</div></div>
@@ -515,6 +541,20 @@ select option{background:var(--surface);color:var(--ink)}
       </div>
     </div>
 
+    <!-- 오늘의 체크 (맨 위 - 스크롤 없이 바로 체크) -->
+    <div class="card check-card">
+      <h2>✅ 오늘의 체크 <span class="muted" id="checkCount" style="font-weight:400;font-size:.9rem"></span></h2>
+      <p class="muted" style="margin-bottom:16px">양은 신경 쓰지 마세요. <b>했으면 누르기</b>, 그거면 충분합니다.</p>
+      <div class="check-grid" id="checkGrid"></div>
+      <div class="today-progress">
+        <div class="bar big-bar"><span id="todayBar" style="width:0%"></span></div>
+        <div class="muted" style="text-align:center;margin-top:8px"><b id="todayRate">0%</b> 완료</div>
+      </div>
+      <div class="all-done" id="allDone" style="display:none">
+        🎉 오늘 5가지를 모두 해냈습니다! 훌륭합니다.
+      </div>
+    </div>
+
     <!-- 연속 기록 (스트릭) -->
     <div class="streak-banner" id="streakBanner">
       <div class="streak-fire" id="streakFire">🔥</div>
@@ -530,20 +570,6 @@ select option{background:var(--surface);color:var(--ink)}
 
     <!-- 아빠 보상 도전 -->
     <div class="card reward-card" id="rewardCard"></div>
-
-    <!-- 오늘의 체크 -->
-    <div class="card check-card">
-      <h2>✅ 오늘의 체크 <span class="muted" id="checkCount" style="font-weight:400;font-size:.9rem"></span></h2>
-      <p class="muted" style="margin-bottom:16px">양은 신경 쓰지 마세요. <b>했으면 누르기</b>, 그거면 충분합니다.</p>
-      <div class="check-grid" id="checkGrid"></div>
-      <div class="today-progress">
-        <div class="bar big-bar"><span id="todayBar" style="width:0%"></span></div>
-        <div class="muted" style="text-align:center;margin-top:8px"><b id="todayRate">0%</b> 완료</div>
-      </div>
-      <div class="all-done" id="allDone" style="display:none">
-        🎉 오늘 5가지를 모두 해냈습니다! 훌륭합니다.
-      </div>
-    </div>
 
     <!-- 습관 달력 -->
     <div class="card">
@@ -568,7 +594,7 @@ select option{background:var(--surface);color:var(--ink)}
     <!-- 오늘의 한마디 -->
     <div class="daily-quote">
       <span class="phase-tag" id="phaseTag">시작과 습관</span>
-      <div class="msg serif" id="dailyMsg">오늘의 작은 시작이 미래의 나를 만든다.</div>
+      <div class="msg serif" id="dailyMsg">오늘의 작은 시작이 180일 후의 나를 만든다.</div>
       <div class="verse" id="dailyVerse"></div>
     </div>
 
@@ -844,6 +870,25 @@ select option{background:var(--surface);color:var(--ink)}
     </div>
     <p class="reward-modal-count">지금까지 아빠 보상 <b id="rewardCount">1</b>회 달성</p>
     <button class="btn btn-accent" onclick="closeRewardModal()">아빠에게 보여주기 🏅</button>
+  </div>
+</div>
+
+<!-- 날짜 상세/수정 모달 -->
+<div class="reward-modal" id="dayModal">
+  <div class="reward-modal-box day-modal-box">
+    <div class="day-modal-date" id="dayModalDate">2026년 8월 17일</div>
+    <div class="day-modal-sub muted" id="dayModalSub"></div>
+    <div class="day-modal-checks" id="dayModalChecks"></div>
+    <div class="day-modal-lock" id="dayModalLock">
+      <p class="muted" style="font-size:.85rem;margin-bottom:8px">과거 기록을 수정하려면 암호를 입력하세요</p>
+      <div style="display:flex;gap:8px">
+        <input type="password" id="dayModalPw" placeholder="암호" style="flex:1;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)">
+        <button class="btn btn-ghost" onclick="unlockDayEdit()">🔓 잠금해제</button>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:16px">
+      <button class="btn btn-ghost" onclick="closeDayModal()" style="flex:1">닫기</button>
+    </div>
   </div>
 </div>
 

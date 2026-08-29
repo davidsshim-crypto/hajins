@@ -668,8 +668,106 @@ function renderCalendar(){
     if(ds>today) cell.classList.add("future");
     cell.textContent = day;
     if(cnt>0) cell.title = `${ds} · ${cnt}개 완료`;
+    // 미래가 아닌 날짜는 클릭해서 상세 보기
+    if(ds <= today){
+      cell.addEventListener("click", ()=> openDayModal(ds));
+    }
     grid.appendChild(cell);
   }
+}
+
+/* ===== 날짜 상세/수정 모달 ===== */
+let dayModalDate = null;
+let dayEditUnlocked = false;
+
+function openDayModal(ds){
+  dayModalDate = ds;
+  dayEditUnlocked = false;
+  renderDayModal();
+  document.getElementById("dayModal").classList.add("show");
+}
+function closeDayModal(){
+  document.getElementById("dayModal").classList.remove("show");
+  dayModalDate = null;
+  dayEditUnlocked = false;
+}
+function renderDayModal(){
+  const ds = dayModalDate;
+  if(!ds) return;
+  const [y,m,d] = ds.split("-").map(Number);
+  const dow = ["일","월","화","수","목","금","토"][new Date(ds+"T00:00:00").getDay()];
+  document.getElementById("dayModalDate").textContent = `${y}년 ${m}월 ${d}일 (${dow})`;
+
+  const rec = S.daily[ds];
+  const cnt = dayDoneCount(ds);
+  const isToday = (ds === todayStr());
+  const sub = document.getElementById("dayModalSub");
+  sub.textContent = cnt>0 ? `${cnt}/${GOALS.length}개 완료한 날` : "기록이 없는 날";
+
+  // 체크 항목들
+  const box = document.getElementById("dayModalChecks");
+  const canEdit = isToday || dayEditUnlocked;
+  box.innerHTML = GOALS.map(g=>{
+    const done = rec && rec.goals && rec.goals[g.id];
+    return `<div class="day-check-row ${done?"done":""} ${canEdit?"editable":""}" ${canEdit?`onclick="editDayCheck('${g.id}')"`:""}>
+      <div class="dc-left"><span class="dc-ico">${g.ico}</span><span>${g.t}</span></div>
+      <div class="dc-status">${done?"✅":"⬜"}</div>
+    </div>`;
+  }).join("");
+
+  // 잠금 영역
+  const lock = document.getElementById("dayModalLock");
+  if(isToday){
+    // 오늘은 대시보드에서 바로 체크하므로 잠금 불필요, 안내만
+    lock.classList.add("hidden");
+    if(!document.getElementById("dayEditHint")){
+      box.insertAdjacentHTML("afterend", `<div class="day-edit-hint" id="dayEditHint">오늘은 항목을 눌러 바로 수정할 수 있습니다</div>`);
+    }
+  } else {
+    const hint = document.getElementById("dayEditHint");
+    if(hint) hint.remove();
+    if(dayEditUnlocked){
+      lock.classList.add("hidden");
+      if(!document.getElementById("dayEditHint")){
+        box.insertAdjacentHTML("afterend", `<div class="day-edit-hint" id="dayEditHint">🔓 수정 모드 · 항목을 눌러 변경하세요</div>`);
+      }
+    } else {
+      lock.classList.remove("hidden");
+      const hint2 = document.getElementById("dayEditHint");
+      if(hint2) hint2.remove();
+      document.getElementById("dayModalPw").value = "";
+    }
+  }
+}
+function unlockDayEdit(){
+  const pw = document.getElementById("dayModalPw").value;
+  if(pw === "2026"){
+    dayEditUnlocked = true;
+    toast("🔓 수정 모드 활성화");
+    renderDayModal();
+  } else {
+    toast("암호가 올바르지 않습니다");
+    document.getElementById("dayModalPw").value = "";
+  }
+}
+function editDayCheck(id){
+  const ds = dayModalDate;
+  if(!ds) return;
+  const isToday = (ds === todayStr());
+  if(!isToday && !dayEditUnlocked) return; // 잠금 상태면 무시
+  // 해당 날짜의 기록 보장
+  if(!S.daily[ds]) S.daily[ds] = { fitness:{}, english:{learned:0}, trivia:{att:0,cor:0}, hanja:{learned:0}, goals:{} };
+  S.daily[ds].goals[id] = !S.daily[ds].goals[id];
+  recomputeBestStreak();
+  save();
+  renderDayModal();
+  // 대시보드 갱신
+  renderStreak();
+  renderRewardCard();
+  renderCheckGrid();
+  renderCalendar();
+  renderHeader();
+  checkReward();
 }
 
 function updateGoalBar(){ updateTodayBar(); } // 하위호환
@@ -1470,6 +1568,10 @@ function toast(msg){
 /* ---------- 전역 노출 (인라인 onclick 대응) ---------- */
 window.nextTrivia = nextTrivia;
 window.closeRewardModal = closeRewardModal;
+window.openDayModal = openDayModal;
+window.closeDayModal = closeDayModal;
+window.unlockDayEdit = unlockDayEdit;
+window.editDayCheck = editDayCheck;
 window.updatePage = updatePage;
 window.saveReadingNote = saveReadingNote;
 window.finishBook = finishBook;
