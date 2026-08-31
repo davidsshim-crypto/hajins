@@ -148,6 +148,23 @@ header::after{
 .finished-book .fb-period{font-size:.8rem;color:var(--ink-soft);margin-top:4px}
 .finished-book .fb-notes{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:.85rem;line-height:1.7}
 
+/* ===== 이번 주 달리기 카드 ===== */
+.run-card{
+  border:1px solid var(--line);
+  background:linear-gradient(150deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),var(--surface));
+}
+.run-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.run-title{font-size:1.1rem;font-weight:800}
+.run-badge{background:var(--good);color:#fff;padding:6px 12px;border-radius:99px;font-weight:800;font-size:.82rem;flex:0 0 auto}
+.run-dots{display:flex;gap:12px;margin-bottom:14px}
+.run-dot{
+  flex:1;aspect-ratio:1.6;border-radius:14px;background:var(--surface-2);border:2px dashed var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:1.6rem;transition:.25s;
+}
+.run-dot.filled{border-style:solid;border-color:var(--accent);background:color-mix(in srgb,var(--accent) 20%,var(--surface-2))}
+.run-status{font-size:.95rem;padding:12px 14px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--accent);margin-bottom:14px}
+.run-btn{width:100%;justify-content:center;font-size:1rem;padding:14px}
+
 /* ===== 날짜 상세/수정 모달 ===== */
 .day-modal-box{text-align:left;max-width:380px}
 .day-modal-date{font-size:1.3rem;font-weight:900;text-align:center;color:var(--accent-2)}
@@ -293,6 +310,7 @@ header::after{
 .cal-cell.empty{background:transparent;border:none}
 .cal-cell.today{outline:2px solid var(--accent-2);outline-offset:1px;font-weight:900;color:var(--ink)}
 .cal-cell.future{opacity:.35}
+.cal-cell .run-mark{position:absolute;bottom:0;right:1px;font-size:.6rem;line-height:1;opacity:.9}
 /* 달성 강도 색상 (0~5개) */
 .cal-cell.d0{}
 .cal-cell.d1{background:color-mix(in srgb,var(--good) 18%,var(--surface-2));color:var(--ink)}
@@ -554,6 +572,9 @@ select option{background:var(--surface);color:var(--ink)}
         🎉 오늘 5가지를 모두 해냈습니다! 훌륭합니다.
       </div>
     </div>
+
+    <!-- 이번 주 달리기 (주 3회) -->
+    <div class="card run-card" id="runCard"></div>
 
     <!-- 연속 기록 (스트릭) -->
     <div class="streak-banner" id="streakBanner">

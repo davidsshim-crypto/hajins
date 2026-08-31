@@ -329,6 +329,7 @@ function fitnessScore(f){
 function renderDashboard(){
   renderHeader();
   renderStreak();
+  renderRunCard();
   renderRewardCard();
   renderCheckGrid();
   renderCalendar();
@@ -499,6 +500,29 @@ function isWeekAchieved(weekIdx){
   return weekActiveDays(weekIdx) >= REWARD_TARGET_DAYS;
 }
 
+/* ===== 달리기 (주 3회 목표) ===== */
+const RUN_TARGET = 3; // 주당 목표 횟수
+// 특정 날 달렸는지
+function didRun(dstr){
+  const rec = S.daily[dstr];
+  return !!(rec && rec.ran);
+}
+// 특정 주차의 달리기 횟수
+function weekRunCount(weekIdx){
+  const start = weekStartDate(weekIdx);
+  let count = 0;
+  for(let i=0;i<7;i++){
+    const ds = addDays(start, i);
+    if(ds > todayStr()) break;
+    if(didRun(ds)) count++;
+  }
+  return count;
+}
+// 이번 주 달리기 달성 여부
+function isRunWeekAchieved(weekIdx){
+  return weekRunCount(weekIdx) >= RUN_TARGET;
+}
+
 // 지금까지 "완료되고 달성된" 주들을 바탕으로 3주 연속 세트가 몇 개 완성됐는지 계산
 function completedRewardSets(){
   const curWeek = currentWeekIndex();
@@ -634,6 +658,59 @@ function renderRewardCard(){
   `;
 }
 
+/* ===== 이번 주 달리기 카드 ===== */
+function renderRunCard(){
+  const el = document.getElementById("runCard");
+  if(!el) return;
+  const w = currentWeekIndex();
+  const cnt = weekRunCount(w);
+  const done = isRunWeekAchieved(w);
+  const ranToday = didRun(todayStr());
+
+  // 3칸 도트 (●●●)
+  let dots = "";
+  for(let i=0;i<RUN_TARGET;i++){
+    dots += `<div class="run-dot ${i<cnt?"filled":""}">${i<cnt?"🏃":""}</div>`;
+  }
+
+  const remain = Math.max(0, RUN_TARGET - cnt);
+  let msg;
+  if(done){
+    msg = `이번 주 <b>${cnt}회</b> 달성 완료! 🎯 이번 주 달리기 목표를 이뤘습니다.`;
+  } else {
+    msg = `이번 주 <b>${cnt}/${RUN_TARGET}회</b> · <b>${remain}번</b> 더 나가면 이번 주 달성!`;
+  }
+
+  el.innerHTML = `
+    <div class="run-head">
+      <div>
+        <div class="run-title">🏃 이번 주 달리기 <span class="muted" style="font-weight:400;font-size:.85rem">(주 3회 목표)</span></div>
+        <div class="muted" style="font-size:.85rem">밖으로 나가 유산소! 웨이트와 별개로 관리합니다.</div>
+      </div>
+      ${done?`<div class="run-badge">달성 ✓</div>`:""}
+    </div>
+    <div class="run-dots">${dots}</div>
+    <div class="run-status">${msg}</div>
+    <button class="btn ${ranToday?"btn-ghost":"btn-accent"} run-btn" onclick="toggleRun()">
+      ${ranToday?"✅ 오늘 달림 (취소하려면 탭)":"🏃 오늘 달리기 완료!"}
+    </button>
+  `;
+}
+
+function toggleRun(){
+  const d = ensureDay(todayStr());
+  d.ran = !d.ran;
+  save();
+  renderRunCard();
+  renderCalendar();
+  const w = currentWeekIndex();
+  if(d.ran && isRunWeekAchieved(w) && weekRunCount(w)===RUN_TARGET){
+    toast("🎉 이번 주 달리기 3회 완주!");
+  } else if(d.ran){
+    toast("🏃 달리기 기록 완료!");
+  }
+}
+
 /* ===== 습관 달력 ===== */
 let calYear=null, calMonth=null; // 표시 중인 연/월 (0-based month)
 function initCalendarMonth(){
@@ -667,7 +744,15 @@ function renderCalendar(){
     if(ds===today) cell.classList.add("today");
     if(ds>today) cell.classList.add("future");
     cell.textContent = day;
-    if(cnt>0) cell.title = `${ds} · ${cnt}개 완료`;
+    // 달린 날은 작은 발자국 표시
+    if(didRun(ds)){
+      cell.classList.add("ran");
+      const mark = document.createElement("span");
+      mark.className = "run-mark";
+      mark.textContent = "🏃";
+      cell.appendChild(mark);
+    }
+    if(cnt>0 || didRun(ds)) cell.title = `${ds} · ${cnt}개 완료${didRun(ds)?" · 달리기✓":""}`;
     // 미래가 아닌 날짜는 클릭해서 상세 보기
     if(ds <= today){
       cell.addEventListener("click", ()=> openDayModal(ds));
@@ -713,7 +798,14 @@ function renderDayModal(){
       <div class="dc-left"><span class="dc-ico">${g.ico}</span><span>${g.t}</span></div>
       <div class="dc-status">${done?"✅":"⬜"}</div>
     </div>`;
-  }).join("");
+  }).join("")
+  + (()=>{ // 달리기 항목 (별도)
+    const ran = rec && rec.ran;
+    return `<div class="day-check-row ${ran?"done":""} ${canEdit?"editable":""}" ${canEdit?`onclick="editDayRun()"`:""} style="border-style:dashed">
+      <div class="dc-left"><span class="dc-ico">🏃</span><span>달리기</span></div>
+      <div class="dc-status">${ran?"✅":"⬜"}</div>
+    </div>`;
+  })();
 
   // 잠금 영역
   const lock = document.getElementById("dayModalLock");
@@ -768,6 +860,19 @@ function editDayCheck(id){
   renderCalendar();
   renderHeader();
   checkReward();
+}
+
+function editDayRun(){
+  const ds = dayModalDate;
+  if(!ds) return;
+  const isToday = (ds === todayStr());
+  if(!isToday && !dayEditUnlocked) return; // 잠금 상태면 무시
+  if(!S.daily[ds]) S.daily[ds] = { fitness:{}, english:{learned:0}, trivia:{att:0,cor:0}, hanja:{learned:0}, goals:{} };
+  S.daily[ds].ran = !S.daily[ds].ran;
+  save();
+  renderDayModal();
+  renderRunCard();
+  renderCalendar();
 }
 
 function updateGoalBar(){ updateTodayBar(); } // 하위호환
@@ -875,6 +980,8 @@ function saveFitness(){
     wake:val("f_wake"), sleep:val("f_sleep"), condition:val("f_condition"), memo:val("f_memo")
   };
   d.goals.fitness = true;
+  // 달리기 km를 입력했으면 그날 "달렸다"로도 표시 (외부 유산소)
+  if((parseFloat(val("f_running"))||0) > 0){ d.ran = true; }
   save();
   toast("운동 기록 저장 완료!");
   renderFitness(); renderHeader();
@@ -1567,11 +1674,13 @@ function toast(msg){
 
 /* ---------- 전역 노출 (인라인 onclick 대응) ---------- */
 window.nextTrivia = nextTrivia;
+window.toggleRun = toggleRun;
 window.closeRewardModal = closeRewardModal;
 window.openDayModal = openDayModal;
 window.closeDayModal = closeDayModal;
 window.unlockDayEdit = unlockDayEdit;
 window.editDayCheck = editDayCheck;
+window.editDayRun = editDayRun;
 window.updatePage = updatePage;
 window.saveReadingNote = saveReadingNote;
 window.finishBook = finishBook;
