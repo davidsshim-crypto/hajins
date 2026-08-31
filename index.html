@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>하진 입대전 전인적 성장 프로젝트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -574,7 +577,19 @@ select option{background:var(--surface);color:var(--ink)}
     </div>
 
     <!-- 이번 주 달리기 (주 3회) -->
-    <div class="card run-card" id="runCard"></div>
+    <div class="card run-card" id="runCard">
+      <div class="run-head">
+        <div>
+          <div class="run-title">🏃 이번 주 달리기 <span class="muted" style="font-weight:400;font-size:.85rem">(주 3회 목표)</span></div>
+          <div class="muted" style="font-size:.85rem">밖으로 나가 유산소! 웨이트와 별개로 관리합니다.</div>
+        </div>
+      </div>
+      <div class="run-dots">
+        <div class="run-dot"></div><div class="run-dot"></div><div class="run-dot"></div>
+      </div>
+      <div class="run-status">이번 주 <b>0/3회</b> · 로딩 중...</div>
+      <button class="btn btn-accent run-btn" onclick="toggleRun()">🏃 오늘 달리기 완료!</button>
+    </div>
 
     <!-- 연속 기록 (스트릭) -->
     <div class="streak-banner" id="streakBanner">
@@ -913,6 +928,6 @@ select option{background:var(--surface);color:var(--ink)}
   </div>
 </div>
 
-<script src="app.js"></script>
+<script src="app.js?v=20260829"></script>
 </body>
 </html>
